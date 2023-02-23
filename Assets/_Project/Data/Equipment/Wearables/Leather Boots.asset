@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
+  m_Name: Leather Boots
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 0c4ffcbf4a320754db44aeae259d0b35, type: 3}
+  _name: Boots
+  _key: Leather Boots
+  _description: 
+  _equipModel: {fileID: 0}
+  _itemDrop: {fileID: 8384081800384720211, guid: 146e34c33337c6c41b51a79d51ae4612,
+    type: 3}
+  _category: 5
+  _itemType: 7
+  _nameFormat: 1
+  _equipmentSlot: 10
+  _renderSlots:
+  - _bodyPart: 26
+    _index: 19
+  - _bodyPart: 27
+    _index: 19
+  _materialAllowed: 7
+  _hands: 5
+  _bestQualityAllowed: 0
+  _enchantable: 0
+  _stackable: 0
+  _modelIndex: -1
+  _basePower: 1
+  _encumbrance: 1
+  _goldValue: 5
+  _gemValue: 0
+  _minimumMight: 0
+  _minimumFinesse: 0
+  _minimumMind: 0
+  _equipSound: '[None]'
+  _unequipSound: '[None]'
+  _weaponData:
+    _hasData: 0
+    _weaponType: 0
+    _range: 0
+    _projectileDelay: 0
+    _projectile: {fileID: 0}
+    _attackEffectPrefab: {fileID: 0}
+    _animatorOverride: {fileID: 0}
+    damageEffects: []
+    _hitSounds: []
+    _attackSounds: []
+  _wearableData:
+    _hasData: 1
+    _armor: 1
+    _block: 0
+    _dodge: 1
+    _perceptionModifier: 0
+    _wearableType: 3
+    _headCoverType: 5
+    _stepSounds:
+    - Light Armour Grass 1_01
+    - Light Armour Grass 1_02
+    - Light Armour Grass 1_03
+    - Light Armour Grass 1_04
+    - Light Armour Grass 1_05
+    - Light Armour Grass 1_06
+    - Light Armour Grass 1_07
+    - Light Armour Grass 1_08
+    - Light Armour Grass 1_09
+    - Light Armour Grass 1_10
+  _accessoryData:
+    _hasData: 0
+    _accessoryType: 0
+  _usableData:
+    _hasData: 0
+    _targetType: 0
+    _usableType: 0
+    _maxUses: 0
+    _range: 0
+    _cooldown: 0
+    _projectile: {fileID: 0}
+    _effects:
+      rid: 7907628733475586083
+  _ingredientData:
+    _hasData: 0
+    _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7907628733475586083
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
+      data:
+        _data: []

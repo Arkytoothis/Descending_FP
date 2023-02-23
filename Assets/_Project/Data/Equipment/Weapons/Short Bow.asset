@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
+  m_Name: Short Bow
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: a44d26833c4dd934e9a7f1e6c0629107, type: 3}
+  _name: Short Bow
+  _key: Short Bow
+  _description: 
+  _equipModel: {fileID: 9033823261840413309, guid: 79432b82a6e0b3846b833a391dda7c30,
+    type: 3}
+  _itemDrop: {fileID: 8384081800384720211, guid: 1bfe898e3e41c0648a7f5b0b9930d414,
+    type: 3}
+  _category: 4
+  _itemType: 22
+  _nameFormat: 0
+  _equipmentSlot: 2
+  _renderSlots: []
+  _materialAllowed: 3
+  _hands: 0
+  _bestQualityAllowed: 0
+  _enchantable: 1
+  _stackable: 0
+  _modelIndex: -1
+  _basePower: 1
+  _encumbrance: 1
+  _goldValue: 5
+  _gemValue: 0
+  _minimumMight: 0
+  _minimumFinesse: 0
+  _minimumMind: 0
+  _equipSound: '[None]'
+  _unequipSound: '[None]'
+  _weaponData:
+    _hasData: 1
+    _weaponType: 1
+    _range: 6
+    _projectileDelay: 0.75
+    _projectile: {fileID: 11400000, guid: 93e952be948f5c94988af5cf3a5fabbf, type: 2}
+    _attackEffectPrefab: {fileID: 0}
+    _animatorOverride: {fileID: 22100000, guid: e264fc8b7b1b5ab4eae5bc92d53857e2,
+      type: 2}
+    damageEffects: []
+    _hitSounds: []
+    _attackSounds: []
+  _wearableData:
+    _hasData: 0
+    _armor: 0
+    _block: 0
+    _dodge: 0
+    _perceptionModifier: 0
+    _wearableType: 0
+    _headCoverType: 0
+    _stepSounds: []
+  _accessoryData:
+    _hasData: 0
+    _accessoryType: 0
+  _usableData:
+    _hasData: 0
+    _targetType: 0
+    _usableType: 0
+    _maxUses: 0
+    _range: 0
+    _cooldown: 0
+    _projectile: {fileID: 0}
+    _effects:
+      rid: 7907628733475586075
+  _ingredientData:
+    _hasData: 0
+    _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7907628733475586075
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
+      data:
+        _data: []

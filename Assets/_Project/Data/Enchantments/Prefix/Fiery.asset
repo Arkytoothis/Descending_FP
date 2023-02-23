@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96def27b1c19e0b4eb524f871f49be30, type: 3}
+  m_Name: Fiery
+  m_EditorClassIdentifier: 
+  _name: Fiery
+  _key: Fiery
+  _rarity: {fileID: 11400000, guid: 4a75c13f5c2b2f5468cec88f033c7d13, type: 2}
+  _enchantmentType: 1
+  _usability: 0
+  _goldValue: 50
+  _gemValue: 0
+  _itemPower: 25
+  _encumbranceModifier: 0
+  _effects: []
+  references:
+    version: 2
+    RefIds: []

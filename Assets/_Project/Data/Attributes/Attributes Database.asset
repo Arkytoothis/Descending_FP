@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309ff205e657e8743b9c7c84ef9df5aa, type: 3}
+  m_Name: Attributes Database
+  m_EditorClassIdentifier: 
+  _attributes:
+    keyData:
+    - Endurance
+    - Finesse
+    - Intellect
+    - Might
+    - Spirit
+    - Senses
+    valueData:
+    - {fileID: 11400000, guid: 96489337614cb714b9d8b0ac17964abc, type: 2}
+    - {fileID: 11400000, guid: 926deb2d4020fcf41a51d95d5743d485, type: 2}
+    - {fileID: 11400000, guid: c7702ba46626ec14fb9c3febb486d391, type: 2}
+    - {fileID: 11400000, guid: 47f340717fc369b418e69affd97fa097, type: 2}
+    - {fileID: 11400000, guid: 406159c5c2f575b4bb9bebdc400800ac, type: 2}
+    - {fileID: 11400000, guid: 8d5628aeed8e08d41b9e426b938b559b, type: 2}
+  _vitals:
+    keyData:
+    - Life
+    - Armor
+    - Magic
+    - Stamina
+    - Actions
+    - Luck
+    valueData:
+    - {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
+    - {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
+    - {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
+    - {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725, type: 2}
+    - {fileID: 11400000, guid: 8c1538e43236dbc4daa5bcf57e73ad8d, type: 2}
+    - {fileID: 11400000, guid: 27d332bb7fb63b140b49d3c274f47b48, type: 2}
+  _statistics:
+    keyData:
+    - Finesse Modifier
+    - Might Modifier
+    - Block
+    - Dodge
+    - Magic Modifier
+    - Willpower
+    - Movement
+    - Critical Damage
+    - Perception
+    - Finesse Attack
+    - Might Attack
+    - Magic Attack
+    - Critical Hit
+    - Fumble
+    valueData:
+    - {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}
+    - {fileID: 11400000, guid: 296303d97cde9fa4f9a5045c006e427d, type: 2}
+    - {fileID: 11400000, guid: 235729449429a4f40b1fdcb4dfa945a4, type: 2}
+    - {fileID: 11400000, guid: 7f21356662ce25240bab1d615b9dc4f4, type: 2}
+    - {fileID: 11400000, guid: a0392a137b0b75b44a63e80cd2ebc836, type: 2}
+    - {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
+    - {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
+    - {fileID: 11400000, guid: 0cd740360ef66834aa82570a681c9014, type: 2}
+    - {fileID: 11400000, guid: 3e9dba08f088e9a41997418e0fb93458, type: 2}
+    - {fileID: 11400000, guid: 87a10bd272f6ce34a926fbdd2deaad03, type: 2}
+    - {fileID: 11400000, guid: a31f61315b68be94aa728d2b1d6ebaee, type: 2}
+    - {fileID: 11400000, guid: 45429c19ba0d2cf46a652eb0bdd22c14, type: 2}
+    - {fileID: 11400000, guid: f65dc07989b8ce64d8d4f271352aad0a, type: 2}
+    - {fileID: 11400000, guid: 3cb8cc87716487b449b07b2f723a26c6, type: 2}

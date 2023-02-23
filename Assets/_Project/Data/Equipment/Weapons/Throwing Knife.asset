@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
+  m_Name: Throwing Knife
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: c71d6a84dab9dc84d87c36a15cc799a2, type: 3}
+  _name: Throwing Knife
+  _key: Throwing Knife
+  _description: 
+  _equipModel: {fileID: 9033823261840413309, guid: 217b48a60cdacfe4d8b907496edc7a10,
+    type: 3}
+  _itemDrop: {fileID: 8384081800384720211, guid: 7def532482dc5024aa95a2120f6e217c,
+    type: 3}
+  _category: 4
+  _itemType: 14
+  _nameFormat: 0
+  _equipmentSlot: 2
+  _renderSlots: []
+  _materialAllowed: 5
+  _hands: 1
+  _bestQualityAllowed: 0
+  _enchantable: 1
+  _stackable: 0
+  _modelIndex: -1
+  _basePower: 1
+  _encumbrance: 1
+  _goldValue: 5
+  _gemValue: 0
+  _minimumMight: 0
+  _minimumFinesse: 0
+  _minimumMind: 0
+  _equipSound: '[None]'
+  _unequipSound: '[None]'
+  _weaponData:
+    _hasData: 1
+    _weaponType: 1
+    _range: 3
+    _projectileDelay: 0.3
+    _projectile: {fileID: 11400000, guid: 80f3b11859a95cb49bb493658815acd5, type: 2}
+    _attackEffectPrefab: {fileID: 0}
+    _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
+      type: 2}
+    damageEffects: []
+    _hitSounds: []
+    _attackSounds: []
+  _wearableData:
+    _hasData: 0
+    _armor: 0
+    _block: 0
+    _dodge: 0
+    _perceptionModifier: 0
+    _wearableType: 0
+    _headCoverType: 0
+    _stepSounds: []
+  _accessoryData:
+    _hasData: 0
+    _accessoryType: 0
+  _usableData:
+    _hasData: 0
+    _targetType: 0
+    _usableType: 0
+    _maxUses: 0
+    _range: 0
+    _cooldown: 0
+    _projectile: {fileID: 0}
+    _effects:
+      rid: 7907628733475586073
+  _ingredientData:
+    _hasData: 0
+    _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7907628733475586073
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
+      data:
+        _data: []

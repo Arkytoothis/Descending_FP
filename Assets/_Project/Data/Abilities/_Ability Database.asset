@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfced851c53c8648b3e43edf098c982, type: 3}
+  m_Name: _Ability Database
+  m_EditorClassIdentifier: 
+  _abilities:
+    keyData:
+    - Bless
+    - Fire Bolts
+    - Lesser Healing
+    - Rally
+    - Earthen Skin
+    - Lesser Regeneration
+    - Shock Bolts
+    - Armor of Justice
+    - Shadow Bolts
+    - Life Drain
+    - Eagle Eye
+    - Guard
+    - Magic Arrow
+    - Quick Slash
+    valueData:
+    - {fileID: 11400000, guid: 5ab233f6a83df67479f5aae1c2fc36e1, type: 2}
+    - {fileID: 11400000, guid: c2b68dd7030cc574492a0cff170584ef, type: 2}
+    - {fileID: 11400000, guid: 2bad24fa55fd7a246b5bda6ab8aca4d5, type: 2}
+    - {fileID: 11400000, guid: 74fa8af4d00bb5f48829f04afd3da233, type: 2}
+    - {fileID: 11400000, guid: b1bf97b6745e9824486b695c1fc69db3, type: 2}
+    - {fileID: 11400000, guid: e2c11aca1d04cdc408a50ad1efb8d8e9, type: 2}
+    - {fileID: 11400000, guid: 5ac0e2fe739c065418100cadd1b92eaa, type: 2}
+    - {fileID: 11400000, guid: b518c2db8d710c743b588dd4782fb568, type: 2}
+    - {fileID: 11400000, guid: 1ba3000c8f162414a9ddcbcaccec348e, type: 2}
+    - {fileID: 11400000, guid: 48ccae9656fe5d44d9015a73909deb8a, type: 2}
+    - {fileID: 11400000, guid: c594d00660a9a6c47aea403914b4c375, type: 2}
+    - {fileID: 11400000, guid: 277eb4b0fc2bdc847a8fae34af73a6ea, type: 2}
+    - {fileID: 11400000, guid: 6b049418876d16144bf2f5f153351213, type: 2}
+    - {fileID: 11400000, guid: f1ff8fee25ef7d64b8bee0635496a153, type: 2}

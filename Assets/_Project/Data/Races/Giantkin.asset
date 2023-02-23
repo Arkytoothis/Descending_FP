@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4587f86e6c325f344916eabf3fac4a15, type: 3}
+  m_Name: Giantkin
+  m_EditorClassIdentifier: 
+  _unlocked: 1
+  _prefabMale: {fileID: 4650479350452713856, guid: ce4fee4d371b3af4dad9bad1b4cae754,
+    type: 3}
+  _prefabFemale: {fileID: 7314011582384213635, guid: f609e2705d6544c408ba9138ed8a36fa,
+    type: 3}
+  _key: Giantkin
+  _name: Giantkin
+  _icon: {fileID: 0}
+  _hitEffect: {fileID: 198615267133080452, guid: 17868f2bfcb8edd46be115911a5ffda5,
+    type: 3}
+  _earIndex: 0
+  _hairAllowed: 0
+  _eyebrowsAllowed: 0
+  _maleBeardChance: 0
+  _femaleBeardChance: 0
+  _skinColors:
+  - {r: 0.5660378, g: 0.55468655, b: 0.5259879, a: 0}
+  - {r: 0.6037736, g: 0.5619082, b: 0.46422216, a: 0}
+  - {r: 0.6981132, g: 0.681319, b: 0.6421324, a: 0}
+  _eyeColors:
+  - {r: 0.6784314, g: 0.47708622, b: 0.23921566, a: 0}
+  - {r: 0.4245283, g: 0.23775534, b: 0.01802242, a: 0}
+  - {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  _hairColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  _tattooColors:
+  - {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 0}
+  _scarColors:
+  - {r: 0.6415094, g: 0.60792094, b: 0.52954787, a: 0}
+  - {r: 0.7169812, g: 0.6477444, b: 0.49038807, a: 0}
+  - {r: 0.7924528, g: 0.75080097, b: 0.6466714, a: 0}
+  _stubbleColors:
+  - {r: 0.5647059, g: 0.5529412, b: 0.5254902, a: 0}
+  - {r: 0.6039216, g: 0.56078434, b: 0.46274513, a: 0}
+  - {r: 0.69803923, g: 0.68235296, b: 0.6431373, a: 0}
+  _expModifier: 1
+  _startingCharacteristics:
+    keyData:
+    - Endurance
+    - Spirit
+    - Intellect
+    - Senses
+    - Might
+    - Finesse
+    valueData:
+    - _attribute: {fileID: 11400000, guid: 96489337614cb714b9d8b0ac17964abc, type: 2}
+      _minimumValue: 20
+      _maximumValue: 25
+    - _attribute: {fileID: 11400000, guid: 406159c5c2f575b4bb9bebdc400800ac, type: 2}
+      _minimumValue: 10
+      _maximumValue: 15
+    - _attribute: {fileID: 11400000, guid: c7702ba46626ec14fb9c3febb486d391, type: 2}
+      _minimumValue: 8
+      _maximumValue: 10
+    - _attribute: {fileID: 11400000, guid: 8d5628aeed8e08d41b9e426b938b559b, type: 2}
+      _minimumValue: 10
+      _maximumValue: 15
+    - _attribute: {fileID: 11400000, guid: 47f340717fc369b418e69affd97fa097, type: 2}
+      _minimumValue: 20
+      _maximumValue: 25
+    - _attribute: {fileID: 11400000, guid: 926deb2d4020fcf41a51d95d5743d485, type: 2}
+      _minimumValue: 8
+      _maximumValue: 10
+  _startingVitals:
+    keyData:
+    - Life
+    - Magic
+    - Stamina
+    - Armor
+    - Actions
+    - Luck
+    valueData:
+    - _vital: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
+      _minimumValue: 10
+      _maximumValue: 20
+    - _vital: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
+      _minimumValue: 1
+      _maximumValue: 5
+    - _vital: {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725, type: 2}
+      _minimumValue: 10
+      _maximumValue: 20
+    - _vital: {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _vital: {fileID: 11400000, guid: 8c1538e43236dbc4daa5bcf57e73ad8d, type: 2}
+      _minimumValue: 2
+      _maximumValue: 2
+    - _vital: {fileID: 11400000, guid: 27d332bb7fb63b140b49d3c274f47b48, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+  _startingStatistics:
+    keyData:
+    - Finesse Modifier
+    - Might Modifier
+    - Block
+    - Dodge
+    - Magic Modifier
+    - Willpower
+    - Critical Damage
+    - Movement
+    - Perception
+    - Finesse Attack
+    - Might Attack
+    - Critical Hit
+    - Magic Attack
+    - Fumble
+    valueData:
+    - _derived: {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 296303d97cde9fa4f9a5045c006e427d, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 235729449429a4f40b1fdcb4dfa945a4, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 7f21356662ce25240bab1d615b9dc4f4, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: a0392a137b0b75b44a63e80cd2ebc836, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 0cd740360ef66834aa82570a681c9014, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+    - _derived: {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
+      _minimumValue: 3
+      _maximumValue: 3
+    - _derived: {fileID: 11400000, guid: 3e9dba08f088e9a41997418e0fb93458, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 87a10bd272f6ce34a926fbdd2deaad03, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: a31f61315b68be94aa728d2b1d6ebaee, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: f65dc07989b8ce64d8d4f271352aad0a, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 45429c19ba0d2cf46a652eb0bdd22c14, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 3cb8cc87716487b449b07b2f723a26c6, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+  _startingSkills:
+    keyData:
+    - Armor
+    - Earth Magic
+    - Blunt Weapons
+    valueData:
+    - _skill: {fileID: 11400000, guid: 1e77ccd78b0ac224b86db88b2c0f5680, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+    - _skill: {fileID: 11400000, guid: 171985a2023a2bf468ff803a316df6f0, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+    - _skill: {fileID: 11400000, guid: fdb551caa9a6da743a82c394c18ecb5d, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+  _resistances: []
+  SelectSoundsFemale:
+  - Female 1 - Thinking 01
+  - Female 1 - Thinking 02
+  - Female 1 - Thinking 03
+  - Female 1 - Thinking 04
+  SelectSoundsMale:
+  - Male 1 - Sigh 05
+  - Male 1 - Thinking 01
+  - Male 1 - Thinking 02
+  - Male 1 - Thinking 03
+  - Male 1 - Thinking 04
+  - Male 1 - Thinking 05

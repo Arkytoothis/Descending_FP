@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe2189a641c13047b462757ff0bd088, type: 3}
+  m_Name: Database
+  m_EditorClassIdentifier: 
+  _abilities: {fileID: 11400000, guid: b790a5f1813ea3443b2b4fb22409385b, type: 2}
+  _attributes: {fileID: 11400000, guid: 125edba2065e4984bb68f9e19fc8a43e, type: 2}
+  _skills: {fileID: 11400000, guid: 3aeb252a2204c034f93b77ca296f3aba, type: 2}
+  _races: {fileID: 11400000, guid: f0a802038de11f84a96d4ce8b7509481, type: 2}
+  _profession: {fileID: 11400000, guid: a4a96a1baf9d16942847dc7be98802cf, type: 2}
+  _damageTypes: {fileID: 11400000, guid: 21f823bf436c10441b931a1aeda0083d, type: 2}
+  _items: {fileID: 11400000, guid: 388b918991e2b0d49a373b362e15ab03, type: 2}
+  _materials: {fileID: 11400000, guid: d368ccb480fca7a44813d8d465ac8554, type: 2}
+  _enchants: {fileID: 11400000, guid: 65be090f02167b047b661aa6d5714a44, type: 2}
+  _rarities: {fileID: 11400000, guid: cc0ff4420aa160f43b85c1b8563b62e6, type: 2}
+  _features: {fileID: 11400000, guid: 596d94504aab40548a29722c84be7fef, type: 2}
+  _enemies: {fileID: 11400000, guid: dc101faa644f09f42a615b702add8902, type: 2}
+  _heroPrefab: {fileID: 1496511450220018615, guid: 7d9e0108182936d41839db846cc6851a,
+    type: 3}
+  _sceneLoadFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/scene_load_data.dat
+  _partyDataFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/party_data.dat
+  _resourceDataFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/resources_data.dat
+  _timeDataFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/time_data.dat
+  _worldDataFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/world_data.dat
+  _overworldSpawnFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/overworld_spawn.dat
+  _stockpileFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/stockpile_data.dat
+  _defaultMeleeActionIcon: {fileID: 21300000, guid: bbb568c0fcc345744a377a48f52c3cf4,
+    type: 3}
+  _moveActionIcon: {fileID: 21300000, guid: df5ee5356957ee54c92997554d912057, type: 3}
+  _jumpActionIcon: {fileID: 21300000, guid: 622eb308c45482a42a211cdfcca994df, type: 3}
+  _interactActionIcon: {fileID: 21300000, guid: a346ff6a7fef92e469d7de0276cd9f85,
+    type: 3}
+  _searchActionIcon: {fileID: 21300000, guid: f3254b3bef33e6b44bcaa7023da597fc, type: 3}
+  _blankSprite: {fileID: 21300000, guid: 672d62704098abf409b522c28d025530, type: 3}
+  _overworldHeroAnimator: {fileID: 9100000, guid: d08950db97c3b694aac7d387a8d13f4e,
+    type: 2}
+  _combatHeroAnimator: {fileID: 9100000, guid: 126e48dbbd5d39d43a42b11c47c4c07f, type: 2}
+  _enemyAnimator: {fileID: 9100000, guid: 89c7682aea3ad2547a42b64fca289933, type: 2}

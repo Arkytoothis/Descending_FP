@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb79723bc42467744aecc585b25882f0, type: 3}
+  m_Name: Spellweave
+  m_EditorClassIdentifier: 
+  _key: Spellweave
+  _name: Spellweave
+  _materialType: 1
+  _rarity: {fileID: 11400000, guid: 48c271291dc17b5458af3c3992fa540a, type: 2}
+  _color: {r: 1, g: 1, b: 1, a: 1}
+  _mightModifier: 0
+  _finesseModifier: 0
+  _spellModifier: 0
+  _itemPower: 100
+  _encumbranceModifier: 0
+  _goldValue: 200
+  _gemValue: 3

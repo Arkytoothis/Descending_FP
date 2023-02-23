@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b367bfd01220a914e811b1115742fb87, type: 3}
+  m_Name: _Enemy Database
+  m_EditorClassIdentifier: 
+  _data:
+    keyData:
+    - Goblin Slave Male
+    - Goblin Archer Male
+    - Skeleton
+    valueData:
+    - {fileID: 11400000, guid: cc0f2016285159642ae4d235f1595121, type: 2}
+    - {fileID: 11400000, guid: 1a54b26917801ff44841ce3c26f3b44c, type: 2}
+    - {fileID: 11400000, guid: 0cc23e88a5560fc478301e8a26d0fd0e, type: 2}

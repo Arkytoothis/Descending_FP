@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9de3bb0835182459abc4996e035361, type: 3}
+  m_Name: _Enchantment Database
+  m_EditorClassIdentifier: 
+  _enchantments:
+    keyData:
+    - Poor
+    - of Strength
+    - Warriors
+    - Average
+    - Magnificent
+    - Masterwork
+    - Superior
+    - Perfect
+    - +1
+    - +2
+    - +3
+    - +4
+    - +5
+    - Fiery
+    - Flaming
+    - of Fitness
+    - of Dragons
+    - of Genius
+    - of Giants
+    - of Intelligence
+    - of Sharp Mindedness
+    - of Titans
+    - Priests
+    - Rogues
+    - Wizards
+    - Inferno
+    - Hellfire
+    - Wildfire
+    valueData:
+    - {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    - {fileID: 11400000, guid: 285cbdf0c7a3530478760122e263dde8, type: 2}
+    - {fileID: 11400000, guid: a2e22a4759bb4f345a15ec123a48c45e, type: 2}
+    - {fileID: 11400000, guid: 4f2a0756dc4a4cf418e8626aa124b630, type: 2}
+    - {fileID: 11400000, guid: 2ecb1ac8b22405f4cb616c11e769fbe4, type: 2}
+    - {fileID: 11400000, guid: 3ae2da2bd0f6d1945a7466563d2bf78f, type: 2}
+    - {fileID: 11400000, guid: a295772e0f5edad4fa058417df178827, type: 2}
+    - {fileID: 11400000, guid: c8739005d1a342a40bf181a2bec2cd86, type: 2}
+    - {fileID: 11400000, guid: eb29d8f14c7334846818408f3a21a51e, type: 2}
+    - {fileID: 11400000, guid: 2de9730df7501c440bdaca632642a661, type: 2}
+    - {fileID: 11400000, guid: 6d42074f5ac2b7344a622eca7da4c0f7, type: 2}
+    - {fileID: 11400000, guid: 2f9d2c44a3bce7243b39604964756413, type: 2}
+    - {fileID: 11400000, guid: f0221d788bdc21148837f3d1bb55eb90, type: 2}
+    - {fileID: 11400000, guid: 293116e13a654644da22f6a4b5214eaf, type: 2}
+    - {fileID: 11400000, guid: 9af52e1f3338546479b25368537bfb1a, type: 2}
+    - {fileID: 11400000, guid: 264c67836da606243b9a1a02ed84620f, type: 2}
+    - {fileID: 11400000, guid: 54e2536f48e09bb42b1a95c19afe65da, type: 2}
+    - {fileID: 11400000, guid: 4d2171a07b1d191458538ed48c37147a, type: 2}
+    - {fileID: 11400000, guid: 957db7e854d3d6e4ab82f14a59132646, type: 2}
+    - {fileID: 11400000, guid: 8b52b7bcfbcff144299e635f6d9e4104, type: 2}
+    - {fileID: 11400000, guid: 49ad717ee2396164b867c3d9eca1e76e, type: 2}
+    - {fileID: 11400000, guid: 0ac0e8b76dab2e4488a58ed141267ac7, type: 2}
+    - {fileID: 11400000, guid: 90025a8abbafa61489c83c45ec43d4f2, type: 2}
+    - {fileID: 11400000, guid: 290b5f25776502f42a78634b0c6dfed0, type: 2}
+    - {fileID: 11400000, guid: 31ec4df8a68da9c4db4e65c620a85e14, type: 2}
+    - {fileID: 11400000, guid: aa8d7face9aa7cf489e8990d347b7853, type: 2}
+    - {fileID: 11400000, guid: 946d04a1216aabc4a859dae7e6f8eca5, type: 2}
+    - {fileID: 11400000, guid: 23dd397c925a97547a42e4eff8aa5bd2, type: 2}

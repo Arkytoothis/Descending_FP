@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96def27b1c19e0b4eb524f871f49be30, type: 3}
+  m_Name: +5
+  m_EditorClassIdentifier: 
+  _name: +5
+  _key: +5
+  _rarity: {fileID: 11400000, guid: 633c2f7cfd6ff8b4ea06b4377c4e68fe, type: 2}
+  _enchantmentType: 0
+  _usability: 0
+  _goldValue: 1000
+  _gemValue: 5
+  _itemPower: 500
+  _encumbranceModifier: 0
+  _effects: []
+  references:
+    version: 2
+    RefIds: []

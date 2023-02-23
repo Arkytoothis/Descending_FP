@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d2d22a7a059c74e99c5fdf18519606, type: 3}
+  m_Name: Torch
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 2e81291f04fa6b043b8381289f47fd60, type: 3}
+  _name: Torch
+  _key: Torch
+  _description: 
+  _equipModel: {fileID: 9033823261840413309, guid: 1557b372469ac794eb78585c3cc57dae,
+    type: 3}
+  _itemDrop: {fileID: 8384081800384720211, guid: 01aaddeb0c4a7e242bedb8ac83a12a13,
+    type: 3}
+  _category: 4
+  _itemType: 16
+  _nameFormat: 0
+  _equipmentSlot: 0
+  _renderSlots: []
+  _materialAllowed: 3
+  _hands: 1
+  _bestQualityAllowed: 0
+  _enchantable: 1
+  _stackable: 0
+  _modelIndex: -1
+  _basePower: 1
+  _encumbrance: 1
+  _goldValue: 5
+  _gemValue: 0
+  _minimumMight: 0
+  _minimumFinesse: 0
+  _minimumMind: 0
+  _equipSound: '[None]'
+  _unequipSound: '[None]'
+  _weaponData:
+    _hasData: 1
+    _weaponType: 0
+    _range: 1
+    _projectileDelay: 0
+    _projectile: {fileID: 0}
+    _attackEffectPrefab: {fileID: 0}
+    _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
+      type: 2}
+    damageEffects: []
+    _hitSounds: []
+    _attackSounds: []
+  _wearableData:
+    _hasData: 0
+    _armor: 0
+    _block: 0
+    _dodge: 0
+    _perceptionModifier: 0
+    _wearableType: 0
+    _headCoverType: 0
+    _stepSounds: []
+  _accessoryData:
+    _hasData: 0
+    _accessoryType: 0
+  _usableData:
+    _hasData: 0
+    _targetType: 0
+    _usableType: 0
+    _maxUses: 0
+    _range: 0
+    _cooldown: 0
+    _projectile: {fileID: 0}
+    _effects:
+      rid: 7907628733475586076
+  _ingredientData:
+    _hasData: 0
+    _type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7907628733475586076
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
+      data:
+        _data: []

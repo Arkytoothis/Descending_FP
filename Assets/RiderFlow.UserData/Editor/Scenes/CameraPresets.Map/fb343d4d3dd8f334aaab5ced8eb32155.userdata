@@ -1,0 +1,28 @@
+{
+  "fe01bb1e6fd2d5447a7ad74c13f86668": {
+    "sceneGuid": "fb343d4d3dd8f334aaab5ced8eb32155",
+    "uniqueCameraId": "fe01bb1e6fd2d5447a7ad74c13f86668",
+    "name": "Overview",
+    "pointX": 400.833923,
+    "pointY": -3134.70654,
+    "pointZ": 2481.066,
+    "directionX": 0.47661832,
+    "directionY": -0.009972891,
+    "directionZ": 0.005444763,
+    "directionW": 0.8791052,
+    "zoom": 2202.90723
+  },
+  "43d0202059ad45b479f69b3ddb8de8c3": {
+    "sceneGuid": "fb343d4d3dd8f334aaab5ced8eb32155",
+    "uniqueCameraId": "43d0202059ad45b479f69b3ddb8de8c3",
+    "name": "Player Start",
+    "pointX": 181.802689,
+    "pointY": 59.81317,
+    "pointZ": 343.5719,
+    "directionX": 0.3158184,
+    "directionY": -0.0065004793,
+    "directionZ": 0.00219846936,
+    "directionW": 0.9488594,
+    "zoom": 1.22474492
+  }
+}

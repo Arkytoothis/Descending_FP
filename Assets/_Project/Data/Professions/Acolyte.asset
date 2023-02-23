@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2759ff31f735ee48ab79faf31488ff4, type: 3}
+  m_Name: Acolyte
+  m_EditorClassIdentifier: 
+  _unlocked: 1
+  _archtype: 2
+  _key: Acolyte
+  _nameMale: Acolyte
+  _nameFemale: Acolyte
+  _icon: {fileID: 0}
+  _startingCharacteristics:
+    keyData:
+    - Might
+    - Finesse
+    - Endurance
+    - Intellect
+    - Spirit
+    - Senses
+    valueData:
+    - _attribute: {fileID: 11400000, guid: 47f340717fc369b418e69affd97fa097, type: 2}
+      _minimumValue: 1
+      _maximumValue: 3
+    - _attribute: {fileID: 11400000, guid: 926deb2d4020fcf41a51d95d5743d485, type: 2}
+      _minimumValue: 1
+      _maximumValue: 3
+    - _attribute: {fileID: 11400000, guid: 96489337614cb714b9d8b0ac17964abc, type: 2}
+      _minimumValue: 1
+      _maximumValue: 5
+    - _attribute: {fileID: 11400000, guid: c7702ba46626ec14fb9c3febb486d391, type: 2}
+      _minimumValue: 1
+      _maximumValue: 5
+    - _attribute: {fileID: 11400000, guid: 406159c5c2f575b4bb9bebdc400800ac, type: 2}
+      _minimumValue: 5
+      _maximumValue: 10
+    - _attribute: {fileID: 11400000, guid: 8d5628aeed8e08d41b9e426b938b559b, type: 2}
+      _minimumValue: 1
+      _maximumValue: 3
+  _startingVitals:
+    keyData:
+    - Actions
+    - Armor
+    - Life
+    - Luck
+    - Magic
+    - Stamina
+    valueData:
+    - _vital: {fileID: 11400000, guid: 6842c9d06ef93db45ba5a73c07e1d8bf, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _vital: {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _vital: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _vital: {fileID: 11400000, guid: 79290e0201a6ba542972e9eda6d9e673, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _vital: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _vital: {fileID: 11400000, guid: 4f295c83c100d964fa1d833bbac3e725, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+  _startingStatistic:
+    keyData: []
+    valueData: []
+  _startingSkills:
+    keyData:
+    - Life Magic
+    - Death Magic
+    - Earth Magic
+    valueData:
+    - _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
+      _minimumValue: 3
+      _maximumValue: 3
+    - _skill: {fileID: 11400000, guid: c9dd48da59cab004b9e7f0d1317f20a3, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+    - _skill: {fileID: 11400000, guid: 171985a2023a2bf468ff803a316df6f0, type: 2}
+      _minimumValue: 1
+      _maximumValue: 1
+  _startingItems:
+  - _item: {fileID: 11400000, guid: 010eca6b2657f05438c42c8daabe2057, type: 2}
+    _material: {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 469b9267b51fe344b893a303b82ef3cc, type: 2}
+    _material: {fileID: 11400000, guid: 3642cdb6df63ab6439ae628853e7beca, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 20b1b02d41a03ff4ab8e47ecf612ddf7, type: 2}
+    _material: {fileID: 11400000, guid: 49345c7368b98014eafbb3716431f848, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
+  - _item: {fileID: 11400000, guid: f6c3596b8f6a9d34c9d316abe2ab4d6a, type: 2}
+    _material: {fileID: 11400000, guid: ae86826fab495bb4f805727e676bd282, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 435341378a5f42b4ea0c515610535d74, type: 2}
+    _material: {fileID: 11400000, guid: 35d2a403c6053aa418768f1daa11ff5d, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 266a1a2886293c5438ab909f3c19dfd8, type: 2}
+    _material: {fileID: 11400000, guid: 3642cdb6df63ab6439ae628853e7beca, type: 2}
+    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
+    _prefix: {fileID: 0}
+    _suffix: {fileID: 0}
+  _attributePointsPerLevel: 0
+  _skillPointsPerLevel: 0
+  _mightModifier: 1
+  _finesseModifier: 1
+  _spellModifier: 1
+  _prefersRanged: 1

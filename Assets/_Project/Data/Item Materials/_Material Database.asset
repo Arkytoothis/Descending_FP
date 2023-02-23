@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055c6748cdf0d2a49b79df1d140b560c, type: 3}
+  m_Name: _Material Database
+  m_EditorClassIdentifier: 
+  _materials:
+    keyData:
+    - Hide
+    - Linen
+    - Iron
+    - Wood
+    - Stone
+    - Dragon Cloth
+    - Magecloth
+    - Silksteel
+    - Silk
+    - Spellweave
+    - Dragon Leather
+    - Drake Hide
+    - Leather
+    - Thick Leather
+    - Troll Hide
+    - Bronze
+    - Crysteel
+    - Dragon Steel
+    - Mithral
+    - Steel
+    - Hard Wood
+    - Heartwood
+    - Ironwood
+    - Spellroot
+    - Spiritwood
+    - Bubbling
+    - Ethereal
+    - Glowing
+    - Sparkling
+    - Swirling
+    - Thick
+    - Blood Paper
+    - Dragon Skin Paper
+    - Paper
+    - Papyrus
+    - Parchment
+    - Troll Skin Paper
+    valueData:
+    - {fileID: 11400000, guid: 49345c7368b98014eafbb3716431f848, type: 2}
+    - {fileID: 11400000, guid: 3642cdb6df63ab6439ae628853e7beca, type: 2}
+    - {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
+    - {fileID: 11400000, guid: 0e316ba9cf40d164f9444a666e0ccdab, type: 2}
+    - {fileID: 11400000, guid: 9e001a14bd7d47941b4b244ab8654c52, type: 2}
+    - {fileID: 11400000, guid: 5c3f2defa77d1ef44924cf48495332dc, type: 2}
+    - {fileID: 11400000, guid: 5e2c8bcbe02367541859bb799eb11f8b, type: 2}
+    - {fileID: 11400000, guid: 7697cd18c3db18c418a757cdd367f9c5, type: 2}
+    - {fileID: 11400000, guid: 283a5a154b197d04386fb222a944ba39, type: 2}
+    - {fileID: 11400000, guid: 430fc945dc17dea4185bf55435ef965d, type: 2}
+    - {fileID: 11400000, guid: f2880092623afc647815f539cd721256, type: 2}
+    - {fileID: 11400000, guid: 0273606ba12dcd940a0b96e657a46a9d, type: 2}
+    - {fileID: 11400000, guid: b60699c1632917948a76ce5ba7a89741, type: 2}
+    - {fileID: 11400000, guid: 7c6ce6a8855dd8c49849894afe2d5979, type: 2}
+    - {fileID: 11400000, guid: 39574b53dde890845bc6d00c7e618ccc, type: 2}
+    - {fileID: 11400000, guid: 400bcbc54bbad83449031228f67a1591, type: 2}
+    - {fileID: 11400000, guid: 7e3663a798f95f848b61dd359ff05c99, type: 2}
+    - {fileID: 11400000, guid: 7a433a1510de59b4bbae7dacac528002, type: 2}
+    - {fileID: 11400000, guid: db7635db0b40608438c64e8223f539c3, type: 2}
+    - {fileID: 11400000, guid: 5d894c091eb89c74c8dbfdf48d8ac143, type: 2}
+    - {fileID: 11400000, guid: 97d6ea289bc108b4f979ab2c988e012b, type: 2}
+    - {fileID: 11400000, guid: 1b0d2917ed291a246b4e1e4d98978b28, type: 2}
+    - {fileID: 11400000, guid: b13b3a25744727c42ad1b37466bfc0b6, type: 2}
+    - {fileID: 11400000, guid: c93f9fc90bfb9a34ea20546a44d86201, type: 2}
+    - {fileID: 11400000, guid: db725df068cc2ec4894b6372dafadefd, type: 2}
+    - {fileID: 11400000, guid: ae86826fab495bb4f805727e676bd282, type: 2}
+    - {fileID: 11400000, guid: 8ed30eccb8d848a4a8db49c837762882, type: 2}
+    - {fileID: 11400000, guid: 3ad496597dd521146a955236d3becae5, type: 2}
+    - {fileID: 11400000, guid: ca2c00302be2ec043aace2b7a7ebcded, type: 2}
+    - {fileID: 11400000, guid: 7c516d1221b3b724bb975fa9ac42df5e, type: 2}
+    - {fileID: 11400000, guid: c6eec84a2a463fb4baa3f41c5e63e320, type: 2}
+    - {fileID: 11400000, guid: dd936208c503c3848bd6b3963a359ac2, type: 2}
+    - {fileID: 11400000, guid: b58b00c7eb14ec548bbea53ba0ae48c1, type: 2}
+    - {fileID: 11400000, guid: baed32c1c9583694a8d04134959977ab, type: 2}
+    - {fileID: 11400000, guid: 35d2a403c6053aa418768f1daa11ff5d, type: 2}
+    - {fileID: 11400000, guid: 9a16efcd8450fc94aafc8ee1f1b90681, type: 2}
+    - {fileID: 11400000, guid: 6cf60cd314100fb4e9aff5d295cb29a9, type: 2}

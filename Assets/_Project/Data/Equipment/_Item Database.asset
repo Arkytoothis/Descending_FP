@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabae9ec45e2fb43b8210d7f0d4a621, type: 3}
+  m_Name: _Item Database
+  m_EditorClassIdentifier: 
+  _data:
+    keyData:
+    - Cloth Shirt
+    - Leather Boots
+    - Simple Robe
+    - Short Bow
+    - Short Sword
+    - Leather Armor
+    - Mail Armor
+    - Battle Axe
+    - Fire Staff
+    - Holy Scepter
+    - Torch
+    - Simple Vestment
+    - Dagger
+    - Long Sword
+    - Wood Shield
+    - Hand Axe
+    - Small Essence Potion
+    - Small Healing Potion
+    - Throwing Knife
+    - Goblin Sword
+    - Goblin Axe
+    - Goblin Shield
+    - Goblin Bow
+    - Spear
+    - Scroll of Lesser Heal
+    - Scroll of Fireball
+    - Small Bomb
+    - Cloth Pants
+    - Leather Pants
+    - Simple Skirt
+    valueData:
+    - {fileID: 11400000, guid: 2ae505d62fdd6724d8de1ca2207b74d3, type: 2}
+    - {fileID: 11400000, guid: 20b1b02d41a03ff4ab8e47ecf612ddf7, type: 2}
+    - {fileID: 11400000, guid: 1506501aac4a9344f98fc8c68d818911, type: 2}
+    - {fileID: 11400000, guid: b2bfb97827050d6448ea33b637d137e7, type: 2}
+    - {fileID: 11400000, guid: b1ad73475a1b10248808d973743f9e42, type: 2}
+    - {fileID: 11400000, guid: 1cc0f30fe095d3b46a8a7832b7ce0bf2, type: 2}
+    - {fileID: 11400000, guid: 7591138e248b3c949a407649e10cf964, type: 2}
+    - {fileID: 11400000, guid: 84697c788e5f77048b34e90d921e7738, type: 2}
+    - {fileID: 11400000, guid: 8583be5085ea87648a58895f2fcf3d8f, type: 2}
+    - {fileID: 11400000, guid: 010eca6b2657f05438c42c8daabe2057, type: 2}
+    - {fileID: 11400000, guid: e22fbe3b35a2ccc4d9cc4618549e1c5c, type: 2}
+    - {fileID: 11400000, guid: 469b9267b51fe344b893a303b82ef3cc, type: 2}
+    - {fileID: 11400000, guid: 417326d4bb9808f4a861860f0448673b, type: 2}
+    - {fileID: 11400000, guid: a76083b8c56594643aa0dc8158f08229, type: 2}
+    - {fileID: 11400000, guid: d945a7368b40b8844ae8609eceebef82, type: 2}
+    - {fileID: 11400000, guid: ca126ec1f794922499ac8d62ca64b307, type: 2}
+    - {fileID: 11400000, guid: f6c3596b8f6a9d34c9d316abe2ab4d6a, type: 2}
+    - {fileID: 11400000, guid: ad1c8f40b627eb741a7477c8ac1ed106, type: 2}
+    - {fileID: 11400000, guid: 495f8437da71fd946844cfab7e5e7a00, type: 2}
+    - {fileID: 11400000, guid: 74538166b78895e4d842dbfc557fab6d, type: 2}
+    - {fileID: 11400000, guid: d429c90f446b7fe4689bfaea97a96450, type: 2}
+    - {fileID: 11400000, guid: 79b41752cda24c640b5989c6046372fa, type: 2}
+    - {fileID: 11400000, guid: 114719fa1993cc943b9581491322a95e, type: 2}
+    - {fileID: 11400000, guid: 8b6656d4b58b32946b9a00cde28a76fd, type: 2}
+    - {fileID: 11400000, guid: 435341378a5f42b4ea0c515610535d74, type: 2}
+    - {fileID: 11400000, guid: 3cea8c68bcb7d67429fe4930b8d72da1, type: 2}
+    - {fileID: 11400000, guid: 80ac4408d4f97544eaf15de20a598f63, type: 2}
+    - {fileID: 11400000, guid: 266a1a2886293c5438ab909f3c19dfd8, type: 2}
+    - {fileID: 11400000, guid: 2e25aedfff6f49044aa43394387124aa, type: 2}
+    - {fileID: 11400000, guid: 68f0a8a29d17e0c4d82c53ff4b7aa10a, type: 2}
