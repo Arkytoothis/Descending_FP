@@ -35,17 +35,18 @@ namespace Descending.Gui
             Instance = this;
         }
 
+        public void Setup()
+        {
+            Clear();
+        }
 
         private void Update()
         {
             if (_isDragging == true)
             {
                 _iconImage.rectTransform.position = Input.mousePosition;
-            }
-            
-            if (Input.GetMouseButtonUp(0))
-            {
-                if (_isDragging == true)
+                
+                if (Input.GetMouseButtonUp(0))
                 {
                     Clear();
                 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Units;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace Descending.Gui
         [SerializeField] private GameObject _questPanelPrefab = null;
         [SerializeField] private GameObject _miniMapPanelPrefab = null;
         [SerializeField] private GameObject _tooltipPrefab = null;
+        [SerializeField] private GameObject _dragCursorPrefab = null;
         
         [SerializeField] private WindowManager _windowManager = null;
 
@@ -20,10 +22,10 @@ namespace Descending.Gui
         private PartyPanel _partyPanel = null;
         private TopPanel _topPanel = null;
         private MiniMapPanel _miniMapPanel = null;
+        private DragCursor _dragCursor = null;
         
         public void Setup()
         {
-            SetupTooltip();
             SetupTopPanel();
             SetupPartyPanel();
             SetupActionsPanel();
@@ -31,6 +33,9 @@ namespace Descending.Gui
             SetupMinimapPanel();
             
             _windowManager.Setup();
+            
+            SetupTooltip();
+            SetupDragCursor();
         }
 
         private void SetupTopPanel()
@@ -69,6 +74,14 @@ namespace Descending.Gui
             GameObject clone = Instantiate(_tooltipPrefab, transform);
             _tooltip = clone.GetComponent<Tooltip>();
             _tooltip.Setup();
+        }
+
+        private void SetupDragCursor()
+        {
+            GameObject clone = Instantiate(_dragCursorPrefab, transform);
+            _dragCursor = clone.GetComponent<DragCursor>();
+            _dragCursor.Setup();
+            _dragCursor.transform.SetAsLastSibling();
         }
     }
 }

@@ -72,5 +72,12 @@ namespace Descending.Gui
             _equipmentPanel.DisplayHero(hero);
             _abilitiesPanel.DisplayHero(hero);
         }
+
+        public void OnSyncSelectedHero(bool b)
+        {
+            if (HeroManager.Instance.SelectedHero == null) return;
+            
+            SelectHero(HeroManager.Instance.SelectedHero);
+        }
     }
 }

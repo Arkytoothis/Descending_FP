@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Den.Tools;
 using Descending.Core;
+using Descending.Equipment;
 using Descending.Features;
 using Descending.Gui;
 using Descending.Units;
@@ -33,6 +34,7 @@ namespace Descending.Scene_Overworld
         private void Awake()
         {
             _database.Setup();    
+            ItemGenerator.Setup();
         }
 
         private void Start()
@@ -44,8 +46,8 @@ namespace Descending.Scene_Overworld
             _heroManager.SyncHeroes();
             _resourcesManager.Setup();
             _stockpileManager.Setup();
-            //BuildWorld();
-            //_featureManager.Setup();
+            
+            HeroManager.Instance.SelectDefaultHero();
         }
 
         private void SetupGui()

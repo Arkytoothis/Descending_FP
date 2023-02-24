@@ -57,7 +57,7 @@ namespace Descending.Core
 
             for (int i = 0; i < _items.Count; i++)
             {
-                if (_items[i] == null)
+                if (_items[i].IsEmpty())
                 {
                     index = i;
                     break;
@@ -78,7 +78,7 @@ namespace Descending.Core
 
         public void ClearItem(int index)
         {
-            _items[index] = null;
+            _items[index] = new Item();
         }
 
         public void SetItem(Item item, int index)
@@ -103,7 +103,7 @@ namespace Descending.Core
             
             for (int i = 0; i < MAX_STOCKPILE_SLOTS; i++)
             {
-                _items.Add(null);    
+                _items.Add(new Item());    
             }
 
             for (int i = 0; i < _numItemToGenerate; i++)

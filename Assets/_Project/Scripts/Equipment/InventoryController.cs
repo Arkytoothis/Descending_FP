@@ -186,7 +186,7 @@ namespace Descending.Equipment
 
         public void EquipItem(Item item, int slot)
         {
-            MasterAudio.PlaySound(item.ItemDefinition.EquipSound);
+            //MasterAudio.PlaySound(item.ItemDefinition.EquipSound);
             
             _equipment[slot] = new Item(item);
             

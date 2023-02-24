@@ -147,6 +147,18 @@ namespace Descending.Equipment
             _usesLeft = item.UsesLeft;
         }
 
+        public bool IsEmpty()
+        {
+            if (_definitionKey == "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
         public void AddToStack(int amountToAdd)
         {
             _stackSize += amountToAdd;

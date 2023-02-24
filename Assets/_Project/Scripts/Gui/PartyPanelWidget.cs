@@ -45,6 +45,7 @@ namespace Descending.Gui
         public void Select()
         {
             _selectionBorder.gameObject.SetActive(true);
+            HeroManager.Instance.SelectHero(_hero);
         }
 
         public void Deselect()

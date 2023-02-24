@@ -88,6 +88,8 @@ MonoBehaviour:
     type: 3}
   _tooltipPrefab: {fileID: 5631348005591405131, guid: c04b70c3d1743eb4787e90c3c3c784b9,
     type: 3}
+  _dragCursorPrefab: {fileID: 8547455365038338072, guid: 3bb96f1e48610824b96166cffb685d65,
+    type: 3}
   _windowManager: {fileID: 2456292547790347309}
 --- !u!1 &6527203726726672848
 GameObject:

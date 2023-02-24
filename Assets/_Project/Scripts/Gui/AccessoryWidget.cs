@@ -17,6 +17,7 @@ namespace Descending.Gui
         [SerializeField] private TMP_Text _stackSizeLabel = null;
 
         [SerializeField] private ItemEvent onDisplayItemTooltip = null;
+        [SerializeField] private BoolEvent onSyncSelectedHero = null;
         
         public void Setup(int index)
         {
@@ -29,7 +30,7 @@ namespace Descending.Gui
         {
             _item = item;
 
-            if (_item != null && _item.Key != "")
+            if (_item != null && _item.IsEmpty() == false)
             {
                 UsableData usableData = _item.GetUsableData();
                 
@@ -62,15 +63,16 @@ namespace Descending.Gui
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (_item == null || _item.ItemDefinition.Key == "") return;
+            if (_item == null || _item.IsEmpty()) return;
             
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                //HeroManager_Combat.Instance.SelectedHero.Inventory.UnequipAccessory(_index);
+                HeroManager.Instance.SelectedHero.Inventory.UnequipAccessory(_index);
                 Clear();
                 StockpileManager.Instance.SyncStockpile();
-                //HeroManager_Combat.Instance.SyncHeroes();
-                //HeroManager_Combat.Instance.RefreshSelectedHero();
+                HeroManager.Instance.SelectAndSyncSelectedHero();
+                
+                onSyncSelectedHero.Invoke(true);
             }
         }
         
@@ -80,68 +82,67 @@ namespace Descending.Gui
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (_item == null || _item.ItemDefinition.Key == "") return;
+            if (_item == null || _item.IsEmpty()) return;
             
-            //DragCursor.Instance.BeginDrag(eventData, this);
+            DragCursor.Instance.BeginDrag(eventData, this);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            // if (DragCursor.Instance.IsDragging == true)
-            // {
-            // }
+            if (DragCursor.Instance.IsDragging == true)
+            {
+            }
         }
 
         public void OnDrop(PointerEventData eventData)
         {
-            // if (DragCursor.Instance.IsDragging == true)
-            // {
-            //     if (DragCursor.Instance.DragItem.ItemDefinition.Category != ItemCategory.Accessories) return;
-            //     
-            //     HeroUnit hero = HeroManager_Combat.Instance.SelectedHero;
-            //     
-            //     if (_item != null &&_item.ItemDefinition.Key != "")
-            //     {
-            //         SwapItem(hero);
-            //     }
-            //     else
-            //     {
-            //         SetItem(hero);
-            //     }
-            //     
-            //     DragCursor.Instance.EndDrag(eventData);
-            //     
-            //     hero.ActionController.SetupActions();
-            //     HeroManager_Combat.Instance.SyncHeroes();
-            //     HeroManager_Combat.Instance.RefreshSelectedHero();
-            // }
+            if (DragCursor.Instance.IsDragging == true)
+            {
+                if (DragCursor.Instance.DragItem.ItemDefinition.Category != ItemCategory.Accessories) return;
+                
+                HeroUnit hero = HeroManager.Instance.SelectedHero;
+                
+                if (_item != null && _item.IsEmpty() == false)
+                {
+                    SwapItem(hero);
+                }
+                else
+                {
+                    SetItem(hero);
+                }
+                
+                DragCursor.Instance.EndDrag(eventData);
+                
+                //hero.ActionController.SetupActions();
+                HeroManager.Instance.SelectAndSyncSelectedHero();
+            }
         }
 
         private void SetItem(HeroUnit hero)
         {
-            // hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
-            // SetItem(DragCursor.Instance.DragItem);
-            //
-            // if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
-            // {
-            //     StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
-            // }
-            //
-            // DragCursor.Instance.StartDragWidget.Clear();
+            hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
+            SetItem(DragCursor.Instance.DragItem);
+            
+            if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
+            {
+                StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
+            }
+            
+            DragCursor.Instance.StartDragWidget.Clear();
         }
 
         private void SwapItem(HeroUnit hero)
         {
-            // Item tempItem = new Item(_item);
-            // hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
-            // SetItem(DragCursor.Instance.DragItem);
-            //
-            // if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
-            // {
-            //     StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
-            // }
-            //
-            // DragCursor.Instance.StartDragWidget.SetItem(tempItem);
+            Item tempItem = new Item(_item);
+            hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
+            SetItem(DragCursor.Instance.DragItem);
+            
+            if (DragCursor.Instance.StartDragWidget.GetType() == typeof(StockpileWidget))
+            {
+                StockpileManager.Instance.ClearItem(DragCursor.Instance.StartDragWidget.Index);
+            }
+            
+            DragCursor.Instance.StartDragWidget.SetItem(tempItem);
         }
     }
 }

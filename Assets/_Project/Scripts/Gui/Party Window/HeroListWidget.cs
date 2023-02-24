@@ -30,6 +30,7 @@ namespace Descending.Gui
 
         public void OnLeftClick()
         {
+            HeroManager.Instance.SelectHero(_hero);
             _partyWindow.SelectHero(_hero);
         }
     }
