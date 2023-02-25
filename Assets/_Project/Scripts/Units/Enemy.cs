@@ -46,7 +46,7 @@ namespace Descending.Units
             //_worldPanel.Setup(this);
             
             //EnemyManager.Instance.UnitSpawned(this);
-            Deactivate();
+            //Deactivate();
         } 
         
         public void DropTreasure()
@@ -176,6 +176,16 @@ namespace Descending.Units
         {
             _attributes.ModifyVital("Actions", actionPointCost, true);
             //_worldPanel.UpdateActionPoints();
+        }
+
+        public void SetLeftHandMount(Transform leftHandMount)
+        {
+            _leftHandMount = leftHandMount;
+        }
+
+        public void SetRightHandMount(Transform rightHandMount)
+        {
+            _rightHandMount = rightHandMount;
         }
     }
 }

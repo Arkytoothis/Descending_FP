@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
+using Descending.Encounters;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -100,6 +101,12 @@ namespace Descending.Gui
             }
 
             return false;
+        }
+
+        public void EncounterTriggered(Encounter encounter)
+        {
+            ((EncounterWindow)_windows[(int)GameWindows.Encounter]).EncounterTriggered(encounter);
+            OpenWindow((int)GameWindows.Encounter);
         }
 
         // public void OnOpenVillageWindow(Village village)

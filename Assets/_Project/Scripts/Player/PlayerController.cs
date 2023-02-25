@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Encounters;
 using StarterAssets;
 using UnityEngine;
 
 namespace Descending.Player
 {
-    public enum PlayerControllerModes { Look, Gui }
+    public enum PlayerControllerModes { Look, Gui, Combat }
     public enum PlayerRaycastModes { World, Combat }
     
     public class PlayerController : MonoBehaviour
@@ -82,6 +83,11 @@ namespace Descending.Player
             {
                 SetGuiMode();
             }
+        }
+
+        public void EncounterTriggered(Encounter encounter)
+        {
+            SetGuiMode();
         }
     }
 }

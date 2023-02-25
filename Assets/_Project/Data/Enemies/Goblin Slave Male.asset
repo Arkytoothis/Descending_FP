@@ -15,8 +15,8 @@ MonoBehaviour:
   Name: Goblin Slave
   Key: Goblin Slave Male
   ExpValue: 10
-  Prefab: {fileID: 7336809418575615659, guid: 8ef5689d15ff6ea45bb38f6821df3776, type: 3}
-  Icon: {fileID: 0}
+  Prefab: {fileID: 2531196915385986140, guid: bda8e7f3687ea2047a8dbc040a894f20, type: 3}
+  Icon: {fileID: 21300000, guid: dc01fbcb8406d2c41bc43cb5de41493d, type: 3}
   Group: 0
   HitEffect: {fileID: 0}
   StartingVitals:

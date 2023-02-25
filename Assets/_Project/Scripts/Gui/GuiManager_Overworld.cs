@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Encounters;
 using Descending.Units;
 using UnityEditor;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace Descending.Gui
         private ActionsPanel _actionsPanel = null;
         private TopPanel _topPanel = null;
         private MiniMapPanel _miniMapPanel = null;
+        private GameObject _questPanel = null;
+        
         private DragCursor _dragCursor = null;
         
         public void Setup()
@@ -63,6 +66,7 @@ namespace Descending.Gui
         private void SetupQuestPanel()
         {
             GameObject clone = Instantiate(_questPanelPrefab, transform);
+            _questPanel = clone;
         }
 
         private void SetupMinimapPanel()
@@ -85,6 +89,27 @@ namespace Descending.Gui
             _dragCursor = clone.GetComponent<DragCursor>();
             _dragCursor.Setup();
             _dragCursor.transform.SetAsLastSibling();
+        }
+
+        public void OnEncounterTriggered(Encounter encounter)
+        {
+            _topPanel.gameObject.SetActive(false);
+            _partyPanel.gameObject.SetActive(false);
+            _actionsPanel.gameObject.SetActive(false);
+            _miniMapPanel.gameObject.SetActive(false);
+            _questPanel.SetActive(false);
+            
+            _windowManager.EncounterTriggered(encounter);
+        }
+
+        public void OnEndEncounter(bool b)
+        {
+            
+            _topPanel.gameObject.SetActive(true);
+            _partyPanel.gameObject.SetActive(true);
+            _actionsPanel.gameObject.SetActive(true);
+            _miniMapPanel.gameObject.SetActive(true);
+            _questPanel.SetActive(true);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Player;
 using UnityEngine;
 
 namespace Descending.Encounters
@@ -8,8 +9,8 @@ namespace Descending.Encounters
     {
         public static EncounterManager Instance { get; private set; }
         
+        [SerializeField] private PlayerController _playerController = null;
         [SerializeField] private List<Encounter> _encounters = null;
-        [SerializeField] private List<EncounterSpawner> _encounterSpawners = null;
 
         private void Awake()
         {
@@ -22,7 +23,6 @@ namespace Descending.Encounters
             
             Instance = this;
             _encounters = new List<Encounter>();
-            _encounterSpawners = new List<EncounterSpawner>();
         }
 
         public void Setup()
@@ -33,11 +33,7 @@ namespace Descending.Encounters
         public void RegisterEncounter(Encounter encounter)
         {
             _encounters.Add(encounter);
-        }
-
-        public void RegisterEncounterSpawner(EncounterSpawner spawner)
-        {
-            _encounterSpawners.Add(spawner);
+            encounter.Setup(_playerController.transform);
         }
     }
 }
