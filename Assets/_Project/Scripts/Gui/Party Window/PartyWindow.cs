@@ -61,7 +61,7 @@ namespace Descending.Gui
             onDisplayItemTooltip.Invoke(null);
         }
 
-        public void SelectHero(HeroUnit hero)
+        public void SelectHero(Hero hero)
         {
             _detailsPanel.DisplayHero(hero);
             _characteristicsPanel.DisplayHero(hero);

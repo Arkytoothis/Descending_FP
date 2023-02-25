@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Descending.Units
 {
-    public class HeroUnit : Unit
+    public class Hero : Unit
     {
         [SerializeField] protected HeroData _heroData = null;
         [SerializeField] private GameObject _portraitModel = null;

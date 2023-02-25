@@ -24,7 +24,7 @@ namespace Descending.Gui
             
         }
         
-        public void DisplayHero(HeroUnit hero)
+        public void DisplayHero(Hero hero)
         {
             _bluntWidget.SetResistance(hero.Attributes.GetResistance("Blunt").CurrentValue, hero.Attributes.GetResistance("Blunt").MaximumValue);
             _pierceWidget.SetResistance(hero.Attributes.GetResistance("Pierce").CurrentValue, hero.Attributes.GetResistance("Pierce").MaximumValue);

@@ -8,7 +8,7 @@ namespace ScriptableObjectArchitecture
 	    fileName = "HeroUnitGameEvent.asset",
 	    menuName = SOArchitecture_Utility.GAME_EVENT + "new HeroUnitEvent",
 	    order = 120)]
-	public sealed class HeroUnitGameEvent : GameEventBase<HeroUnit>
+	public sealed class HeroUnitGameEvent : GameEventBase<Hero>
 	{
 	}
 }

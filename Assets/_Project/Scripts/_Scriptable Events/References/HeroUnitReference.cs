@@ -4,9 +4,9 @@ using UnityEngine;
 namespace ScriptableObjectArchitecture
 {
 	[System.Serializable]
-	public sealed class HeroUnitReference : BaseReference<HeroUnit, HeroUnitVariable>
+	public sealed class HeroUnitReference : BaseReference<Hero, HeroUnitVariable>
 	{
 	    public HeroUnitReference() : base() { }
-	    public HeroUnitReference(HeroUnit value) : base(value) { }
+	    public HeroUnitReference(Hero value) : base(value) { }
 	}
 }

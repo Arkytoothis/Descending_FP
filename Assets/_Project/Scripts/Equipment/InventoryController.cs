@@ -309,7 +309,7 @@ namespace Descending.Equipment
         public Item[] Accessories => _accessories;
         public int AccessorySlots => _accessorySlots;
 
-        public InventorySaveData(HeroUnit hero)
+        public InventorySaveData(Hero hero)
         {
              _accessorySlots = hero.Inventory.AccessorySlots;
              _equippedItems = new Item[hero.Inventory.Equipment.Length];

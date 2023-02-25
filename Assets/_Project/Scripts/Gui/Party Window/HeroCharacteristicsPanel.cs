@@ -19,7 +19,7 @@ namespace Descending.Gui
             
         }
         
-        public void DisplayHero(HeroUnit hero)
+        public void DisplayHero(Hero hero)
         {
             _mightWidget.SetAttribute(hero.Attributes.GetAttribute("Might"));
             _enduranceWidget.SetAttribute(hero.Attributes.GetAttribute("Endurance"));

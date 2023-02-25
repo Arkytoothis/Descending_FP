@@ -64,7 +64,7 @@ namespace Descending.Gui
             
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                HeroUnit hero = HeroManager.Instance.SelectedHero;
+                Hero hero = HeroManager.Instance.SelectedHero;
                 if (hero.Inventory.Equipment[(int)_item.ItemDefinition.EquipmentSlot] == null || 
                     hero.Inventory.Equipment[(int)_item.ItemDefinition.EquipmentSlot].IsEmpty())
                 {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Den.Tools;
 using Descending.Core;
+using Descending.Encounters;
 using Descending.Equipment;
 using Descending.Features;
 using Descending.Gui;
@@ -23,6 +24,7 @@ namespace Descending.Scene_Overworld
         [SerializeField] private HeroManager _heroManager = null;
         [SerializeField] private ResourcesManager _resourcesManager = null;
         [SerializeField] private StockpileManager _stockpileManager = null;
+        [SerializeField] private EncounterManager _encounterManager = null;
         
         [SerializeField] private PortraitRoom _portraitRoom = null;
         [SerializeField] private GameObject _playerObject = null;
@@ -46,6 +48,7 @@ namespace Descending.Scene_Overworld
             _heroManager.SyncHeroes();
             _resourcesManager.Setup();
             _stockpileManager.Setup();
+            _encounterManager.Setup();
             
             HeroManager.Instance.SelectDefaultHero();
         }

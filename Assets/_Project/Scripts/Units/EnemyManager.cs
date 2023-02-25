@@ -8,11 +8,11 @@ namespace Descending.Units
     {
         public static EnemyManager Instance { get; private set; }
         
-        [SerializeField] private List<EnemyUnit> _enemyUnits = null;
+        [SerializeField] private List<Enemy> _enemyUnits = null;
         [SerializeField] private Transform _enemiesParent = null;
         [SerializeField] private List<EnemySpawner> _enemySpawners = null;
         
-        public List<EnemyUnit> EnemyUnits => _enemyUnits;
+        public List<Enemy> EnemyUnits => _enemyUnits;
         
         private void Awake()
         {
@@ -24,7 +24,7 @@ namespace Descending.Units
             }
             
             Instance = this;
-            _enemyUnits = new List<EnemyUnit>();
+            _enemyUnits = new List<Enemy>();
         }
 
         public void Setup()

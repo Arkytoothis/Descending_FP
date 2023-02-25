@@ -28,7 +28,7 @@ namespace Descending.Gui
             }
         }
         
-        public void DisplayHero(HeroUnit hero)
+        public void DisplayHero(Hero hero)
         {
             _portraitImage.texture = hero.Portrait.RtFar;
 

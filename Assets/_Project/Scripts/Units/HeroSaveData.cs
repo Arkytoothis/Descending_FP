@@ -84,7 +84,7 @@ namespace Descending.Units
             _abilitySaveData = null;
         }
 
-        public HeroSaveData(HeroUnit hero)
+        public HeroSaveData(Hero hero)
         {
             _name = new FantasyName(hero.HeroData.Name);
             _gender = hero.HeroData.Gender;

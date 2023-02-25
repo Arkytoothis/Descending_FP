@@ -23,7 +23,7 @@ namespace Descending.Units
             clone.transform.position = transform.position;
             clone.transform.rotation = transform.rotation;
 
-            EnemyUnit unit = clone.GetComponent<EnemyUnit>();
+            Enemy unit = clone.GetComponent<Enemy>();
             unit.SetupEnemy(_definition);
         }
     }

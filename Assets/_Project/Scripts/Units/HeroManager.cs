@@ -13,13 +13,15 @@ namespace Descending.Units
         
         [SerializeField] private GameObject _heroPrefab = null;
         [SerializeField] private Transform _heroesParent = null;
-        [SerializeField] private List<HeroUnit> _heroes = null;
+        [SerializeField] private List<Hero> _heroes = null;
         [SerializeField] private PortraitRoom _portraitRoom = null;
-
-        private HeroUnit _selectedHero = null;
         
-        public List<HeroUnit> Heroes => _heroes;
-        public HeroUnit SelectedHero => _selectedHero;
+        [SerializeField] private HeroUnitEvent onSyncSelectedHeroActions = null;
+
+        private Hero _selectedHero = null;
+        
+        public List<Hero> Heroes => _heroes;
+        public Hero SelectedHero => _selectedHero;
 
         private void Awake()
         {
@@ -31,7 +33,7 @@ namespace Descending.Units
             }
             
             Instance = this;
-            _heroes = new List<HeroUnit>();
+            _heroes = new List<Hero>();
         }
         
         public void Setup()
@@ -46,10 +48,10 @@ namespace Descending.Units
         {
             //Debug.Log("Spawning Hero at " + mapPosition.ToString());
             GameObject clone = Instantiate(_heroPrefab, _heroesParent);
-            HeroUnit heroUnit = clone.GetComponent<HeroUnit>();
-            heroUnit.SetupHero(Genders.Male, race, profession, listIndex);
-            clone.name = "Hero: " + heroUnit.GetFullName();
-            _heroes.Add(heroUnit);
+            Hero hero = clone.GetComponent<Hero>();
+            hero.SetupHero(Genders.Male, race, profession, listIndex);
+            clone.name = "Hero: " + hero.GetFullName();
+            _heroes.Add(hero);
         }
 
         public void SyncHero(int index)
@@ -65,21 +67,24 @@ namespace Descending.Units
             }
         }
 
-        public void SelectHero(HeroUnit hero)
+        public void SelectHero(Hero hero)
         {
             _selectedHero = hero;
+            onSyncSelectedHeroActions.Invoke(_selectedHero);
         }
 
         public void SelectDefaultHero()
         {
             _selectedHero = _heroes[0];
+            onSyncSelectedHeroActions.Invoke(_selectedHero);
         }
         
         public void SelectAndSyncSelectedHero()
         {
-            _selectedHero.SyncData();
             SelectHero(_selectedHero);
+            _selectedHero.SyncData();
             _portraitRoom.RefreshCameras();
+            onSyncSelectedHeroActions.Invoke(_selectedHero);
         }
     }
 }

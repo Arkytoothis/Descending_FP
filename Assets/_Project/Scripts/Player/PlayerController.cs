@@ -7,12 +7,21 @@ using UnityEngine;
 namespace Descending.Player
 {
     public enum PlayerControllerModes { Look, Gui }
+    public enum PlayerRaycastModes { World, Combat }
     
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private FirstPersonController _firstPersonController = null;
         [SerializeField] private PlayerControllerModes _mode = PlayerControllerModes.Look;
         [SerializeField] private GameObject _crossHair = null;
+        [SerializeField] private WorldRaycaster _worldRaycaster = null;
+        [SerializeField] private CombatRaycaster _combatRaycaster = null;
+        [SerializeField] private PlayerRaycastModes _raycastMode = PlayerRaycastModes.World;
+
+        private void Start()
+        {
+            SetWorldRaycastMode();
+        }
 
         private void Update()
         {
@@ -49,6 +58,18 @@ namespace Descending.Player
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             _crossHair.SetActive(false);
+        }
+
+        private void SetWorldRaycastMode()
+        {
+            _worldRaycaster.gameObject.SetActive(true);
+            _combatRaycaster.gameObject.SetActive(false);
+        }
+
+        private void SetCombatRaycastMode()
+        {
+            _combatRaycaster.gameObject.SetActive(true);
+            _worldRaycaster.gameObject.SetActive(false);
         }
 
         public void OnEnabledLookMode(bool lookEnabled)

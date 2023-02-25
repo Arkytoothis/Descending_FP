@@ -74,7 +74,7 @@ namespace Descending.Abilities
         public List<Ability> MemorizedPowers => _memorizedPowers;
         public List<Ability> MemorizedSpells => _memorizedSpells;
 
-        public AbilitySaveData(HeroUnit hero)
+        public AbilitySaveData(Hero hero)
         {
             _memorizedPowers = new List<Ability>();
             _memorizedSpells = new List<Ability>();

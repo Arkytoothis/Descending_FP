@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Descending.Units
 {
-    public class EnemyUnit : Unit
+    public class Enemy : Unit
     {
         [SerializeField] protected UnitData _unitData = null;
         [SerializeField] private EnemyDefinition _definition = null;

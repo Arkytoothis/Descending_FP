@@ -18,7 +18,7 @@ namespace Descending.Core
             _portraits = new List<PortraitMount>();
         }
         
-         public void Setup(List<HeroUnit> heroes)
+         public void Setup(List<Hero> heroes)
          {
              //Debug.Log("PortraitRoom.Setup");
              for (int i = 0; i < _portraits.Count; i++)
@@ -39,7 +39,7 @@ namespace Descending.Core
              SyncParty(heroes);
          }
 
-         public void SyncParty(List<HeroUnit> heroes)
+         public void SyncParty(List<Hero> heroes)
          {
              if (_portraits == null) return;
 

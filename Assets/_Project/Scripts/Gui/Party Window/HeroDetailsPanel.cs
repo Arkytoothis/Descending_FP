@@ -19,7 +19,7 @@ namespace Descending.Gui
             
         }
         
-        public void DisplayHero(HeroUnit hero)
+        public void DisplayHero(Hero hero)
         {
             _nameLabel.SetText(hero.GetFullName());
             _raceLabel.SetText("Race: " + hero.HeroData.RaceKey);

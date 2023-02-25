@@ -14,12 +14,12 @@ namespace Descending.Units
 
         public GameObject Attacker => _attacker;
 
-        public void Setup(HeroUnit hero)
+        public void Setup(Hero hero)
         {
             _unit = hero;
         }
         
-        public void Setup(EnemyUnit enemy)
+        public void Setup(Enemy enemy)
         {
             _unit = enemy;
         }

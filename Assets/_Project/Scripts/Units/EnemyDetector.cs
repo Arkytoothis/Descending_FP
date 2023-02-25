@@ -11,14 +11,14 @@ namespace Descending.Units
         {
             if (other.CompareTag("Enemy"))
             {
-                EnemyUnit enemyUnit = other.gameObject.GetComponent<EnemyUnit>();
+                Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
-                if (enemyUnit != null)
+                if (enemy != null)
                 {
-                    if (enemyUnit.IsActive == false)
+                    if (enemy.IsActive == false)
                     {
                         //Debug.Log("Activating Enemy: " + enemyUnit.GetShortName());
-                        enemyUnit.Activate();
+                        enemy.Activate();
                     }
                 }
             }

@@ -20,6 +20,7 @@ namespace Descending.Gui
 
         private Tooltip _tooltip = null;
         private PartyPanel _partyPanel = null;
+        private ActionsPanel _actionsPanel = null;
         private TopPanel _topPanel = null;
         private MiniMapPanel _miniMapPanel = null;
         private DragCursor _dragCursor = null;
@@ -55,6 +56,8 @@ namespace Descending.Gui
         private void SetupActionsPanel()
         {
             GameObject clone = Instantiate(_actionsPanelPrefab, transform);
+            _actionsPanel = clone.GetComponent<ActionsPanel>();
+            _actionsPanel.Setup();
         }
 
         private void SetupQuestPanel()

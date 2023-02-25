@@ -14,9 +14,9 @@ namespace Descending.Gui
         [SerializeField] private TMP_Text _detailsLabel = null;
 
         private PartyWindow _partyWindow = null;
-        private HeroUnit _hero = null;
+        private Hero _hero = null;
         
-        public void Setup(PartyWindow partyWindow, HeroUnit hero)
+        public void Setup(PartyWindow partyWindow, Hero hero)
         {
             _hero = hero;
             

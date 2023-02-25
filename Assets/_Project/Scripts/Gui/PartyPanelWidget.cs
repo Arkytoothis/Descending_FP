@@ -15,10 +15,10 @@ namespace Descending.Gui
         [SerializeField] private Image _selectionBorder = null;
 
         private PartyPanel _partyPanel = null;
-        private HeroUnit _hero = null;
+        private Hero _hero = null;
         private int _index = -1;
         
-        public void Setup(PartyPanel partyPanel, HeroUnit hero, int index)
+        public void Setup(PartyPanel partyPanel, Hero hero, int index)
         {
             _partyPanel = partyPanel;
             _hero = null;
@@ -27,7 +27,7 @@ namespace Descending.Gui
             Deselect();
         }
 
-        public void SetHero(HeroUnit hero)
+        public void SetHero(Hero hero)
         {
             _hero = hero;
             _nameLabel.SetText(hero.GetFirstName());

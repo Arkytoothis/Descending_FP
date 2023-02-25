@@ -67,7 +67,7 @@ namespace Descending.Gui
             
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                HeroUnit hero = HeroManager.Instance.SelectedHero;
+                Hero hero = HeroManager.Instance.SelectedHero;
                 hero.Inventory.UnequipItem(_index, true);
                 Clear();
                 StockpileManager.Instance.SyncStockpile();
@@ -103,7 +103,7 @@ namespace Descending.Gui
                 if ((int)DragCursor.Instance.DragItem.ItemDefinition.EquipmentSlot != _index) return;
                 if (DragCursor.Instance.DragItem.ItemDefinition.Category == ItemCategory.Accessories) return;
                 
-                HeroUnit hero = HeroManager.Instance.SelectedHero;
+                Hero hero = HeroManager.Instance.SelectedHero;
                 
                 if (_item != null && _item.Key != "")
                 {
@@ -120,7 +120,7 @@ namespace Descending.Gui
             }
         }
 
-        private void SetItem(HeroUnit hero)
+        private void SetItem(Hero hero)
         {
             hero.Inventory.EquipItem(DragCursor.Instance.DragItem, _index);
             SetItem(DragCursor.Instance.DragItem);
@@ -133,7 +133,7 @@ namespace Descending.Gui
             DragCursor.Instance.StartDragWidget.Clear();
         }
 
-        private void SwapItem(HeroUnit hero)
+        private void SwapItem(Hero hero)
         {
             Item tempItem = new Item(_item);
             hero.Inventory.EquipItem(DragCursor.Instance.DragItem, _index);

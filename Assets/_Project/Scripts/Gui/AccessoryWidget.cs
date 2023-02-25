@@ -100,7 +100,7 @@ namespace Descending.Gui
             {
                 if (DragCursor.Instance.DragItem.ItemDefinition.Category != ItemCategory.Accessories) return;
                 
-                HeroUnit hero = HeroManager.Instance.SelectedHero;
+                Hero hero = HeroManager.Instance.SelectedHero;
                 
                 if (_item != null && _item.IsEmpty() == false)
                 {
@@ -118,7 +118,7 @@ namespace Descending.Gui
             }
         }
 
-        private void SetItem(HeroUnit hero)
+        private void SetItem(Hero hero)
         {
             hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);
             SetItem(DragCursor.Instance.DragItem);
@@ -131,7 +131,7 @@ namespace Descending.Gui
             DragCursor.Instance.StartDragWidget.Clear();
         }
 
-        private void SwapItem(HeroUnit hero)
+        private void SwapItem(Hero hero)
         {
             Item tempItem = new Item(_item);
             hero.Inventory.EquipAccessory(DragCursor.Instance.DragItem, _index);

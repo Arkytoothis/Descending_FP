@@ -19,7 +19,7 @@ namespace Descending.Gui
             SelectWidget(0);
         }
 
-        public void OnSyncHero(HeroUnit hero)
+        public void OnSyncHero(Hero hero)
         {
             _widgets[hero.HeroData.ListIndex].SetHero(hero);
         }

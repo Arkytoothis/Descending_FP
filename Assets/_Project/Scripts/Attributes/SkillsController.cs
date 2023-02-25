@@ -72,7 +72,7 @@ namespace Descending.Attributes
     
         public List<Skill> Skills => _skills;
     
-        public SkillsSaveData(HeroUnit hero)
+        public SkillsSaveData(Hero hero)
         {
             _skills = Skill.SaveSkills(hero.Skills.Skills);
         }

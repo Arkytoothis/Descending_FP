@@ -22,7 +22,7 @@ namespace Descending.Core
         public RenderTexture RtFar => _rtFar;
         public GameObject Model => _model;
 
-        public void Setup(HeroUnit hero)
+        public void Setup(Hero hero)
         {
             _rtClose = new RenderTexture(256, 256, 32);
             _camClose.targetTexture = _rtClose;
@@ -36,7 +36,7 @@ namespace Descending.Core
             //Refresh();
         }
 
-        public void SetModel(HeroUnit hero)
+        public void SetModel(Hero hero)
         {
             if (hero != null)
             {

@@ -19,7 +19,7 @@ namespace Descending.Gui
             _widgets = new List<SkillWidget>();
         }
         
-        public void DisplayHero(HeroUnit hero)
+        public void DisplayHero(Hero hero)
         {
             _skillWidgetsParent.ClearTransform();
             _widgets.Clear();

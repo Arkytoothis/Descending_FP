@@ -329,7 +329,7 @@ namespace Descending.Attributes
         public List<Attribute> Statistics => _statistics;
         public List<Resistance> Resistances => _resistances;
     
-        public AttributesSaveData(HeroUnit hero)
+        public AttributesSaveData(Hero hero)
         {
              _characteristics = Attribute.ConvertToList(hero.Attributes.Characteristics);
              _vitals = Attribute.ConvertToList(hero.Attributes.Vitals);

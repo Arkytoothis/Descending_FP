@@ -19,7 +19,7 @@ namespace Descending.Gui
             
         }
         
-        public void DisplayHero(HeroUnit hero)
+        public void DisplayHero(Hero hero)
         {
             _actionsWidget.SetAttribute(hero.Attributes.GetVital("Actions"));
             _armorWidget.SetAttribute(hero.Attributes.GetVital("Armor"));
