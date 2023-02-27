@@ -51,6 +51,11 @@ namespace Descending.Gui
         {
             _currenTurnLabel.SetText("Turn " + EncounterManager.Instance.CurrentTurn);
             _currenInitiativeLabel.SetText("Initiative Index: " + EncounterManager.Instance.CurrentInitiativeIndex);
+
+            foreach (InitiativeWidget widget in _initiativeWidgets)
+            {
+                widget.Sync();
+            }
         }
 
         public void SelectInitiativeIndex(int index)

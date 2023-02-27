@@ -28,9 +28,6 @@ namespace Descending.Units
         public ItemShort MeleeWeapon;
         public ItemShort RangedWeapon;
         
-        public List<DropData> CoinData;
-        public List<DropData> GemData;
-        
         // [SoundGroup] public List<string> AttackSounds;
         // [SoundGroup] public List<string> HitSounds;
         // [SoundGroup] public List<string> WoundSounds;

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Descending.Combat;
 using Descending.Core;
 using Descending.Equipment;
-using Descending.Treasure;
+using Descending.Gui;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Units
@@ -14,7 +15,11 @@ namespace Descending.Units
         [SerializeField] private EnemyDefinition _definition = null;
         [SerializeField] private Transform _rightHandMount = null;
         [SerializeField] private Transform _leftHandMount = null;
+        [SerializeField] private Transform _dropSpawnPosition = null;
         [SerializeField] private GameObject _selectionIndicator = null;
+        [SerializeField] private EnemyWorldPanel _worldPanel = null;
+        
+        [SerializeField] private BoolEvent onSyncEncounter = null;
 
         private bool _treasureDropped = false;
         private Item _meleeWeapon = null;
@@ -27,6 +32,7 @@ namespace Descending.Units
         {
             _definition = definition;
             _treasureDropped = false;
+            _isAlive = true;
             
             _attributes.Setup(_definition);
             
@@ -44,58 +50,22 @@ namespace Descending.Units
 
             _damageSystem.Setup(this);
             _unitEffects.Setup();
-            //_worldPanel.Setup(this);
+            _worldPanel.Setup(this);
+            
             Deselect();
         } 
-        
-        public void DropTreasure()
-        {
-            if (_treasureDropped == true) return;
-            
-            _treasureDropped = true;
-            
-            TryDropCoins(CoinTypes.Copper);
-            TryDropCoins(CoinTypes.Silver);
-            TryDropCoins(CoinTypes.Gold);
-            TryDropCoins(CoinTypes.Mithril);
-
-            TryDropGems(GemTypes.Sapphire);
-            TryDropGems(GemTypes.Ruby);
-            TryDropGems(GemTypes.Emerald);
-            TryDropGems(GemTypes.Diamond);
-        }
-
-        private void TryDropCoins(CoinTypes coinType)
-        {
-            DropData dropData = _definition.CoinData[(int) coinType];
-            
-            if (Random.Range(0, 100) < dropData.Chance)
-            {
-                TreasureManager.Instance.SpawnCoins(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), coinType, 0.3f);
-            }
-        }
-
-        private void TryDropGems(GemTypes gemType)
-        {
-            DropData dropData = _definition.GemData[(int) gemType];
-            
-            if (Random.Range(0, 100) < dropData.Chance)
-            {
-                TreasureManager.Instance.SpawnGems(transform.position, Random.Range(dropData.Minimum, dropData.Maximum), gemType, 0.3f);
-            }
-        }
 
         public void Activate()
         {
             _modelParent.gameObject.SetActive(true);
-            //_worldPanel.gameObject.SetActive(true);
+            _worldPanel.gameObject.SetActive(true);
             _isActive = true;
         }
         
         public void Deactivate()
         {
             _modelParent.gameObject.SetActive(false);
-            //_worldPanel.gameObject.SetActive(false);
+            _worldPanel.gameObject.SetActive(false);
             _isActive = false;
         }
 
@@ -136,6 +106,8 @@ namespace Descending.Units
                 GameObject clone = item.SpawnItemModel(_leftHandMount, 0);
                 //_animationController.SetOverride(item.GetWeaponData().AnimatorOverride);
             }
+            
+            SyncData();
         }
         
         public override void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital)
@@ -149,6 +121,8 @@ namespace Descending.Units
             {
                 Dead();
             }
+            
+            SyncData();
         }
 
         public override void RestoreVital(string vital, int amount)
@@ -164,10 +138,8 @@ namespace Descending.Units
         protected override void Dead()
         {
             _isAlive = false;
-            //MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
-            //HeroManager_Combat.Instance.UnitDead(this);
-            //_ragdollSpawner.Activate(_damageSystem);
-            //HeroManager_Combat.Instance.AwardExperience(_definition.ExpValue);
+            HeroManager.Instance.AwardExperience(_definition.ExpValue);
+            
             Destroy(gameObject);
         }
 
@@ -195,6 +167,12 @@ namespace Descending.Units
         public void Deselect()
         {
             _selectionIndicator.SetActive(false);
+        }
+
+        public void SyncData()
+        {
+            _worldPanel.Sync();
+            onSyncEncounter.Invoke(true);
         }
     }
 }

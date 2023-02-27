@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Orc
   Key: Orc
-  ExpValue: 10
+  ExpValue: 50
   Prefab: {fileID: 2531196915385986140, guid: b9806c9a125db204280ceea2dd36816f, type: 3}
   Icon: {fileID: 21300000, guid: cf728fddbe918f34caf28501fc8caf57, type: 3}
   Group: 0

@@ -98,6 +98,7 @@ namespace Descending.Gui
             _partyPanel.SetMode(UiModes.Combat);
             _actionsPanel.SetMode(UiModes.Combat);
             _windowManager.EncounterTriggered(encounter);
+            _windowManager.SetInCombat(true);
         }
 
         public void OnEndEncounter(bool b)
@@ -107,6 +108,7 @@ namespace Descending.Gui
             _partyPanel.SetMode(UiModes.World);
             _actionsPanel.SetMode(UiModes.World);
             _questPanel.SetActive(true);
+            _windowManager.SetInCombat(false);
         }
     }
 }

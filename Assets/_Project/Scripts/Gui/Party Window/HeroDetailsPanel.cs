@@ -12,7 +12,7 @@ namespace Descending.Gui
         [SerializeField] private TMP_Text _raceLabel = null;
         [SerializeField] private TMP_Text _professionLabel = null;
         [SerializeField] private TMP_Text _backgroundLabel = null;
-        //[SerializeField] private VitalBar _experienceBar = null;
+        [SerializeField] private VitalBar _experienceBar = null;
 
         public void Setup()
         {
@@ -25,7 +25,7 @@ namespace Descending.Gui
             _raceLabel.SetText("Race: " + hero.HeroData.RaceKey);
             _professionLabel.SetText("Profession: " + hero.HeroData.ProfessionKey);
             _backgroundLabel.SetText("Background: none");
-            //_experienceBar.UpdateData(hero.HeroData.Experience, hero.HeroData.ExpToNextLevel);
+            _experienceBar.UpdateData(hero.HeroData.Experience, hero.HeroData.ExpToNextLevel);
         }
     }
 }

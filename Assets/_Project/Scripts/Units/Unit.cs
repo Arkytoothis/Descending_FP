@@ -20,7 +20,6 @@ namespace Descending.Units
         [SerializeField] protected SkillsController _skills = null;
         [SerializeField] protected InventoryController _inventory = null;
         [SerializeField] protected AbilityController _abilities = null;
-        //[SerializeField] protected UnitWorldPanel _worldPanel = null;
         [SerializeField] protected UnitEffects _unitEffects = null;
         [SerializeField] protected AnimationEvents _animationEvents = null;
         [SerializeField] protected DamageSystem _damageSystem;

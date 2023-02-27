@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496760f8f8df6ef4cb79fee3356ed438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: {fileID: 0}
+  _button: {fileID: 2584299048621823407}
   _nameLabel: {fileID: 46362242179332425}
   _portraitImage: {fileID: 6299426334394755149}
   _selectionBorder: {fileID: 8923577595795454849}

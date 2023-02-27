@@ -203,4 +203,9 @@ namespace Descending.Core
     {
         World, Combat, Number, None
     }
+
+    public enum AttackTypes
+    {
+        Melee, Ranged, Ability, Number, None
+    }
 }

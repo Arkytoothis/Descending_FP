@@ -49,7 +49,8 @@ MonoBehaviour:
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 22100000, guid: e264fc8b7b1b5ab4eae5bc92d53857e2,
       type: 2}
-    damageEffects: []
+    damageEffects:
+    - rid: 7907628881969152001
     _hitSounds: []
     _attackSounds: []
   _wearableData:
@@ -84,3 +85,13 @@ MonoBehaviour:
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
       data:
         _data: []
+    - rid: 7907628881969152001
+      type: {class: DamageEffect, ns: Descending.Abilities, asm: Assembly-CSharp}
+      data:
+        _affects: 1
+        _damageType: {fileID: 11400000, guid: 925f665afc41d7842b8acfca1db57579, type: 2}
+        _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
+        _damageClass: 1
+        _attackType: 1
+        _minimumValue: 5
+        _maximumValue: 10

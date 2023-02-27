@@ -86,5 +86,13 @@ namespace Descending.Units
             _portraitRoom.RefreshCameras();
             onSyncSelectedHeroActions.Invoke(_selectedHero);
         }
+
+        public void AwardExperience(int amount)
+        {
+            foreach (Hero hero in _heroes)
+            {
+                hero.AddExperience(amount);
+            }
+        }
     }
 }

@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Gui;
 using UnityEngine;
 
 namespace Descending.Units
 {
     public class DamageSystem : MonoBehaviour
     {
-        //[SerializeField] private UnitWorldPanel _worldPanel = null;
+        [SerializeField] private EnemyWorldPanel _worldPanel = null;
 
         private Unit _unit = null;
         private GameObject _attacker = null;
@@ -41,22 +42,22 @@ namespace Descending.Units
                 _unit.Attributes.GetVital(vital).Damage(damageLeft, false);
             }
 
-            ///_worldPanel.Sync();
-            //HeroManager_Combat.Instance.SyncHeroes();
+            _worldPanel.Sync();
+            //HeroManager.Instance.SyncHero(_unit.da);
             //Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
         }
 
         public void UseResource(string vital, int amount)
         {
             _unit.Attributes.GetVital(vital).Damage(amount, true);
-            //_worldPanel.Sync();
+            _worldPanel.Sync();
             //HeroManager_Combat.Instance.SyncHeroes();
         }
 
         public void RestoreVital(string vital, int amount)
         {
             _unit.Attributes.GetVital(vital).Restore(amount);
-            //_worldPanel.Sync();
+            _worldPanel.Sync();
             //HeroManager_Combat.Instance.SyncHeroes();
         }
 

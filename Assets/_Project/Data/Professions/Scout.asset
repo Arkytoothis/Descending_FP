@@ -106,11 +106,6 @@ MonoBehaviour:
     _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
     _prefix: {fileID: 0}
     _suffix: {fileID: 0}
-  - _item: {fileID: 11400000, guid: b1ad73475a1b10248808d973743f9e42, type: 2}
-    _material: {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
-    _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
-    _prefix: {fileID: 0}
-    _suffix: {fileID: 0}
   - _item: {fileID: 11400000, guid: ad1c8f40b627eb741a7477c8ac1ed106, type: 2}
     _material: {fileID: 11400000, guid: ae86826fab495bb4f805727e676bd282, type: 2}
     _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}

@@ -142,7 +142,10 @@ namespace Descending.Encounters
         {
             foreach (Enemy enemy in _enemies)
             {
-                enemy.Deselect();
+                if (enemy != null)
+                {
+                    enemy.Deselect();
+                }
             }
         }
     }

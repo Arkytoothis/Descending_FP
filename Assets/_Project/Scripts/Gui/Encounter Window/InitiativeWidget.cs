@@ -23,5 +23,6 @@ namespace Descending.Gui
 
         public abstract void Select();
         public abstract void Deselect();
+        public abstract void Sync();
     }
 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Player;
 using Descending.Units;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,6 +11,7 @@ namespace Descending.Gui
     public class EnemyInitiativeWidget : InitiativeWidget, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Image _portrait = null;
+        [SerializeField] private Sprite _deadImage = null;
         
         private Enemy _enemy = null;
 
@@ -26,7 +26,8 @@ namespace Descending.Gui
             _nameLabel.SetText(_enemy.GetShortName());
             _nameLabel.color = _nameColor;
             _initiativeLabel.SetText(_initiativeRoll.ToString());
-            _lifeBar.UpdateData(_enemy.Attributes.GetVital("Life").Current, _enemy.Attributes.GetVital("Life").Maximum);
+            
+            Sync();
             Deselect();
         }
 
@@ -50,6 +51,19 @@ namespace Descending.Gui
         {
             _selectionBorder.enabled = false;
             _deselectedImage.enabled = true;
+        }
+
+        public override void Sync()
+        {
+            if (_enemy.IsAlive == true)
+            {
+                _lifeBar.UpdateData(_enemy.Attributes.GetVital("Life").Current, _enemy.Attributes.GetVital("Life").Maximum);
+            }
+            else
+            {
+                _portrait.sprite = _deadImage;
+                _lifeBar.UpdateData(_enemy.Attributes.GetVital("Life").Current, _enemy.Attributes.GetVital("Life").Maximum);
+            }
         }
     }
 }

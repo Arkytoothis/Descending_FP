@@ -16,7 +16,8 @@ namespace Descending.Gui
         [SerializeField] private BoolEvent onSetLookModeEnabled = null;
         
         private List<GameWindow> _windows = null;
-
+        private bool _inCombat = false;
+        
         public void Setup()
         {
             _gameWindowsParent.ClearTransform();
@@ -38,7 +39,7 @@ namespace Descending.Gui
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (_inCombat == false && Input.GetKeyDown(KeyCode.Escape))
             {
                 if (IsAnyWindowOpen())
                 {
@@ -50,7 +51,7 @@ namespace Descending.Gui
                 }
             }
             
-            if (Input.GetKeyDown(KeyCode.C))
+            if (_inCombat == false && Input.GetKeyDown(KeyCode.C))
             {
                 if (IsAnyWindowOpen())
                 {
@@ -109,6 +110,11 @@ namespace Descending.Gui
             OpenWindow((int)GameWindows.Encounter);
         }
 
+        public void SetInCombat(bool inCombat)
+        {
+            _inCombat = inCombat;
+        }
+        
         // public void OnOpenVillageWindow(Village village)
         // {
         //     ((VillageWindow)_windows[(int)GameWindows.Village]).SetVillage(village);

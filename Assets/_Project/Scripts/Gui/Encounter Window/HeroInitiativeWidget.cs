@@ -26,7 +26,8 @@ namespace Descending.Gui
             _nameLabel.SetText(hero.HeroData.Name.FirstName);
             _nameLabel.color = _nameColor;
             _initiativeLabel.SetText(_initiativeRoll.ToString());
-            _lifeBar.UpdateData(_hero.Attributes.GetVital("Life").Current, _hero.Attributes.GetVital("Life").Maximum);
+            
+            Sync();
             Deselect();
         }
 
@@ -50,6 +51,11 @@ namespace Descending.Gui
         {
             _selectionBorder.enabled = false;
             _deselectedImage.enabled = true;
+        }
+
+        public override void Sync()
+        {
+            _lifeBar.UpdateData(_hero.Attributes.GetVital("Life").Current, _hero.Attributes.GetVital("Life").Maximum);
         }
     }
 }

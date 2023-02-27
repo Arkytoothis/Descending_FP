@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using Descending.Equipment;
 using ScriptableObjectArchitecture;
 using Sirenix.Serialization;
@@ -68,6 +67,7 @@ namespace Descending.Core
             {
                 _items[index] = new Item(item);
             }
+            onSyncStockpile.Invoke(true);
         }
 
         public void OnItemPickedUp(Item item)

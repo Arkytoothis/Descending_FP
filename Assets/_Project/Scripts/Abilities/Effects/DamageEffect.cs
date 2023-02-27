@@ -63,7 +63,7 @@ namespace Descending.Abilities
             {
                 foreach (Unit target in targets)
                 {
-                    CombatCalculator.ProcessAttack(user, target, this);
+                    CombatCalculator.ProcessAttack(user, target);
                     //int amount = Random.Range(_minimumValue, _maximumValue + 1);
                     //unit.Damage(user.gameObject, amount);
                 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Combat;
 using Descending.Player;
+using Descending.Treasure;
 using Descending.Units;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -79,8 +81,11 @@ namespace Descending.Encounters
             _playerController.SetWorldRaycastMode();
             _playerController.SetInCombat(false);
             _playerController.SetLookMode();
-            
             onEndEncounter.Invoke(true);
+            TreasureManager.Instance.SpawnTreasureChest(_currentEncounter.transform.position);
+            
+            RemoveEncounter(_currentEncounter);
+            _currentEncounter = null;
         }
 
         public void StartCombat()
@@ -127,6 +132,15 @@ namespace Descending.Encounters
             }
         }
 
+        public void RemoveEncounter(Encounter encounter)
+        {
+            if (_encounters.Contains(encounter))
+            {
+                _encounters.Remove(encounter);
+                Destroy(encounter.gameObject);
+            }
+        }
+
         private void ProcessHeroTurn(Hero hero)
         {
             //Debug.Log(hero.GetShortName() + " acting - Press Space To Skip");
@@ -157,7 +171,12 @@ namespace Descending.Encounters
 
         public void ProcessAttack(Unit attacker, Unit defender)
         {
-            Debug.Log(attacker.GetShortName() + " is attacking " + defender.GetShortName());
+            if (defender.IsAlive == false) return;
+            
+            CombatCalculator.ProcessAttack(attacker, defender);
+            //Debug.Log(attacker.GetShortName() + " is attacking " + defender.GetShortName());
+            // int damage = Random.Range(5, 11);
+            // defender.Damage(attacker.gameObject, null, damage, "Life");
         }
     }
 }
