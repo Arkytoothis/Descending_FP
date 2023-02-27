@@ -7,7 +7,7 @@ namespace Descending.Equipment
 {
     public class BodyPart : MonoBehaviour
     {
-        [SerializeField] private SkinnedMeshRenderer _original = null;
+        //[SerializeField] private SkinnedMeshRenderer _original = null;
         [SerializeField] private SkinnedMeshRenderer _prefab = null;
         [SerializeField] private Transform _rootBone = null;
 

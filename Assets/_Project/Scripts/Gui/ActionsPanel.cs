@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Abilities;
+using Descending.Core;
 using Descending.Units;
 using UnityEngine;
 
@@ -8,9 +9,10 @@ namespace Descending.Gui
 {
     public class ActionsPanel : MonoBehaviour
     {
-        [SerializeField] private List<ActionWidget> _defaultActionBar = null;
+        //[SerializeField] private List<ActionWidget> _defaultActionBar = null;
         [SerializeField] private List<ActionWidget> _topActionBar = null;
         [SerializeField] private List<ActionWidget> _bottomActionBar = null;
+        [SerializeField] private UiModes _mode = UiModes.World;
 
         public void Setup()
         {
@@ -29,6 +31,8 @@ namespace Descending.Gui
         {
             Clear();
 
+            if (hero == null) return;
+            
             for (int i = 0; i < hero.Abilities.MemorizedPowers.Count; i++)
             {
                 _topActionBar[i].SetAbility(hero.Abilities.MemorizedPowers[i]);
@@ -51,6 +55,22 @@ namespace Descending.Gui
             {
                 widget.Clear();
             }
+        }
+
+        public void SetMode(UiModes mode)
+        {
+            _mode = mode;
+            // foreach (PartyPanelWidget widget in _widgets)
+            // {
+            //     if (_mode == UiModes.Combat)
+            //     {
+            //         widget.SetCanSelect(false);
+            //     }
+            //     else if (_mode == UiModes.World)
+            //     {
+            //         widget.SetCanSelect(true);
+            //     }
+            // }
         }
     }
 }

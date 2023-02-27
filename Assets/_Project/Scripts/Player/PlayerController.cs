@@ -17,8 +17,10 @@ namespace Descending.Player
         [SerializeField] private GameObject _crossHair = null;
         [SerializeField] private WorldRaycaster _worldRaycaster = null;
         [SerializeField] private CombatRaycaster _combatRaycaster = null;
-        [SerializeField] private PlayerRaycastModes _raycastMode = PlayerRaycastModes.World;
+        //[SerializeField] private PlayerRaycastModes _raycastMode = PlayerRaycastModes.World;
 
+        private bool _inCombat = false;
+        
         private void Start()
         {
             SetWorldRaycastMode();
@@ -39,10 +41,13 @@ namespace Descending.Player
             }
         }
 
-        private void SetLookMode()
+        public void SetLookMode()
         {
             _mode = PlayerControllerModes.Look;
-            _firstPersonController.SetMovementEnabled(true);
+            
+            if(_inCombat == false)
+                _firstPersonController.SetMovementEnabled(true);
+            
             _firstPersonController.SetLookEnabled(true);
             _firstPersonController.SetJumpEnabled(true);
             Cursor.visible = false;
@@ -50,7 +55,7 @@ namespace Descending.Player
             _crossHair.SetActive(true);
         }
 
-        private void SetGuiMode()
+        public void SetGuiMode()
         {
             _mode = PlayerControllerModes.Gui;
             _firstPersonController.SetMovementEnabled(false);
@@ -60,14 +65,14 @@ namespace Descending.Player
             Cursor.lockState = CursorLockMode.None;
             _crossHair.SetActive(false);
         }
-
-        private void SetWorldRaycastMode()
+        
+        public void SetWorldRaycastMode()
         {
             _worldRaycaster.gameObject.SetActive(true);
             _combatRaycaster.gameObject.SetActive(false);
         }
 
-        private void SetCombatRaycastMode()
+        public void SetCombatRaycastMode()
         {
             _combatRaycaster.gameObject.SetActive(true);
             _worldRaycaster.gameObject.SetActive(false);
@@ -88,6 +93,16 @@ namespace Descending.Player
         public void EncounterTriggered(Encounter encounter)
         {
             SetGuiMode();
+        }
+
+        public void SetInCombat(bool inCombat)
+        {
+            _inCombat = inCombat;
+        }
+
+        public void SetMovementEnabled(bool movementEnabled)
+        {
+            _firstPersonController.SetMovementEnabled(movementEnabled);
         }
     }
 }

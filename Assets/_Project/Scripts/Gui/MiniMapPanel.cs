@@ -9,7 +9,7 @@ namespace Descending.Gui
 {
     public class MiniMapPanel : MonoBehaviour
     {
-        [SerializeField] private RawImage _miniMapImage = null;
+        //[SerializeField] private RawImage _miniMapImage = null;
 
         public void Setup()
         {

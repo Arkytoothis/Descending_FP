@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Encounters;
-using Descending.Units;
+using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Descending.Gui
 {
@@ -14,6 +13,8 @@ namespace Descending.Gui
         [SerializeField] private GameObject _heroWidgetPrefab = null;
         [SerializeField] private GameObject _enemyWidgetPrefab = null;
         [SerializeField] private Transform _widgetsParent = null;
+        [SerializeField] private TMP_Text _currenInitiativeLabel = null;
+        [SerializeField] private TMP_Text _currenTurnLabel = null;
 
         private List<InitiativeWidget> _initiativeWidgets = null;
         private Encounter _encounter = null;
@@ -23,37 +24,46 @@ namespace Descending.Gui
             _encounter = encounter;
             _initiativeWidgets = new List<InitiativeWidget>();
             _widgetsParent.ClearTransform();
-            List<InitiativeData> initiativeData = new List<InitiativeData>();
-            
-            for (int i = 0; i < encounter.Enemies.Count; i++)
-            {
-                int initiativeRoll = Random.Range(1, 101);
-                initiativeData.Add(new InitiativeData(initiativeRoll, encounter.Enemies[i]));
-            }
 
-            for (int i = 0; i < HeroManager.Instance.Heroes.Count; i++)
+            for (int i = 0; i < _encounter.InitiativeDataList.Count; i++)
             {
-                int initiativeRoll = Random.Range(1, 101);
-                initiativeData.Add(new InitiativeData(initiativeRoll, HeroManager.Instance.Heroes[i]));
-            }
-            
-            initiativeData.Sort((x, y) => x.InitiativeRoll.CompareTo(y.InitiativeRoll));
-
-            for (int i = 0; i < initiativeData.Count; i++)
-            {
-                if (initiativeData[i].Hero != null)
+                if (_encounter.InitiativeDataList[i].Hero != null)
                 {
                     GameObject clone = Instantiate(_heroWidgetPrefab, _widgetsParent);
                     HeroInitiativeWidget initiativeWidget = clone.GetComponent<HeroInitiativeWidget>();
-                    initiativeWidget.Setup(initiativeData[i].Hero, i, initiativeData[i].InitiativeRoll);
+                    initiativeWidget.Setup(_encounter.InitiativeDataList[i].Hero, i, _encounter.InitiativeDataList[i].InitiativeRoll);
                     _initiativeWidgets.Add(initiativeWidget);
                 }
-                else if (initiativeData[i].Enemy != null)
+                else if (_encounter.InitiativeDataList[i].Enemy != null)
                 {
                     GameObject clone = Instantiate(_enemyWidgetPrefab, _widgetsParent);
                     EnemyInitiativeWidget initiativeWidget = clone.GetComponent<EnemyInitiativeWidget>();
-                    initiativeWidget.Setup(initiativeData[i].Enemy, i, initiativeData[i].InitiativeRoll);
+                    initiativeWidget.Setup(_encounter.InitiativeDataList[i].Enemy, i, _encounter.InitiativeDataList[i].InitiativeRoll);
                     _initiativeWidgets.Add(initiativeWidget);
+                }
+            }
+            
+            _initiativeWidgets[0].Select();
+            SyncEncounter();
+        }
+
+        public void SyncEncounter()
+        {
+            _currenTurnLabel.SetText("Turn " + EncounterManager.Instance.CurrentTurn);
+            _currenInitiativeLabel.SetText("Initiative Index: " + EncounterManager.Instance.CurrentInitiativeIndex);
+        }
+
+        public void SelectInitiativeIndex(int index)
+        {
+            for (int i = 0; i < _initiativeWidgets.Count; i++)
+            {
+                if (i == index)
+                {
+                    _initiativeWidgets[i].Select();
+                }
+                else
+                {
+                    _initiativeWidgets[i].Deselect();
                 }
             }
         }

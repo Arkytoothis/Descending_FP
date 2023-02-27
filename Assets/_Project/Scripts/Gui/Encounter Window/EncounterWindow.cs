@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Encounters;
-using ScriptableObjectArchitecture;
 using UnityEngine;
 
 namespace Descending.Gui
@@ -9,8 +8,6 @@ namespace Descending.Gui
     public class EncounterWindow : GameWindow
     {
         [SerializeField] private InitiativePanel _initiativePanel = null;
-        
-        [SerializeField] private BoolEvent onEndEncounter = null;
 
         private Encounter _encounter = null;
         
@@ -35,13 +32,23 @@ namespace Descending.Gui
         public void EndEncounterButton_OnClick()
         {
             _manager.CloseAll();
-            onEndEncounter.Invoke(true);
+            EncounterManager.Instance.EndEncounter();
         }
 
         public void EncounterTriggered(Encounter encounter)
         {
             _encounter = encounter;
             _initiativePanel.Setup(encounter);
+        }
+
+        public void OnSyncEncounter(bool b)
+        {
+            _initiativePanel.SyncEncounter();
+        }
+
+        public void OnSelectInitiativeIndex(int index)
+        {
+            _initiativePanel.SelectInitiativeIndex(index);
         }
     }
 }

@@ -8,20 +8,20 @@ namespace Descending.Gui
 {
     public class HeroStatisticsPanel : MonoBehaviour
     {
-        [SerializeField] private StatisticWidget _finesseAttackWidget = null;
-        [SerializeField] private StatisticWidget _mightAttackWidget = null;
-        [SerializeField] private StatisticWidget _magicAttackWidget = null;
-        [SerializeField] private StatisticWidget _mightModifierWidget = null;
-        [SerializeField] private StatisticWidget _finesseModifierWidget = null;
-        [SerializeField] private StatisticWidget _magicModifierWidget = null;
-        [SerializeField] private StatisticWidget _blockWidget = null;
-        [SerializeField] private StatisticWidget _dodgeWidget = null;
-        [SerializeField] private StatisticWidget _willpowerWidget = null;
-        [SerializeField] private StatisticWidget _movementWidget = null;
-        [SerializeField] private StatisticWidget _perceptionWidget = null;
-        [SerializeField] private StatisticWidget _criticalHitWidget = null;
-        [SerializeField] private StatisticWidget _criticalDamageWidget = null;
-        [SerializeField] private StatisticWidget _fumbleWidget = null;
+        // [SerializeField] private StatisticWidget _finesseAttackWidget = null;
+        // [SerializeField] private StatisticWidget _mightAttackWidget = null;
+        // [SerializeField] private StatisticWidget _magicAttackWidget = null;
+        // [SerializeField] private StatisticWidget _mightModifierWidget = null;
+        // [SerializeField] private StatisticWidget _finesseModifierWidget = null;
+        // [SerializeField] private StatisticWidget _magicModifierWidget = null;
+        // [SerializeField] private StatisticWidget _blockWidget = null;
+        // [SerializeField] private StatisticWidget _dodgeWidget = null;
+        // [SerializeField] private StatisticWidget _willpowerWidget = null;
+        // [SerializeField] private StatisticWidget _movementWidget = null;
+        // [SerializeField] private StatisticWidget _perceptionWidget = null;
+        // [SerializeField] private StatisticWidget _criticalHitWidget = null;
+        // [SerializeField] private StatisticWidget _criticalDamageWidget = null;
+        // [SerializeField] private StatisticWidget _fumbleWidget = null;
 
         public void Setup()
         {

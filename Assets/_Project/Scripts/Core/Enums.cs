@@ -198,4 +198,9 @@ namespace Descending.Core
         Crypt, Forest, Goblin_Village,
         Number, None
     }
+
+    public enum UiModes
+    {
+        World, Combat, Number, None
+    }
 }

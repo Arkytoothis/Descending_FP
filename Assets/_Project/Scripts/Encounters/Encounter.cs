@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Units;
-using ScriptableObjectArchitecture;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,11 +16,10 @@ namespace Descending.Encounters
         [SerializeField] private SpawnerEntry _bossesEntry = null;
         [SerializeField] private int _threatLevel = 0;
 
-        [SerializeField] private List<Enemy> _enemies = null;
+        private List<Enemy> _enemies = null;
+        private List<InitiativeData> _initiativeDataList = null;
         
-        [SerializeField] private EncounterEvent onEncounterTriggered = null;
-
-        public List<Enemy> Enemies => _enemies;
+        public List<InitiativeData> InitiativeDataList => _initiativeDataList;
 
         private void Start()
         {
@@ -32,29 +31,31 @@ namespace Descending.Encounters
             CalculateThreatLevel(playerStart);
             SpawnEnemies();
         }
-        
+
         public void SpawnEnemies()
         {
+            _enemies = new List<Enemy>();
+            
             ProcessSpawnEntry(_minionsEntry);
             ProcessSpawnEntry(_elitesEntry);
             ProcessSpawnEntry(_leadersEntry);
             ProcessSpawnEntry(_bossesEntry);
-            
+
             for (int i = 0; i < _minionsEntry.Enemies.Count; i++)
             {
                 _enemies.Add(_minionsEntry.Enemies[i]);
             }
-            
+
             for (int i = 0; i < _elitesEntry.Enemies.Count; i++)
             {
                 _enemies.Add(_elitesEntry.Enemies[i]);
             }
-            
+
             for (int i = 0; i < _leadersEntry.Enemies.Count; i++)
             {
                 _enemies.Add(_leadersEntry.Enemies[i]);
             }
-            
+
             for (int i = 0; i < _bossesEntry.Enemies.Count; i++)
             {
                 _enemies.Add(_bossesEntry.Enemies[i]);
@@ -89,8 +90,60 @@ namespace Descending.Encounters
 
         public void Trigger()
         {
-            Debug.Log("Encounter Triggered");
-            onEncounterTriggered.Invoke(this);
+            EncounterManager.Instance.StartCombat();
+        }
+
+        public void RollInitiative()
+        {
+            if (_initiativeDataList == null)
+            {
+                _initiativeDataList = new List<InitiativeData>();
+            }
+            else
+            {
+                _initiativeDataList.Clear();
+            }
+
+            for (int i = 0; i < _enemies.Count; i++)
+            {
+                int initiativeRoll = Random.Range(1, 101);
+                _initiativeDataList.Add(new InitiativeData(initiativeRoll, _enemies[i]));
+            }
+
+            for (int i = 0; i < HeroManager.Instance.Heroes.Count; i++)
+            {
+                int initiativeRoll = Random.Range(1, 101);
+                _initiativeDataList.Add(new InitiativeData(initiativeRoll, HeroManager.Instance.Heroes[i]));
+            }
+
+            _initiativeDataList.Sort((x, y) => x.InitiativeRoll.CompareTo(y.InitiativeRoll));
+        }
+
+        public void LookAtPlayer(Transform player)
+        {
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.transform.DOLookAt(player.position, 0.5f, AxisConstraint.Y);
+            }
+        }
+
+        public void SelectEnemy(Enemy enemyToSelect)
+        {
+            foreach (Enemy enemy in _enemies)
+            {
+                if (enemy == enemyToSelect)
+                    enemy.Select();
+                else
+                    enemy.Deselect();
+            }
+        }
+
+        public void DeselectEnemies()
+        {
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.Deselect();
+            }
         }
     }
 }

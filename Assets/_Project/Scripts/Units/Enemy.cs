@@ -14,6 +14,7 @@ namespace Descending.Units
         [SerializeField] private EnemyDefinition _definition = null;
         [SerializeField] private Transform _rightHandMount = null;
         [SerializeField] private Transform _leftHandMount = null;
+        [SerializeField] private GameObject _selectionIndicator = null;
 
         private bool _treasureDropped = false;
         private Item _meleeWeapon = null;
@@ -44,9 +45,7 @@ namespace Descending.Units
             _damageSystem.Setup(this);
             _unitEffects.Setup();
             //_worldPanel.Setup(this);
-            
-            //EnemyManager.Instance.UnitSpawned(this);
-            //Deactivate();
+            Deselect();
         } 
         
         public void DropTreasure()
@@ -186,6 +185,16 @@ namespace Descending.Units
         public void SetRightHandMount(Transform rightHandMount)
         {
             _rightHandMount = rightHandMount;
+        }
+
+        public void Select()
+        {
+            _selectionIndicator.SetActive(true);
+        }
+
+        public void Deselect()
+        {
+            _selectionIndicator.SetActive(false);
         }
     }
 }

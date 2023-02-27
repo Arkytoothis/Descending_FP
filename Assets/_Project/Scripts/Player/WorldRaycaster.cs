@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Interactables;
 using Descending.Units;
 using UnityEngine;
@@ -27,6 +28,18 @@ namespace Descending.Player
 
         void Update()
         {
+            if (Utilities.IsMouseInWindow() == false)
+            {
+                SetCursor(null, _crosshairSprite);
+                return;
+            }
+            
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(_guiCursor, _crosshairSprite);
+                return;
+            }
+            
             if (_raycastingEnabled == true)
             {
                 PerformRaycasts();
@@ -35,18 +48,11 @@ namespace Descending.Player
 
         void PerformRaycasts()
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                SetCursur(_guiCursor, _crosshairSprite);
-                
-                return;
-            }
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
             if (RaycastForInteractable(ray) == true) { return; }
 
-            SetCursur(_guiCursor, _crosshairSprite);
+            SetCursor(_guiCursor, _crosshairSprite);
         }
 
         bool RaycastForInteractable(Ray ray)
@@ -59,7 +65,7 @@ namespace Descending.Player
                 
                 if(interactable != null)
                 {
-                    SetCursur(_interactCursor, _interactSprite);
+                    SetCursor(_interactCursor, _interactSprite);
 
                     if (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.F))
                     {
@@ -73,7 +79,7 @@ namespace Descending.Player
             return false;
         }
 
-        private void SetCursur(Texture2D cursor, Sprite crosshair)
+        private void SetCursor(Texture2D cursor, Sprite crosshair)
         {
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
             _crosshair.sprite = crosshair;

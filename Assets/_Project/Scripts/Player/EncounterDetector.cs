@@ -14,7 +14,7 @@ namespace Descending.Player
         {
             if (other.gameObject.TryGetComponent(out Encounter encounter))
             {
-                encounter.Trigger();
+                EncounterManager.Instance.TriggerEncounter(encounter);
                 _playerController.EncounterTriggered(encounter);
             }
         }

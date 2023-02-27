@@ -4,7 +4,6 @@ using Descending.Abilities;
 using Descending.Core;
 using Descending.Equipment;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,9 +12,9 @@ namespace Descending.Gui
     public class ActionWidget : MonoBehaviour
     {
         [SerializeField] private Image _icon = null;
-        [SerializeField] private Image _cooldownImage = null;
+        //[SerializeField] private Image _cooldownImage = null;
         [SerializeField] private TMP_Text _hotKeyLabel = null;
-        [SerializeField] private TMP_Text _cooldownLabel = null;
+        //[SerializeField] private TMP_Text _cooldownLabel = null;
 
         private int _index = -1;
         private Ability _ability = null;

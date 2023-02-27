@@ -17,5 +17,11 @@ namespace Descending.Gui
             _valueLabel.SetText(current + " / " + maximum);
             _foregroundImage.fillAmount = fillAmount;
         }
+
+        public void Clear()
+        {
+            _valueLabel.SetText("0");
+            _foregroundImage.fillAmount = 0;
+        }
     }
 }

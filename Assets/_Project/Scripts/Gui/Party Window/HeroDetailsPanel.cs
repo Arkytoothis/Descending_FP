@@ -12,7 +12,7 @@ namespace Descending.Gui
         [SerializeField] private TMP_Text _raceLabel = null;
         [SerializeField] private TMP_Text _professionLabel = null;
         [SerializeField] private TMP_Text _backgroundLabel = null;
-        [SerializeField] private VitalBar _experienceBar = null;
+        //[SerializeField] private VitalBar _experienceBar = null;
 
         public void Setup()
         {

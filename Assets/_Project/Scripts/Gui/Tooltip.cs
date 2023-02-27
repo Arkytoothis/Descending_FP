@@ -12,8 +12,8 @@ namespace Descending.Gui
     public class Tooltip : MonoBehaviour
     {
         [SerializeField] private GameObject _container = null;
-        [SerializeField] private CanvasGroup _canvasGroup = null;
-        [SerializeField] private RectTransform _rect = null;
+        //[SerializeField] private CanvasGroup _canvasGroup = null;
+        //[SerializeField] private RectTransform _rect = null;
         [SerializeField] private Image _icon = null;
         [SerializeField] private TMP_Text _title = null;
         [SerializeField] private TMP_Text _description = null;
@@ -25,9 +25,9 @@ namespace Descending.Gui
         [SerializeField] private TMP_Text _goldLabel = null;
         [SerializeField] private TMP_Text _gemsLabel = null;
         [SerializeField] private GameObject _header = null;
-        [SerializeField] private float _openDelay = 0.15f;
-        [SerializeField] private float _openSpeed = 0.1f;
-        [SerializeField] private float _closeSpeed = 0.1f;
+        //[SerializeField] private float _openDelay = 0.15f;
+        //[SerializeField] private float _openSpeed = 0.1f;
+        //[SerializeField] private float _closeSpeed = 0.1f;
 
         //[SerializeField] private Vector3 _offset = Vector3.zero;
         //[SerializeField] private float _padding = 25f;

@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Encounters;
-using Descending.Units;
-using UnityEditor;
 using UnityEngine;
 
 namespace Descending.Gui
@@ -94,21 +93,19 @@ namespace Descending.Gui
         public void OnEncounterTriggered(Encounter encounter)
         {
             _topPanel.gameObject.SetActive(false);
-            _partyPanel.gameObject.SetActive(false);
-            _actionsPanel.gameObject.SetActive(false);
             _miniMapPanel.gameObject.SetActive(false);
             _questPanel.SetActive(false);
-            
+            _partyPanel.SetMode(UiModes.Combat);
+            _actionsPanel.SetMode(UiModes.Combat);
             _windowManager.EncounterTriggered(encounter);
         }
 
         public void OnEndEncounter(bool b)
         {
-            
             _topPanel.gameObject.SetActive(true);
-            _partyPanel.gameObject.SetActive(true);
-            _actionsPanel.gameObject.SetActive(true);
             _miniMapPanel.gameObject.SetActive(true);
+            _partyPanel.SetMode(UiModes.World);
+            _actionsPanel.SetMode(UiModes.World);
             _questPanel.SetActive(true);
         }
     }

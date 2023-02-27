@@ -7,7 +7,7 @@ namespace Descending.Features
     public class FeatureManager : MonoBehaviour
     {
         [SerializeField] private List<FeatureSpawner> _featureSpawners = null;
-        [SerializeField] private float _minY = 32.64f;
+        //[SerializeField] private float _minY = 32.64f;
         [SerializeField] private GameObject _playerObject = null;
         
         public void Setup()

@@ -1,33 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Den.Tools;
 using Descending.Core;
 using Descending.Encounters;
 using Descending.Equipment;
-using Descending.Features;
 using Descending.Gui;
 using Descending.Units;
-using MapMagic.Core;
-using MapMagic.Products;
-using MapMagic.Terrains;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Descending.Scene_Overworld
 {
     public class OverworldManager : MonoBehaviour
     {
         [SerializeField] private Database _database = null;
-        [SerializeField] private MapMagicObject _mapMagicObject = null;
-        [SerializeField] private FeatureManager _featureManager = null;
+        //[SerializeField] private MapMagicObject _mapMagicObject = null;
+        //[SerializeField] private FeatureManager _featureManager = null;
         [SerializeField] private HeroManager _heroManager = null;
         [SerializeField] private ResourcesManager _resourcesManager = null;
         [SerializeField] private StockpileManager _stockpileManager = null;
         [SerializeField] private EncounterManager _encounterManager = null;
         
         [SerializeField] private PortraitRoom _portraitRoom = null;
-        [SerializeField] private GameObject _playerObject = null;
+        //[SerializeField] private GameObject _playerObject = null;
         [SerializeField] private GameObject _guiPrefab = null;
         [SerializeField] private Transform _guiParent = null;
 
