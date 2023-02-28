@@ -108,7 +108,7 @@ namespace Descending.Core
 
             for (int i = 0; i < _numItemToGenerate; i++)
             {
-                AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
+                //AddItem(ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Legendary"), 10, 10, 10));
             }
         }
         

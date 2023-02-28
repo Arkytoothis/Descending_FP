@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Equipment;
 using Descending.Interactables;
 using UnityEngine;
@@ -41,10 +42,17 @@ namespace Descending.Treasure
 
         private TreasureData GetTreasureData()
         {
+            List<Item> itemList = new List<Item>();
             int coins = Random.Range(1, 10);
             int gems = Random.Range(0, 1);
             int supplies = Random.Range(0, 1);
-            List<Item> itemList = new List<Item>();
+            int numItems = Random.Range(1, 4);
+            
+            for (int i = 0; i < numItems; i++)
+            {
+                Item item = ItemGenerator.GenerateRandomItem(Database.instance.Rarities.GetRarity("Common"), GenerateItemType.Any, 10, 10, 10);
+                itemList.Add(item);
+            }
             
             return new TreasureData(coins, gems, supplies, itemList);
         }

@@ -105,7 +105,7 @@ namespace Descending.Core
 
     public enum GameScenes
     {
-        Main_Menu, Overworld, Combat_Outdoor, Combat_Indoor,
+        Main_Menu, Overworld, Underground,
         Number, None
     }
     

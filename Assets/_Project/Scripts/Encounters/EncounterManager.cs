@@ -105,6 +105,8 @@ namespace Descending.Encounters
 
         private void NextUnit(bool checkForNewTurn)
         {
+            if (_currentEncounter == null) return;
+            
             _currentInitiativeIndex++;
             if (_currentInitiativeIndex >= _currentEncounter.InitiativeDataList.Count)
                 _currentInitiativeIndex = 0;
