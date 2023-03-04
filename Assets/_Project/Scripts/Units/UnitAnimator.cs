@@ -18,13 +18,6 @@ namespace Descending.Units
             _unit = GetComponent<Unit>();
         }
 
-        // private void Update()
-        // {
-        //     if (_applyMotion == false) return;
-        //     
-        //     _animator.SetFloat("Blend", _rigidbody.velocity.magnitude);
-        // }
-
         public void Setup(Animator animator)
         {
             _animator = animator;
@@ -54,6 +47,11 @@ namespace Descending.Units
         public void SetAnimatorOverride(WeaponData weaponData)
         {
             //_animator.runtimeAnimatorController = weaponData.AnimatorOverride;
+        }
+
+        public void Die()
+        {
+            _animator.SetTrigger("Die");
         }
     }
 }

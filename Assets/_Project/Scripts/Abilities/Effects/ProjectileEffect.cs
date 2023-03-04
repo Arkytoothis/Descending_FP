@@ -14,13 +14,6 @@ namespace Descending.Abilities
         [SerializeField] private float _spawnProjectileDelay = 0.5f;
         [SerializeField] private float _delayBetweenProjectiles = 0.25f;
         [SerializeField] private int _numProjectiles = 1;
-
-        private Transform _projectileSpawnPoint = null;
-
-        public void SetSpawnPoint(Transform projectileSpawnPoint)
-        {
-            _projectileSpawnPoint = projectileSpawnPoint;
-        }
         
         public override string GetTooltipText()
         {
@@ -45,12 +38,12 @@ namespace Descending.Abilities
             {
                 yield return new WaitForSeconds(_delayBetweenProjectiles);
 
-                GameObject clone = GameObject.Instantiate(_projectileDefinition.Prefab, _projectileSpawnPoint.position, _projectileSpawnPoint.rotation);
+                GameObject clone = GameObject.Instantiate(_projectileDefinition.Prefab, HeroManager.Instance.ProjectileSpawn.position, HeroManager.Instance.ProjectileSpawn.rotation);
 
                 if (target != null)
                 {
                     Vector3 projectileTargetPosition = target.transform.position;
-                    projectileTargetPosition.y = _projectileSpawnPoint.position.y;
+                    projectileTargetPosition.y = HeroManager.Instance.ProjectileSpawn.position.y;
 
                     Projectile projectile = clone.GetComponent<Projectile>();
                     projectile.Setup(user, target, _projectileDefinition);

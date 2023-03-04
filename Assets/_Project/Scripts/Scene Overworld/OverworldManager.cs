@@ -23,7 +23,6 @@ namespace Descending.Scene_Overworld
         [SerializeField] private TreasureManager _treasureManager = null;
         
         [SerializeField] private PortraitRoom _portraitRoom = null;
-        //[SerializeField] private GameObject _playerObject = null;
         [SerializeField] private GameObject _guiPrefab = null;
         [SerializeField] private Transform _guiParent = null;
 

@@ -11,6 +11,7 @@ namespace Descending.Equipment
     [CreateAssetMenu(fileName = "Projectile Definition", menuName = "Descending/Definition/Projectile Definition")]
     public class ProjectileDefinition : ScriptableObject
     {
+        public string Name = "";
         public GameObject Prefab = null;
         public DamageTypeDefinition DamageType = null;
         public DamageClasses DamageClass = DamageClasses.None;

@@ -349,9 +349,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 596947010198217226}
-  _cooldownImage: {fileID: 0}
   _hotKeyLabel: {fileID: 5508330188516037612}
-  _cooldownLabel: {fileID: 0}
+  onTargetAbility:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 34d32ae1d133cc640b5903b4818e959e, type: 2}
+        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[Descending.Abilities.Ability,
+          Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTargetItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 9d905bc3bf869fb45b38ebf631a41266, type: 2}
+        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[Descending.Equipment.Item,
+          Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8787148918425769137
 GameObject:
   m_ObjectHideFlags: 0

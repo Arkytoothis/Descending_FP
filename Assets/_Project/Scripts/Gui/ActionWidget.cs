@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using Descending.Abilities;
 using Descending.Core;
 using Descending.Equipment;
+using ScriptableObjectArchitecture;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class ActionWidget : MonoBehaviour
+    public class ActionWidget : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private Image _icon = null;
         //[SerializeField] private Image _cooldownImage = null;
         [SerializeField] private TMP_Text _hotKeyLabel = null;
         //[SerializeField] private TMP_Text _cooldownLabel = null;
 
+        [SerializeField] private AbilityEvent onTargetAbility = null;
+        [SerializeField] private ItemEvent onTargetItem = null;
+        
         private int _index = -1;
         private Ability _ability = null;
         private Item _item = null;
@@ -45,6 +50,18 @@ namespace Descending.Gui
         {
             _index = -1;
             _icon.sprite = Database.instance.BlankSprite;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (_ability != null)
+            {
+                onTargetAbility.Invoke(_ability);
+            }
+            else if (_item != null)
+            {
+                onTargetItem.Invoke(_item);
+            }
         }
     }
 }

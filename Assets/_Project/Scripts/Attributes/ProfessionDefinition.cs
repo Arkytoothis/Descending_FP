@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Units;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -30,6 +31,7 @@ namespace Descending.Attributes
         [SerializeField] private float _finesseModifier = 1f;
         [SerializeField] private float _spellModifier = 1f;
         [SerializeField] private bool _prefersRanged = false;
+        [SerializeField] private HeroCombatModes _defaultCombatMode = HeroCombatModes.Unarmed;
 
         public bool Unlocked => _unlocked;
         public ProfessionArchtypes Archtype => _archtype;
@@ -48,6 +50,7 @@ namespace Descending.Attributes
         public float FinesseModifier => _finesseModifier;
         public float SpellModifier => _spellModifier;
         public bool PrefersRanged => _prefersRanged;
+        public HeroCombatModes DefaultCombatMode => _defaultCombatMode;
 
         public string GetGenderName(Genders gender)
         {

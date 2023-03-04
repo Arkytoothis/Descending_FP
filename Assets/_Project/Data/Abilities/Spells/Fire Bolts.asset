@@ -31,7 +31,17 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 5351987301877022720
+      type: {class: ProjectileEffect, ns: Descending.Abilities, asm: Assembly-CSharp}
+      data:
+        _affects: 1
+        _projectileDefinition: {fileID: 11400000, guid: 687e842fc3e6ddc42b013d959da9077a,
+          type: 2}
+        _spawnProjectileDelay: 0.5
+        _delayBetweenProjectiles: 0.5
+        _numProjectiles: 3
     - rid: 7907628733475586053
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
       data:
-        _data: []
+        _data:
+        - rid: 5351987301877022720

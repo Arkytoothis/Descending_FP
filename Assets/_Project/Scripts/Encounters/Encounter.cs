@@ -131,6 +131,8 @@ namespace Descending.Encounters
         {
             foreach (Enemy enemy in _enemies)
             {
+                if(enemy == null || enemy.gameObject == null) continue;
+                
                 if (enemy == enemyToSelect)
                     enemy.Select();
                 else
@@ -142,10 +144,9 @@ namespace Descending.Encounters
         {
             foreach (Enemy enemy in _enemies)
             {
-                if (enemy != null)
-                {
-                    enemy.Deselect();
-                }
+                if(enemy == null || enemy.gameObject == null) continue;
+                
+                enemy.Deselect();
             }
         }
     }

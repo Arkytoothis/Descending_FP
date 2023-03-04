@@ -15,16 +15,18 @@ namespace Descending.Units
         [SerializeField] private EnemyDefinition _definition = null;
         [SerializeField] private Transform _rightHandMount = null;
         [SerializeField] private Transform _leftHandMount = null;
-        [SerializeField] private Transform _dropSpawnPosition = null;
+        [SerializeField] private Transform _projectileTarget = null;
         [SerializeField] private GameObject _selectionIndicator = null;
         [SerializeField] private EnemyWorldPanel _worldPanel = null;
+        [SerializeField] private CapsuleCollider _collider = null;
         
         [SerializeField] private BoolEvent onSyncEncounter = null;
 
         private bool _treasureDropped = false;
         private Item _meleeWeapon = null;
         private Item _rangedWeapon = null;
-        
+
+        public Transform ProjectileTarget => _projectileTarget;
         public UnitData UnitData => _unitData;
         public EnemyDefinition Definition => _definition;
 
@@ -139,8 +141,10 @@ namespace Descending.Units
         {
             _isAlive = false;
             HeroManager.Instance.AwardExperience(_definition.ExpValue);
-            
-            Destroy(gameObject);
+            _unitAnimator.Die();
+            _collider.enabled = false;
+            _worldPanel.gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
 
         public override void SpendActionPoints(int actionPointCost)
@@ -161,11 +165,15 @@ namespace Descending.Units
 
         public void Select()
         {
+            if (gameObject == null) return;
+            
             _selectionIndicator.SetActive(true);
         }
 
         public void Deselect()
         {
+            if (gameObject == null) return;
+            
             _selectionIndicator.SetActive(false);
         }
 

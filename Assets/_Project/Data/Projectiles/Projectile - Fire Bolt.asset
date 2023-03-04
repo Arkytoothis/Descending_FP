@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287f166bc4e5ea64e83e472449c10f72, type: 3}
   m_Name: Projectile - Fire Bolt
   m_EditorClassIdentifier: 
+  Name: 
   Prefab: {fileID: 3290401344529691309, guid: eeb53a12a8e78f7449c32e3543d9dacb, type: 3}
   DamageType: {fileID: 11400000, guid: 286982a59b92c254aaa4f6a5dff67682, type: 2}
   DamageClass: 2

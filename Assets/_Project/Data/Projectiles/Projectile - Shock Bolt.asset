@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287f166bc4e5ea64e83e472449c10f72, type: 3}
   m_Name: Projectile - Shock Bolt
   m_EditorClassIdentifier: 
+  Name: Shock Bolt
   Prefab: {fileID: 3290401344529691309, guid: 959dd7084a8f23c4980143c6d52d8fda, type: 3}
   DamageType: {fileID: 11400000, guid: c6fe112f6a236ae4295a27e1053ce16c, type: 2}
   DamageClass: 2
-  Speed: 5
+  Speed: 10
   DamageEffects:
   - _affects: 1
     _damageType: {fileID: 11400000, guid: c6fe112f6a236ae4295a27e1053ce16c, type: 2}

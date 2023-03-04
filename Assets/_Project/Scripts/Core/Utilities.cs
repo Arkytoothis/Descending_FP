@@ -110,77 +110,6 @@ namespace Descending.Core
             else
                 return objList[0];
         }
-        
-        // public static Enemy FindClosestEnemy(Transform origin, float range)
-        // {
-        //     Collider[] collidersInRange = Physics.OverlapSphere(origin.position, range);
-        //     List<Enemy> enemyList = new List<Enemy>();
-        //     for (int i = 0; i < collidersInRange.Length; i++)
-        //     {
-        //         Transform obj = collidersInRange[i].transform;
-        //         if (obj.GetComponent<Enemy>() != null && obj.GetComponent<Enemy>().IsAlive == true && obj.transform != origin.transform)
-        //             enemyList.Add(obj.GetComponent<Enemy>());
-        //     }
-        //
-        //     enemyList.Sort((a, b) =>
-        //         {
-        //             float distA = Vector3.SqrMagnitude(origin.position - a.transform.position);
-        //             float distB = Vector3.SqrMagnitude(origin.position - b.transform.position);
-        //             if (distA < distB)
-        //                 return -1;
-        //             else if (distA == distB)
-        //                 return 0;
-        //             else return 1;
-        //         }
-        //     );
-        //
-        //     if (enemyList.Count == 0)
-        //         return null;
-        //     else
-        //         return enemyList[0];
-        // }
-        //
-        // public static Hero FindClosestHero(Transform origin, float range)
-        // {
-        //     Collider[] collidersInRange = Physics.OverlapSphere(origin.position, range);
-        //     List<Hero> heroList = new List<Hero>();
-        //     for (int i = 0; i < collidersInRange.Length; i++)
-        //     {
-        //         Transform obj = collidersInRange[i].transform;
-        //         if (obj.GetComponent<Hero>() != null && obj.GetComponent<Hero>().IsAlive == true && obj.transform != origin.transform)
-        //             heroList.Add(obj.GetComponent<Hero>());
-        //     }
-        //
-        //     heroList.Sort((a, b) =>
-        //         {
-        //             float distA = Vector3.SqrMagnitude(origin.position - a.transform.position);
-        //             float distB = Vector3.SqrMagnitude(origin.position - b.transform.position);
-        //             if (distA < distB)
-        //                 return -1;
-        //             else if (distA == distB)
-        //                 return 0;
-        //             else return 1;
-        //         }
-        //     );
-        //
-        //     if (heroList.Count == 0)
-        //         return null;
-        //     else
-        //         return heroList[0];
-        // }
-        
-        public static void PrintMessageToScreen(string msg)
-        {
-            // Text txt = GameObject.Find("ErrorMessageText").GetComponent<Text>();
-            // DOTween.Kill("MessageID");
-            // txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, 0);
-            // txt.text = msg;
-            // Sequence sq = DOTween.Sequence();
-            // sq.SetId<Sequence>("MessageID");
-            // sq.Append(DOTween.ToAlpha(() => txt.color, x => txt.color = x, 1, 0.5f));
-            // sq.AppendInterval(1);
-            // sq.Append(DOTween.ToAlpha(() => txt.color, x => txt.color = x, 0, 0.5f));
-        }
 
         public static Vector3 GetRandomPosition(Vector3 position, float range)
         {
@@ -190,41 +119,16 @@ namespace Descending.Core
             return new Vector3(position.x + x, position.y, position.z + z);
         }
 
-        public static Transform ClearTransform(this Transform transform)
+        public static void ClearTransform(this Transform transform)
         {
             if (transform == null)
             {
-                //Debug.Log("transform == null");
-                return null;
+                return;
             }
 
             foreach (Transform child in transform)
             {
                 GameObject.Destroy(child.gameObject);
-            }
-
-            return transform;
-        }
-
-        public static T TryGetComponent<T>(GameObject gameObject)
-        {
-            T t = gameObject.GetComponent<T>();
-
-            if (t == null)
-            {
-                Debug.LogError("Component " + t.ToString() + " not found on " + gameObject.name);
-            }
-
-            return t;
-        }
-
-        public static void TryGetComponentInChildren<T>(GameObject gameObject)
-        {
-            T t = gameObject.GetComponentInChildren<T>();
-
-            if (t == null)
-            {
-                Debug.LogError("Component " + t.ToString() + " not found on " + gameObject.name);
             }
         }
 

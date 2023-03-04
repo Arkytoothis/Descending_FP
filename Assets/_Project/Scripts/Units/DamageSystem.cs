@@ -42,23 +42,25 @@ namespace Descending.Units
                 _unit.Attributes.GetVital(vital).Damage(damageLeft, false);
             }
 
-            _worldPanel.Sync();
-            //HeroManager.Instance.SyncHero(_unit.da);
-            //Debug.Log(name + " takes " + amount + " damage, " + _health + " health remaining");
+            
+            if(_worldPanel != null)
+                _worldPanel.Sync();
         }
 
         public void UseResource(string vital, int amount)
         {
             _unit.Attributes.GetVital(vital).Damage(amount, true);
-            _worldPanel.Sync();
-            //HeroManager_Combat.Instance.SyncHeroes();
+            
+            if(_worldPanel != null)
+                _worldPanel.Sync();
         }
 
         public void RestoreVital(string vital, int amount)
         {
             _unit.Attributes.GetVital(vital).Restore(amount);
-            _worldPanel.Sync();
-            //HeroManager_Combat.Instance.SyncHeroes();
+
+            if(_worldPanel != null)
+                _worldPanel.Sync();
         }
 
         public float GetVitalNormalized(string vitalKey)

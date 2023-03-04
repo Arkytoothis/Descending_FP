@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Abilities;
 using Descending.Core;
 using Descending.Encounters;
+using Descending.Equipment;
 using Descending.Gui;
 using Descending.Units;
 using UnityEngine;
@@ -10,11 +12,16 @@ using UnityEngine.UI;
 
 namespace Descending.Player
 {
+    public enum TargetingModes { Melee, Ranged, Ability, Item, Number, None }
+    
     public class CombatRaycaster : MonoBehaviour
     {
         public static CombatRaycaster Instance { get; private set; }
         
+        [SerializeField] private TargetingModes _targetingMode = TargetingModes.None;
         [SerializeField] private Texture2D _meleeCursor = null;
+        [SerializeField] private Texture2D _rangedCursor = null;
+        [SerializeField] private Texture2D _abilityCursor = null;
         [SerializeField] private Texture2D _guiCursor = null;
         [SerializeField] private Sprite _crosshairSprite = null;
         [SerializeField] private Sprite _interactSprite = null;
@@ -25,6 +32,9 @@ namespace Descending.Player
         private bool _raycastingEnabled = true;
         private bool _raycastForEnemy = false;
         private InitiativeWidget _widgetHovering = null;
+        private Ability _currentAbility = null;
+        private Item _currentItem = null;
+        private Item _currentWeapon = null;
         
         private void Awake()
         {
@@ -37,6 +47,7 @@ namespace Descending.Player
             
             Instance = this;
             _camera = Camera.main;
+            SetTargetingMode(TargetingModes.Melee);
         }
 
         void Update()
@@ -52,14 +63,19 @@ namespace Descending.Player
                 if (_widgetHovering.GetType() == typeof(HeroInitiativeWidget))
                 {
                     SetCursor(_guiCursor, _crosshairSprite);
+                    
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        ProcessClick(((HeroInitiativeWidget)_widgetHovering).Hero);
+                    }
                 }
                 else if (_widgetHovering.GetType() == typeof(EnemyInitiativeWidget))
                 {
-                    SetCursor(_meleeCursor, _crosshairSprite);
-
+                    SetCursor(_interactSprite);
+                    
                     if (Input.GetMouseButtonUp(0))
                     {
-                        EncounterManager.Instance.ProcessAttack(HeroManager.Instance.SelectedHero, ((EnemyInitiativeWidget)_widgetHovering).Enemy);
+                        ProcessClick(((EnemyInitiativeWidget)_widgetHovering).Enemy);
                     }
                 }
                 
@@ -79,6 +95,11 @@ namespace Descending.Player
             }
         }
 
+        public void SetTargetingMode(TargetingModes mode)
+        {
+            _targetingMode = mode;
+        }
+        
         void PerformRaycasts()
         {
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
@@ -100,13 +121,13 @@ namespace Descending.Player
                 
                 if(enemy != null)
                 {
-                    SetCursor(_meleeCursor, _interactSprite);
-        
+                    SetCursor(_interactSprite);
+                    
                     if (Input.GetMouseButtonUp(0))
                     {
-                        EncounterManager.Instance.ProcessAttack(HeroManager.Instance.SelectedHero, enemy);
+                        ProcessClick(enemy);
                     }
-        
+                    
                     return true;
                 }
             }
@@ -114,9 +135,53 @@ namespace Descending.Player
             return false;
         }
 
+        private void ProcessClick(Enemy enemyTarget)
+        {
+            if (_targetingMode == TargetingModes.Melee)
+            {
+                EncounterManager.Instance.ProcessAttack(HeroManager.Instance.SelectedHero, enemyTarget);
+            }
+            else if (_targetingMode == TargetingModes.Ranged)
+            {
+                EncounterManager.Instance.ProcessAttack(HeroManager.Instance.SelectedHero, enemyTarget);
+            }
+            else if (_targetingMode == TargetingModes.Ability)
+            {
+                //Debug.Log("Using " + _currentAbility.DisplayName() + " on " + enemyTarget.GetFullName());
+                _currentAbility.Use(HeroManager.Instance.SelectedHero, new List<Unit> { enemyTarget });
+            }
+        }
+
+        private void ProcessClick(Hero heroTarget)
+        {
+            if (_targetingMode == TargetingModes.Ability)
+            {
+                //Debug.Log("Using " + _currentAbility.DisplayName() + " on " + heroTarget.GetFullName());
+                _currentAbility.Use(HeroManager.Instance.SelectedHero, new List<Unit> { heroTarget });
+            }
+        }
+
         private void SetCursor(Texture2D cursor, Sprite crosshair)
         {
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+            _crosshair.sprite = crosshair;
+        }
+
+        private void SetCursor(Sprite crosshair)
+        {
+            if (_targetingMode == TargetingModes.Melee)
+            {
+                Cursor.SetCursor(_meleeCursor, Vector2.zero, CursorMode.Auto);
+            }
+            else if (_targetingMode == TargetingModes.Ranged)
+            {
+                Cursor.SetCursor(_rangedCursor, Vector2.zero, CursorMode.Auto);
+            }
+            else if (_targetingMode == TargetingModes.Ability)
+            {
+                Cursor.SetCursor(_abilityCursor, Vector2.zero, CursorMode.Auto);
+            }
+            
             _crosshair.sprite = crosshair;
         }
 
@@ -138,6 +203,40 @@ namespace Descending.Player
         public void ClearInitiativeWidget()
         {
             _widgetHovering = null;
+        }
+
+        public void OnTargetAbility(Ability ability)
+        {
+            //Debug.Log("Targeting: " + ability.DisplayName());
+            _targetingMode = TargetingModes.Ability;
+            _currentAbility = ability;
+            _currentItem = null;
+            _currentWeapon = null;
+        }
+
+        public void OnTargetItem(Item item)
+        {
+            //Debug.Log("Targeting: " + item.DisplayName());
+            _targetingMode = TargetingModes.Item;
+            _currentItem = item;
+            _currentAbility = null;
+            _currentWeapon = null;
+        }
+
+        public void OnTargetMelee(Item weapon)
+        {
+            _targetingMode = TargetingModes.Melee;
+            _currentWeapon = weapon;
+            _currentAbility = null;
+            _currentItem = null;
+        }
+
+        public void OnTargetRanged(Item weapon)
+        {
+            _targetingMode = TargetingModes.Ranged;
+            _currentWeapon = weapon;
+            _currentAbility = null;
+            _currentItem = null;
         }
     }
 }

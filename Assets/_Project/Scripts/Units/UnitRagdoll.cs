@@ -11,24 +11,24 @@ namespace Descending.Units
 
         public void Setup(GameObject source, Transform unitRootBone)
         {
-            MatchAllChildTransforms(unitRootBone, _ragdollRootBone);
-            Projectile projectile = source.GetComponent<Projectile>();
-
-            if (projectile != null)
-            {
-                ApplyForce(_ragdollRootBone, projectile.Force, projectile.SourceUnit.transform.position, 3f);
-                return;
-            }
-            
-            ThrowableProjectile throwableProjectile = source.GetComponent<ThrowableProjectile>();
-
-            if (throwableProjectile != null)
-            {
-                ApplyForce(_ragdollRootBone, throwableProjectile.Force, throwableProjectile.transform.position, 1f);
-                return;
-            }
-
-            ApplyForce(_ragdollRootBone, 300f, source.transform.position, 1f);
+            // MatchAllChildTransforms(unitRootBone, _ragdollRootBone);
+            // Projectile projectile = source.GetComponent<Projectile>();
+            //
+            // if (projectile != null)
+            // {
+            //     ApplyForce(_ragdollRootBone, projectile.Force, projectile.SourceUnit.transform.position, 3f);
+            //     return;
+            // }
+            //
+            // ThrowableProjectile throwableProjectile = source.GetComponent<ThrowableProjectile>();
+            //
+            // if (throwableProjectile != null)
+            // {
+            //     ApplyForce(_ragdollRootBone, throwableProjectile.Force, throwableProjectile.transform.position, 1f);
+            //     return;
+            // }
+            //
+            // ApplyForce(_ragdollRootBone, 300f, source.transform.position, 1f);
         }
 
         private void MatchAllChildTransforms(Transform root, Transform clone)

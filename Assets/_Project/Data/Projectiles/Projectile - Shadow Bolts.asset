@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287f166bc4e5ea64e83e472449c10f72, type: 3}
   m_Name: Projectile - Shadow Bolts
   m_EditorClassIdentifier: 
+  Name: Shadow Bolt
   Prefab: {fileID: 3290401344529691309, guid: d10bb8f2581000145a5955493f5e63cd, type: 3}
   DamageType: {fileID: 11400000, guid: 0e58d4c9fc1f19a418461a18aecc5755, type: 2}
   DamageClass: 2

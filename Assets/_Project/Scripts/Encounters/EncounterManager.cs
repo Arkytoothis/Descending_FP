@@ -132,6 +132,10 @@ namespace Descending.Encounters
             {
                 ProcessEnemyTurn(_currentEncounter.InitiativeDataList[_currentInitiativeIndex].Enemy);
             }
+            else
+            {
+                StartCoroutine(Skip_Coroutine());
+            }
         }
 
         public void RemoveEncounter(Encounter encounter)
@@ -171,9 +175,14 @@ namespace Descending.Encounters
             NextUnit(true);
         }
 
+        private IEnumerator Skip_Coroutine()
+        {
+            yield return new WaitForSeconds(_enemyActionDelay);
+        }
+
         public void ProcessAttack(Unit attacker, Unit defender)
         {
-            if (defender.IsAlive == false) return;
+            if (defender == null || defender.gameObject == null || defender.IsAlive == false) return;
             
             CombatCalculator.ProcessAttack(attacker, defender);
             //Debug.Log(attacker.GetShortName() + " is attacking " + defender.GetShortName());

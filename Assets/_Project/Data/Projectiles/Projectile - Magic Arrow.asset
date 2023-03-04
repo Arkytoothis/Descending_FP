@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287f166bc4e5ea64e83e472449c10f72, type: 3}
   m_Name: Projectile - Magic Arrow
   m_EditorClassIdentifier: 
+  Name: Magic Arrow
   Prefab: {fileID: 3290401344529691309, guid: 25f00e9035c654942a10953d621dfd6d, type: 3}
   DamageType: {fileID: 11400000, guid: 0e58d4c9fc1f19a418461a18aecc5755, type: 2}
   DamageClass: 2
-  Speed: 15
+  Speed: 20
   DamageEffects:
   - _affects: 1
     _damageType: {fileID: 11400000, guid: 925f665afc41d7842b8acfca1db57579, type: 2}

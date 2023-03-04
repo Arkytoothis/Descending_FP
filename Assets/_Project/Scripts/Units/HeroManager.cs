@@ -15,6 +15,7 @@ namespace Descending.Units
         [SerializeField] private Transform _heroesParent = null;
         [SerializeField] private List<Hero> _heroes = null;
         [SerializeField] private PortraitRoom _portraitRoom = null;
+        [SerializeField] private Transform _projectileSpawn = null;
         
         [SerializeField] private HeroUnitEvent onSyncSelectedHeroActions = null;
 
@@ -22,6 +23,7 @@ namespace Descending.Units
         
         public List<Hero> Heroes => _heroes;
         public Hero SelectedHero => _selectedHero;
+        public Transform ProjectileSpawn => _projectileSpawn;
 
         private void Awake()
         {

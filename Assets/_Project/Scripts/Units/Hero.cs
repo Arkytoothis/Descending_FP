@@ -10,10 +10,13 @@ using UnityEngine;
 
 namespace Descending.Units
 {
+    public enum HeroCombatModes { Melee, Ranged, Unarmed, Number, None }
+    
     public class Hero : Unit
     {
         [SerializeField] protected HeroData _heroData = null;
         [SerializeField] private GameObject _portraitModel = null;
+        [SerializeField] private HeroCombatModes _combatMode = HeroCombatModes.None;
 
         [SerializeField] protected HeroUnitEvent onSyncHero = null;
 
@@ -24,6 +27,7 @@ namespace Descending.Units
         public BodyRenderer PortraitRenderer => _portraitRenderer;
         public PortraitMount Portrait => _portrait;
         public HeroData HeroData => _heroData;
+        public HeroCombatModes CombatMode => _combatMode;
 
         public void SetupHero(Genders gender, RaceDefinition race, ProfessionDefinition profession, int listIndex)
         {
@@ -48,9 +52,8 @@ namespace Descending.Units
             _abilities.Setup(race, profession, _skills);
             _damageSystem.Setup(this);
             _unitEffects.Setup();
-            //_worldPanel.Setup(this);
 
-            //_unitAnimator.SetAnimatorOverride(_inventory.GetCurrentWeapon().GetWeaponData());
+            _combatMode = profession.DefaultCombatMode;
             
             var children = _portraitModel.GetComponentsInChildren<Transform>(includeInactive: true);
             foreach (var child in children)
