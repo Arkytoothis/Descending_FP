@@ -111,6 +111,16 @@ namespace Descending.Units
             return _heroData.Name.FirstName;
         }
 
+        public override Item GetEquippedWeapon()
+        {
+            if (_combatMode == HeroCombatModes.Melee)
+                return GetMeleeWeapon();
+            else if (_combatMode == HeroCombatModes.Ranged)
+                return GetRangedWeapon();
+            else
+                return null;
+        }
+
         public override Item GetMeleeWeapon()
         {
             return _inventory.GetMeleeWeapon();

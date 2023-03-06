@@ -91,7 +91,31 @@ namespace Descending.Equipment
                 _currentWeapon = _equipment[(int) EquipmentSlots.Ranged_Weapon];
             }
         }
+
+        public void Setup(EnemyDefinition enemyDefinition)
+        {
+            _portraitBody = null;
+            _worldBody = null;
+            _gender = Genders.Male;
+            _equipment = new Item[(int) EquipmentSlots.Number];
+            _accessories = new Item[MAX_ACCESSORY_SLOTS];
+            
+            for (int i = 0; i < (int)EquipmentSlots.Number; i++)
+            {
+                _equipment[i] = null;
+            }
         
+            for (int i = 0; i < MAX_ACCESSORY_SLOTS; i++)
+            {
+                _accessories[i] = null;
+            }
+            
+            if(enemyDefinition.MeleeWeapon != null)
+                EquipItem(ItemGenerator.GenerateItem(enemyDefinition.MeleeWeapon));
+            if(enemyDefinition.RangedWeapon != null)
+                EquipItem(ItemGenerator.GenerateItem(enemyDefinition.RangedWeapon));
+        }
+
         public void LoadData(BodyRenderer worldBody, BodyRenderer portraitBody, HeroSaveData saveData)
         {
             _worldBody = worldBody;

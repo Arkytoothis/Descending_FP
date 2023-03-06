@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Descending.Abilities;
 using Descending.Core;
 using Descending.Equipment.Enchantments;
+using Descending.Player;
 using Descending.Units;
+using NodeCanvas.Tasks.Actions;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace Descending.Equipment
@@ -609,6 +613,55 @@ namespace Descending.Equipment
         public void Use(int uses)
         {
             _usesLeft -= uses;
+        }
+
+        public IEnumerator DelayedSpawnAttackEffect(Unit user, Unit target)
+        {
+            yield return new WaitForSeconds(0.25f);
+            
+            if(user.GetType() == typeof(Hero))
+            {
+                Transform attackEffectSpawn = PlayerManager.Instance.GetAttackSpawn((Hero)user);
+                Utilities.PlayParticleSystem(GetWeaponData().AttackEffectPrefab, attackEffectSpawn.position, attackEffectSpawn.rotation, ((Enemy)target).ProjectileTarget);
+            }
+            else if(user.GetType() == typeof(Enemy))
+            {
+                //Transform attackEffectSpawn = PlayerManager.Instance.GetAttackSpawn((Hero)user);
+                //Utilities.PlayParticleSystem(GetWeaponData().AttackEffectPrefab, attackEffectSpawn.position, attackEffectSpawn.rotation, ((Enemy)target).ProjectileTarget);
+            }
+        }
+
+        public IEnumerator DelayedSpawnProjectile(Unit user, Unit target)
+        {
+            ProjectileEffect projectileEffect = GetWeaponData().ProjectileEffect;
+            Transform spawnPoint = null;
+            
+            if (user.GetType() == typeof(Hero))
+            {
+                spawnPoint = PlayerManager.Instance.GetProjectileSpawn((Hero)user);
+            }
+            else if (user.GetType() == typeof(Enemy))
+            {
+                spawnPoint = user.ProjectileSpawn;
+            }
+            
+            yield return new WaitForSeconds(projectileEffect.SpawnProjectileDelay);
+            
+            for (int i = 0; i < projectileEffect.NumProjectiles; i++)
+            {
+                yield return new WaitForSeconds(projectileEffect.DelayBetweenProjectiles);
+        
+                GameObject clone = GameObject.Instantiate(projectileEffect.ProjectileDefinition.Prefab, spawnPoint.position, spawnPoint.rotation);
+        
+                if (target != null)
+                {
+                    Vector3 projectileTargetPosition = target.transform.position;
+                    projectileTargetPosition.y = spawnPoint.position.y;
+        
+                    Projectile projectile = clone.GetComponent<Projectile>();
+                    projectile.Setup(user, target, projectileEffect.ProjectileDefinition);
+                }
+            }
         }
     }
 }

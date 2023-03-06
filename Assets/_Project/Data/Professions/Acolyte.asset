@@ -127,3 +127,4 @@ MonoBehaviour:
   _finesseModifier: 1
   _spellModifier: 1
   _prefersRanged: 1
+  _defaultCombatMode: 1

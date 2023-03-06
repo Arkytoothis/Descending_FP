@@ -149,5 +149,13 @@ namespace Descending.Encounters
                 enemy.Deselect();
             }
         }
+
+        public void RefreshEnemyActions()
+        {
+            foreach (Enemy enemy in _enemies)
+            {
+                enemy.Attributes.RefreshActions();
+            }
+        }
     }
 }

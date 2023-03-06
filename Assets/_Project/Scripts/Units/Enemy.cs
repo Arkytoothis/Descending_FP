@@ -81,6 +81,12 @@ namespace Descending.Units
             return _definition.Name;
         }
 
+        public override Item GetEquippedWeapon()
+        {
+            if (_meleeWeapon != null) return GetMeleeWeapon();
+            else return GetRangedWeapon();
+        }
+
         public override Item GetMeleeWeapon()
         {
             return _meleeWeapon;

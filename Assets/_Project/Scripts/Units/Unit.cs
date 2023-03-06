@@ -1,20 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DarkTonic.MasterAudio;
 using Descending.Abilities;
 using Descending.Attributes;
 using Descending.Combat;
-using Descending.Core;
 using Descending.Equipment;
 using UnityEngine;
-using Attribute = Descending.Attributes.Attribute;
 
 namespace Descending.Units
 {
     public abstract class Unit : MonoBehaviour
     {
         [SerializeField] protected Transform _modelParent = null;
+        [SerializeField] protected Transform _projectileSpawn = null;
+        [SerializeField] protected Transform _attackEffectSpawn = null;
         [SerializeField] protected UnitAnimator _unitAnimator = null;
         [SerializeField] protected AttributesController _attributes = null;
         [SerializeField] protected SkillsController _skills = null;
@@ -38,6 +37,8 @@ namespace Descending.Units
         public UnitAnimator UnitAnimator => _unitAnimator;
         public UnitEffects UnitEffects => _unitEffects;
         public AnimationEvents AnimationEvents => _animationEvents;
+        public Transform ProjectileSpawn => _projectileSpawn;
+        public Transform AttackEffectSpawn => _attackEffectSpawn;
 
         public bool IsActive => _isActive;
         public bool IsAlive => _isAlive;
@@ -45,6 +46,7 @@ namespace Descending.Units
 
         public abstract string GetFullName();
         public abstract string GetShortName();
+        public abstract Item GetEquippedWeapon();
         public abstract Item GetMeleeWeapon();
         public abstract Item GetRangedWeapon();
         public abstract void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital);

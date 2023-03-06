@@ -20,7 +20,7 @@ namespace Descending.Player
         //[SerializeField] private PlayerRaycastModes _raycastMode = PlayerRaycastModes.World;
 
         private bool _inCombat = false;
-        
+
         private void Start()
         {
             SetWorldRaycastMode();

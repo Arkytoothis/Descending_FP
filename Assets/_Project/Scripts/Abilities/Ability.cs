@@ -72,8 +72,13 @@ namespace Descending.Abilities
 
         public bool Use(Unit user, List<Unit> targets)
         {
-            bool success = false;
             AbilityDefinition definition = Database.instance.Abilities.GetAbility(_key);
+
+            if (user.Attributes.GetVital("Actions").Current < definition.ActionsToUse)
+            {
+                Debug.Log("Not Enough Actions");
+                return false;
+            }
             
             if (definition.Effects != null)
             {
@@ -83,9 +88,10 @@ namespace Descending.Abilities
                 }
             }
         
+            user.SpendActionPoints(definition.ActionsToUse);
             user.UseResource(definition.ResourceAttribute.Key, definition.ResourceAmount);
             
-            return success;
+            return true;
         }
     }
 }

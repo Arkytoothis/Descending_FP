@@ -82,7 +82,7 @@ namespace Descending.Attributes
                 _vitals[startingVital.Key].Setup(value);
             }
 
-            foreach (var startingStatistic in definition.StartingStatistic)
+            foreach (var startingStatistic in definition.StartingStatistics)
             {
                 int value = Random.Range(startingStatistic.Value.MinimumValue, startingStatistic.Value.MaximumValue + 1);
                 _statistics.Add(startingStatistic.Key, new Attribute(startingStatistic.Key));
@@ -155,6 +155,59 @@ namespace Descending.Attributes
             _statistics["Critical Damage"].Setup(_raceDefinition.StartingStatistics["Critical Damage"].MinimumValue);
             _statistics["Critical Hit"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Critical Hit"].MinimumValue, _raceDefinition.StartingStatistics["Critical Hit"].MaximumValue + 1));
             _statistics["Fumble"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Fumble"].MinimumValue, _raceDefinition.StartingStatistics["Fumble"].MaximumValue + 1));
+            
+            CalculateStatisticModifiers();
+
+            _vitals["Armor"].Refresh();
+        }
+        
+        public void CalculateAttributes(EnemyDefinition enemyDefinition)
+        {
+            ResetModifiers();
+            CalculateCharacteristicModifiers();
+            
+            _vitals["Life"].Setup(Random.Range(enemyDefinition.StartingVitals["Life"].MinimumValue, enemyDefinition.StartingVitals["Life"].MinimumValue + 1) + 
+                                  (_characteristics["Endurance"].Maximum + _characteristics["Might"].Maximum) / 2);
+            _vitals["Stamina"].Setup(Random.Range(enemyDefinition.StartingVitals["Stamina"].MinimumValue, enemyDefinition.StartingVitals["Stamina"].MinimumValue + 1) + 
+                                  (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+            _vitals["Magic"].Setup(Random.Range(enemyDefinition.StartingVitals["Magic"].MinimumValue, enemyDefinition.StartingVitals["Magic"].MinimumValue + 1) + 
+                                  (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+            
+            _vitals["Actions"].Setup(Random.Range(enemyDefinition.StartingVitals["Actions"].MinimumValue, enemyDefinition.StartingVitals["Actions"].MinimumValue + 1));
+            _vitals["Armor"].Setup(Random.Range(enemyDefinition.StartingVitals["Armor"].MinimumValue, enemyDefinition.StartingVitals["Armor"].MinimumValue + 1));
+            _vitals["Luck"].Setup(Random.Range(enemyDefinition.StartingVitals["Luck"].MinimumValue, enemyDefinition.StartingVitals["Luck"].MinimumValue + 1));
+
+            CalculateVitalModifiers();
+            
+            int mightAttack = _characteristics["Might"].Maximum + _characteristics["Finesse"].Maximum;
+            int finesseAttack = _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum;
+            int magicAttack = _characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum;
+            
+            _statistics["Might Attack"].Setup(mightAttack + Random.Range(enemyDefinition.StartingStatistics["Might Attack"].MinimumValue, enemyDefinition.StartingStatistics["Might Attack"].MaximumValue + 1));
+            _statistics["Finesse Attack"].Setup(finesseAttack + Random.Range(enemyDefinition.StartingStatistics["Finesse Attack"].MinimumValue, enemyDefinition.StartingStatistics["Finesse Attack"].MaximumValue + 1));
+            _statistics["Magic Attack"].Setup(magicAttack + Random.Range(enemyDefinition.StartingStatistics["Magic Attack"].MinimumValue, enemyDefinition.StartingStatistics["Magic Attack"].MaximumValue + 1));
+            
+            int mightDamage = (_characteristics["Might"].Maximum - 10) / 10;
+            int finesseDamage = (_characteristics["Finesse"].Maximum - 10) / 10;
+            int magicDamage = ((_characteristics["Intellect"].Maximum - 10) + (_characteristics["Spirit"].Maximum - 10)) / 10;
+            
+            _statistics["Might Modifier"].Setup(mightDamage + Random.Range(enemyDefinition.StartingStatistics["Might Modifier"].MinimumValue, enemyDefinition.StartingStatistics["Might Modifier"].MaximumValue + 1));
+            _statistics["Finesse Modifier"].Setup(finesseDamage + Random.Range(enemyDefinition.StartingStatistics["Finesse Modifier"].MinimumValue, enemyDefinition.StartingStatistics["Finesse Modifier"].MaximumValue + 1));
+            _statistics["Magic Modifier"].Setup(magicDamage + Random.Range(enemyDefinition.StartingStatistics["Magic Modifier"].MinimumValue, enemyDefinition.StartingStatistics["Magic Modifier"].MaximumValue + 1));
+            
+            _statistics["Block"].Setup(Random.Range(enemyDefinition.StartingStatistics["Block"].MinimumValue, enemyDefinition.StartingStatistics["Block"].MaximumValue + 1) + 
+                                     (_characteristics["Might"].Maximum + _characteristics["Endurance"].Maximum) / 2);
+            _statistics["Dodge"].Setup(Random.Range(enemyDefinition.StartingStatistics["Dodge"].MinimumValue, enemyDefinition.StartingStatistics["Dodge"].MaximumValue + 1) + 
+                                      (_characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum) / 2);
+            _statistics["Willpower"].Setup(Random.Range(enemyDefinition.StartingStatistics["Willpower"].MinimumValue, enemyDefinition.StartingStatistics["Willpower"].MaximumValue + 1) + 
+                                       (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+            
+            _statistics["Perception"].Setup(Random.Range(enemyDefinition.StartingStatistics["Perception"].MinimumValue, enemyDefinition.StartingStatistics["Perception"].MaximumValue + 1) + 
+                                            _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
+            _statistics["Movement"].Setup(enemyDefinition.StartingStatistics["Movement"].MinimumValue);
+            _statistics["Critical Damage"].Setup(enemyDefinition.StartingStatistics["Critical Damage"].MinimumValue);
+            _statistics["Critical Hit"].Setup(magicDamage + Random.Range(enemyDefinition.StartingStatistics["Critical Hit"].MinimumValue, enemyDefinition.StartingStatistics["Critical Hit"].MaximumValue + 1));
+            _statistics["Fumble"].Setup(magicDamage + Random.Range(enemyDefinition.StartingStatistics["Fumble"].MinimumValue, enemyDefinition.StartingStatistics["Fumble"].MaximumValue + 1));
             
             CalculateStatisticModifiers();
 

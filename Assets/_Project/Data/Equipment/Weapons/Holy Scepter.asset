@@ -44,15 +44,23 @@ MonoBehaviour:
     _hasData: 1
     _weaponType: 1
     _range: 4
+    _actions: 2
     _projectileDelay: 0.2
-    _projectile: {fileID: 11400000, guid: 552bf30484fa359408b9237bf2be36c7, type: 2}
+    _hasProjectile: 1
+    _projectileEffect:
+      _affects: 1
+      _projectileDefinition: {fileID: 11400000, guid: 552bf30484fa359408b9237bf2be36c7,
+        type: 2}
+      _spawnProjectileDelay: 0.5
+      _delayBetweenProjectiles: 0.25
+      _numProjectiles: 1
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 22100000, guid: 0ce19f53c60849f41ba82c59985087c0,
       type: 2}
-    damageEffects:
-    - rid: 7907628881969152003
     _hitSounds: []
     _attackSounds: []
+    damageEffects:
+    - rid: 7907628881969152003
   _wearableData:
     _hasData: 0
     _armor: 0

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Combat;
+using Descending.Equipment;
 using Descending.Player;
 using Descending.Treasure;
 using Descending.Units;
 using ScriptableObjectArchitecture;
+using UnityEditor;
 using UnityEngine;
 
 namespace Descending.Encounters
@@ -101,6 +103,9 @@ namespace Descending.Encounters
         {
             _currentTurn++;
             Debug.Log("New Turn: " + _currentTurn);
+            
+            HeroManager.Instance.RefreshHeroActions();
+            _currentEncounter.RefreshEnemyActions();
         }
 
         private void NextUnit(bool checkForNewTurn)
@@ -165,13 +170,18 @@ namespace Descending.Encounters
             _combatRaycaster.SetCanRaycastForEnemy(false);
             _waitForInput = false;
             _currentEncounter.SelectEnemy(enemy);
-            StartCoroutine(EnemyAction_Coroutine());
+            StartCoroutine(EnemyAction_Coroutine(enemy));
         }
 
-        private IEnumerator EnemyAction_Coroutine()
+        private IEnumerator EnemyAction_Coroutine(Enemy enemy)
         {
             yield return new WaitForSeconds(_enemyActionDelay);
+
+            int heroindex = Random.Range(0, 6);
             
+            
+            Debug.Log(enemy.GetFullName() + " attacking " + HeroManager.Instance.Heroes[heroindex]);
+            ProcessAttack(enemy, HeroManager.Instance.Heroes[heroindex]);
             NextUnit(true);
         }
 
@@ -183,11 +193,27 @@ namespace Descending.Encounters
         public void ProcessAttack(Unit attacker, Unit defender)
         {
             if (defender == null || defender.gameObject == null || defender.IsAlive == false) return;
+
+            Item weapon = attacker.GetEquippedWeapon();
+            WeaponData weaponData = weapon.GetWeaponData();
+
+            if (attacker.Attributes.GetVital("Actions").Current < weaponData.Actions)
+            {
+                Debug.Log("Not Enough Actions");
+                return;
+            }
+
+            attacker.SpendActionPoints(weaponData.Actions);
             
-            CombatCalculator.ProcessAttack(attacker, defender);
-            //Debug.Log(attacker.GetShortName() + " is attacking " + defender.GetShortName());
-            // int damage = Random.Range(5, 11);
-            // defender.Damage(attacker.gameObject, null, damage, "Life");
+            if (weaponData.HasProjectile == false)
+            {
+                StartCoroutine(weapon.DelayedSpawnAttackEffect(attacker, defender));
+                CombatCalculator.ProcessAttack(attacker, defender);
+            }
+            else
+            {
+                StartCoroutine(weapon.DelayedSpawnProjectile(attacker, defender));
+            }
         }
     }
 }

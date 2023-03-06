@@ -22,7 +22,7 @@ MonoBehaviour:
   _resourceAmount: 1
   _skill: {fileID: 11400000, guid: c9dd48da59cab004b9e7f0d1317f20a3, type: 2}
   _minimumSkill: 1
-  _actionsToUse: 1
+  _actionsToUse: 2
   _targetType: 4
   _area: 0
   _range: 6

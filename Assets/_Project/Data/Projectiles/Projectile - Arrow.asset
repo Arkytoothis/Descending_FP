@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287f166bc4e5ea64e83e472449c10f72, type: 3}
   m_Name: Projectile - Arrow
   m_EditorClassIdentifier: 
+  Name: 
   Prefab: {fileID: 3290401344529691309, guid: 8712077661bf0af449f87860d5bcbb62, type: 3}
   DamageType: {fileID: 11400000, guid: 925f665afc41d7842b8acfca1db57579, type: 2}
   DamageClass: 1
-  Speed: 15
+  Speed: 30
   DamageEffects:
   - _affects: 1
     _damageType: {fileID: 11400000, guid: 925f665afc41d7842b8acfca1db57579, type: 2}

@@ -5,6 +5,7 @@ using Descending.Core;
 using Descending.Equipment;
 using Descending.Treasure;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Descending.Units
 {
@@ -21,7 +22,7 @@ namespace Descending.Units
         public ParticleSystem HitEffect = null;
 
         public StartingVitalDictionary StartingVitals = null;
-        public StartingStatisticDictionary StartingStatistic = null;
+        [FormerlySerializedAs("StartingStatistic")] public StartingStatisticDictionary StartingStatistics = null;
         public StartingSkillDictionary StartingSkills = null;
         public List<Resistance> Resistances = null;
 

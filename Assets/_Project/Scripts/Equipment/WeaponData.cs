@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using DarkTonic.MasterAudio;
 using Descending.Abilities;
-using Descending.Combat;
 using Descending.Core;
 using UnityEngine;
 
@@ -15,19 +14,24 @@ namespace Descending.Equipment
         [SerializeField] private bool _hasData = true;
         [SerializeField] private WeaponTypes _weaponType = WeaponTypes.None;
         [SerializeField] private int _range = 1;
+        [SerializeField] private int _actions = 1;
         [SerializeField] private float _projectileDelay = 1f;
-        [SerializeField] private ProjectileDefinition _projectile = null;
+        [SerializeField] private bool _hasProjectile = false;
+        [SerializeField] private ProjectileEffect _projectileEffect = null;
         [SerializeField] private GameObject _attackEffectPrefab = null;
         [SerializeField] private AnimatorOverrideController _animatorOverride = null;
-        [SerializeReference] private List<DamageEffect> damageEffects = null;
 
         [SerializeField, SoundGroup] private List<string> _hitSounds;
         [SerializeField, SoundGroup] private List<string> _attackSounds;
         
+        [SerializeReference] private List<DamageEffect> damageEffects = null;
+        
         public bool HasData => _hasData;
-        public ProjectileDefinition Projectile => _projectile;
+        public bool HasProjectile => _hasProjectile;
+        public ProjectileEffect ProjectileEffect => _projectileEffect;
         public WeaponTypes WeaponType => _weaponType;
         public int Range => _range;
+        public int Actions => _actions;
         public float ProjectileDelay => _projectileDelay;
         public AnimatorOverrideController AnimatorOverride => _animatorOverride;
         public GameObject AttackEffectPrefab => _attackEffectPrefab;

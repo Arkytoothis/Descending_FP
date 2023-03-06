@@ -15,7 +15,6 @@ namespace Descending.Units
         [SerializeField] private Transform _heroesParent = null;
         [SerializeField] private List<Hero> _heroes = null;
         [SerializeField] private PortraitRoom _portraitRoom = null;
-        [SerializeField] private Transform _projectileSpawn = null;
         
         [SerializeField] private HeroUnitEvent onSyncSelectedHeroActions = null;
 
@@ -23,7 +22,6 @@ namespace Descending.Units
         
         public List<Hero> Heroes => _heroes;
         public Hero SelectedHero => _selectedHero;
-        public Transform ProjectileSpawn => _projectileSpawn;
 
         private void Awake()
         {
@@ -40,10 +38,12 @@ namespace Descending.Units
         
         public void Setup()
         {
-            SpawnHero(Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Soldier"), Utilities.GetRandomGender(), _heroes.Count);
-            SpawnHero(Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Scout"), Utilities.GetRandomGender(), _heroes.Count);
-            SpawnHero(Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Acolyte"), Utilities.GetRandomGender(), _heroes.Count);
-            SpawnHero(Database.instance.Races.GetRandomRace(), Database.instance.Profession.GetProfession("Apprentice"), Utilities.GetRandomGender(), _heroes.Count);
+            SpawnHero(Database.instance.Races.GetRace("Half Orc"), Database.instance.Profession.GetProfession("Soldier"), Utilities.GetRandomGender(), _heroes.Count);
+            SpawnHero(Database.instance.Races.GetRace("Mountain Dwarf"), Database.instance.Profession.GetProfession("Mercenary"), Utilities.GetRandomGender(), _heroes.Count);
+            SpawnHero(Database.instance.Races.GetRace("Halfling"), Database.instance.Profession.GetProfession("Thief"), Utilities.GetRandomGender(), _heroes.Count);
+            SpawnHero(Database.instance.Races.GetRace("Wild Elf"), Database.instance.Profession.GetProfession("Scout"), Utilities.GetRandomGender(), _heroes.Count);
+            SpawnHero(Database.instance.Races.GetRace("Imperial"), Database.instance.Profession.GetProfession("Acolyte"), Utilities.GetRandomGender(), _heroes.Count);
+            SpawnHero(Database.instance.Races.GetRace("Valarian"), Database.instance.Profession.GetProfession("Apprentice"), Utilities.GetRandomGender(), _heroes.Count);
         }
 
         private void SpawnHero(RaceDefinition race, ProfessionDefinition profession, Genders gender, int listIndex)
@@ -94,6 +94,14 @@ namespace Descending.Units
             foreach (Hero hero in _heroes)
             {
                 hero.AddExperience(amount);
+            }
+        }
+
+        public void RefreshHeroActions()
+        {
+            foreach (Hero hero in _heroes)
+            {
+                hero.Attributes.RefreshActions();
             }
         }
     }

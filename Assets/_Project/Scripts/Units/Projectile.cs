@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Descending.Abilities;
 using Descending.Equipment;
+using Descending.Player;
 using UnityEngine;
 
 namespace Descending.Units
@@ -21,7 +22,11 @@ namespace Descending.Units
             _sourceUnit = sourceUnit;
             _targetUnit = targetUnit;
             
-            transform.LookAt(((Enemy)_targetUnit).ProjectileTarget);
+            if(sourceUnit.GetType() == typeof(Hero))
+                transform.LookAt(((Enemy)_targetUnit).ProjectileTarget);
+            if(sourceUnit.GetType() == typeof(Enemy))
+                transform.LookAt(PlayerManager.Instance.GetProjectileSpawn((Hero)targetUnit));
+            
             GetComponent<Rigidbody>().AddForce(transform.forward * projectileDefinition.Speed);
             
             Destroy(gameObject, 2f);

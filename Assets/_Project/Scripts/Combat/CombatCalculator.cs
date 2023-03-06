@@ -51,17 +51,17 @@ namespace Descending.Combat
 
         private static void Hit(Unit attacker, Unit defender)
         {
-            Item meleeWeapon = attacker.GetMeleeWeapon();
-            Item rangedWeapon = attacker.GetRangedWeapon();
+            Item weapon = attacker.GetEquippedWeapon();
             
-            if (meleeWeapon != null)
-            {
-                RollDamage(meleeWeapon, attacker, defender);
-            }
-            else if (rangedWeapon != null)
-            {
-                RollDamage(rangedWeapon, attacker, defender);
-            }
+            RollDamage(weapon, attacker, defender);
+            // if (meleeWeapon != null)
+            // {
+            //     RollDamage(weapon, attacker, defender);
+            // }
+            // else if (rangedWeapon != null)
+            // {
+            //     RollDamage(rangedWeapon, attacker, defender);
+            // }
         }
 
         private static void Miss(Unit attacker, Unit defender)

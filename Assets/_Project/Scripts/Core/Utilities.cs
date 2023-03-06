@@ -169,9 +169,11 @@ namespace Descending.Core
 #endif
         }
 
-        public static void PlayParticleSystem(GameObject prefab, Vector3 position)
+        public static void PlayParticleSystem(GameObject prefab, Vector3 position, Quaternion rotation, Transform lookAt)
         {
-            ParticleSystem ps = GameObject.Instantiate(prefab, position, prefab.transform.rotation).GetComponent<ParticleSystem>();
+            ParticleSystem ps = GameObject.Instantiate(prefab, position, rotation).GetComponent<ParticleSystem>();
+            if (lookAt != null) ps.transform.LookAt(lookAt);
+            
             ps.Play();
             GameObject.Destroy(ps.gameObject, ps.main.duration);
         }

@@ -57,6 +57,12 @@ namespace Descending.Player
                 SetCursor(null, _crosshairSprite);
                 return;
             }
+
+            if (_currentAbility != null && Input.GetMouseButtonDown(1))
+            {
+                _currentAbility = null;
+                SetTargetingMode(TargetingModes.Melee);
+            }
             
             if (_widgetHovering != null)
             {
@@ -114,7 +120,7 @@ namespace Descending.Player
             if (_raycastForEnemy == false) return false;
             
             RaycastHit hit;
-        
+            
             if (Physics.Raycast(ray, out hit, _interactDistance))
             {
                 Enemy enemy = hit.collider.gameObject.GetComponent<Enemy>();
@@ -137,11 +143,9 @@ namespace Descending.Player
 
         private void ProcessClick(Enemy enemyTarget)
         {
-            if (_targetingMode == TargetingModes.Melee)
-            {
-                EncounterManager.Instance.ProcessAttack(HeroManager.Instance.SelectedHero, enemyTarget);
-            }
-            else if (_targetingMode == TargetingModes.Ranged)
+            int actionsRequired = 0;
+            
+            if (_targetingMode == TargetingModes.Melee || _targetingMode == TargetingModes.Ranged)
             {
                 EncounterManager.Instance.ProcessAttack(HeroManager.Instance.SelectedHero, enemyTarget);
             }
@@ -169,13 +173,18 @@ namespace Descending.Player
 
         private void SetCursor(Sprite crosshair)
         {
-            if (_targetingMode == TargetingModes.Melee)
+            if (_targetingMode == TargetingModes.Melee || _targetingMode == TargetingModes.Ranged)
             {
-                Cursor.SetCursor(_meleeCursor, Vector2.zero, CursorMode.Auto);
-            }
-            else if (_targetingMode == TargetingModes.Ranged)
-            {
-                Cursor.SetCursor(_rangedCursor, Vector2.zero, CursorMode.Auto);
+                if (HeroManager.Instance.SelectedHero.CombatMode == HeroCombatModes.Melee)
+                {
+                    _targetingMode = TargetingModes.Melee;
+                    Cursor.SetCursor(_meleeCursor, Vector2.zero, CursorMode.Auto);
+                }
+                else if (HeroManager.Instance.SelectedHero.CombatMode == HeroCombatModes.Ranged)
+                {
+                    _targetingMode = TargetingModes.Ranged;
+                    Cursor.SetCursor(_rangedCursor, Vector2.zero, CursorMode.Auto);
+                }
             }
             else if (_targetingMode == TargetingModes.Ability)
             {
