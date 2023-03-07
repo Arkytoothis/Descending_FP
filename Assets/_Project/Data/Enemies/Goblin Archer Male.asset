@@ -19,6 +19,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: dc01fbcb8406d2c41bc43cb5de41493d, type: 3}
   Group: 0
   HitEffect: {fileID: 0}
+  SpawnType: 1
   StartingVitals:
     keyData:
     - Life
@@ -42,7 +43,7 @@ MonoBehaviour:
     - _vital: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
       _minimumValue: 0
       _maximumValue: 0
-  StartingStatistic:
+  StartingStatistics:
     keyData:
     - Movement
     - Block
@@ -59,8 +60,8 @@ MonoBehaviour:
       _minimumValue: 10
       _maximumValue: 10
     - _derived: {fileID: 11400000, guid: 7f21356662ce25240bab1d615b9dc4f4, type: 2}
-      _minimumValue: 20
-      _maximumValue: 20
+      _minimumValue: 10
+      _maximumValue: 10
     - _derived: {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
       _minimumValue: 10
       _maximumValue: 10
@@ -89,29 +90,3 @@ MonoBehaviour:
     _quality: {fileID: 11400000, guid: d5e5fb5f6057e3c4fb64adb3c9b86604, type: 2}
     _prefix: {fileID: 0}
     _suffix: {fileID: 0}
-  CoinData:
-  - Chance: 100
-    Minimum: 1
-    Maximum: 4
-  - Chance: 50
-    Minimum: 1
-    Maximum: 1
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  GemData:
-  - Chance: 5
-    Minimum: 1
-    Maximum: 1
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0

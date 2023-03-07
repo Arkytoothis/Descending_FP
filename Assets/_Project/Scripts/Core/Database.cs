@@ -6,6 +6,7 @@ using Descending.Equipment.Enchantments;
 using Descending.Features;
 using Descending.Units;
 using Sirenix.OdinInspector;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace Descending.Core
@@ -28,6 +29,8 @@ namespace Descending.Core
 
         [SerializeField] private string _sceneLoadFilePath = "";
         [SerializeField] private Sprite _blankSprite = null;
+        
+        [SerializeField] private LayerMask _groundMask = new LayerMask();
 
 
         private bool _initialized = false;
@@ -46,6 +49,7 @@ namespace Descending.Core
         public EnemyDatabase Enemies => _enemies;
         public Sprite BlankSprite => _blankSprite;
         public string SceneLoadFilePath => _sceneLoadFilePath;
+        public LayerMask GroundMask => _groundMask;
 
         public void Setup()
         {

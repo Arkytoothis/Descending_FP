@@ -24,24 +24,8 @@ MonoBehaviour:
   _rarities: {fileID: 11400000, guid: cc0ff4420aa160f43b85c1b8563b62e6, type: 2}
   _features: {fileID: 11400000, guid: 596d94504aab40548a29722c84be7fef, type: 2}
   _enemies: {fileID: 11400000, guid: dc101faa644f09f42a615b702add8902, type: 2}
-  _heroPrefab: {fileID: 1496511450220018615, guid: 7d9e0108182936d41839db846cc6851a,
-    type: 3}
   _sceneLoadFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/scene_load_data.dat
-  _partyDataFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/party_data.dat
-  _resourceDataFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/resources_data.dat
-  _timeDataFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/time_data.dat
-  _worldDataFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/world_data.dat
-  _overworldSpawnFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/overworld_spawn.dat
-  _stockpileFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/stockpile_data.dat
-  _defaultMeleeActionIcon: {fileID: 21300000, guid: bbb568c0fcc345744a377a48f52c3cf4,
-    type: 3}
-  _moveActionIcon: {fileID: 21300000, guid: df5ee5356957ee54c92997554d912057, type: 3}
-  _jumpActionIcon: {fileID: 21300000, guid: 622eb308c45482a42a211cdfcca994df, type: 3}
-  _interactActionIcon: {fileID: 21300000, guid: a346ff6a7fef92e469d7de0276cd9f85,
-    type: 3}
-  _searchActionIcon: {fileID: 21300000, guid: f3254b3bef33e6b44bcaa7023da597fc, type: 3}
   _blankSprite: {fileID: 21300000, guid: 672d62704098abf409b522c28d025530, type: 3}
-  _overworldHeroAnimator: {fileID: 9100000, guid: d08950db97c3b694aac7d387a8d13f4e,
-    type: 2}
-  _combatHeroAnimator: {fileID: 9100000, guid: 126e48dbbd5d39d43a42b11c47c4c07f, type: 2}
-  _enemyAnimator: {fileID: 9100000, guid: 89c7682aea3ad2547a42b64fca289933, type: 2}
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 128

@@ -21,7 +21,7 @@ namespace Descending.Equipment
         [SerializeField] private BodyRenderer _worldBody = null;
 
         private Genders _gender = Genders.None;
-        private Item _currentWeapon = null;
+        [SerializeField] private Item _currentWeapon = null;
         
         public Item[] Equipment => _equipment;
         public Item[] Accessories => _accessories;
@@ -319,6 +319,22 @@ namespace Descending.Equipment
             {
                 //MasterAudio.PlaySound3DAtVector3(sound, _worldBody.transform.position, 0.01f);
             }
+        }
+
+        public void TryEquipMelee()
+        {
+            //if (_equipment[(int)EquipmentSlots.Melee_Weapon].IsEmpty() == false)
+            //{
+                _currentWeapon = _equipment[(int)EquipmentSlots.Melee_Weapon];
+            //}
+        }
+
+        public void TryEquipRanged()
+        {
+            //if (_equipment[(int)EquipmentSlots.Ranged_Weapon].IsEmpty() == false)
+            //{
+                _currentWeapon = _equipment[(int)EquipmentSlots.Ranged_Weapon];
+            //}
         }
     }
 

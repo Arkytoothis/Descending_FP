@@ -104,5 +104,10 @@ namespace Descending.Units
                 hero.Attributes.RefreshActions();
             }
         }
+
+        public void SetSelectHeroWeaponMode(bool ranged)
+        {
+            _selectedHero.SetEquippedWeapon(ranged);
+        }
     }
 }

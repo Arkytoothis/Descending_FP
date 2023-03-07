@@ -14,12 +14,18 @@ namespace Descending.Encounters
         [SerializeField] private SpawnerEntry _elitesEntry = null;
         [SerializeField] private SpawnerEntry _leadersEntry = null;
         [SerializeField] private SpawnerEntry _bossesEntry = null;
+        [SerializeField] private List<Transform> _meleeSpawnPositions = null;
+        [SerializeField] private List<Transform> _rangedSpawnPositions = null;
+        [SerializeField] private List<Transform> _flankingSpawnPositions = null;
+        [SerializeField] private List<Transform> _leaderSpawnPositions = null;
+        [SerializeField] private List<Transform> _bossSpawnPositions = null;
         [SerializeField] private int _threatLevel = 0;
 
         private List<Enemy> _enemies = null;
         private List<InitiativeData> _initiativeDataList = null;
         
         public List<InitiativeData> InitiativeDataList => _initiativeDataList;
+        public List<Enemy> Enemies => _enemies;
 
         private void Start()
         {
@@ -84,13 +90,52 @@ namespace Descending.Encounters
 
             for (int i = 0; i < spawnerEntry.Enemies.Count; i++)
             {
-                spawnerEntry.Enemies[i].transform.position = spawnerEntry.SpawnPositions[i].position;
+                if (spawnerEntry.Enemies[i].Definition.SpawnType == EnemySpawnTypes.Melee)
+                {
+                    if(_meleeSpawnPositions.Count > 0)
+                    {
+                        spawnerEntry.Enemies[i].transform.position = _meleeSpawnPositions[0].position;
+                        _meleeSpawnPositions.RemoveAt(0);
+                    }
+                }
+                else if (spawnerEntry.Enemies[i].Definition.SpawnType == EnemySpawnTypes.Ranged)
+                {
+                    if(_rangedSpawnPositions.Count > 0)
+                    {
+                        spawnerEntry.Enemies[i].transform.position = _rangedSpawnPositions[0].position;
+                        _rangedSpawnPositions.RemoveAt(0);
+                    }
+                }
+                else if (spawnerEntry.Enemies[i].Definition.SpawnType == EnemySpawnTypes.Flanking)
+                {
+                    if(_flankingSpawnPositions.Count > 0)
+                    {
+                        spawnerEntry.Enemies[i].transform.position = _flankingSpawnPositions[0].position;
+                        _flankingSpawnPositions.RemoveAt(0);
+                    }
+                }
+                else if (spawnerEntry.Enemies[i].Definition.SpawnType == EnemySpawnTypes.Leader)
+                {
+                    if(_leaderSpawnPositions.Count > 0)
+                    {
+                        spawnerEntry.Enemies[i].transform.position = _leaderSpawnPositions[0].position;
+                        _leaderSpawnPositions.RemoveAt(0);
+                    }
+                }
+                else if (spawnerEntry.Enemies[i].Definition.SpawnType == EnemySpawnTypes.Boss)
+                {
+                    if(_bossSpawnPositions.Count > 0)
+                    {
+                        spawnerEntry.Enemies[i].transform.position = _bossSpawnPositions[0].position;
+                        _bossSpawnPositions.RemoveAt(0);
+                    }
+                }
             }
         }
 
         public void Trigger()
         {
-            EncounterManager.Instance.StartCombat();
+            
         }
 
         public void RollInitiative()

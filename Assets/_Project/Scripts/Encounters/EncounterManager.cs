@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Combat;
+using Descending.Core;
 using Descending.Equipment;
 using Descending.Player;
 using Descending.Treasure;
 using Descending.Units;
 using ScriptableObjectArchitecture;
-using UnityEditor;
 using UnityEngine;
 
 namespace Descending.Encounters
@@ -18,7 +18,8 @@ namespace Descending.Encounters
         [SerializeField] private PlayerController _playerController = null;
         [SerializeField] private CombatRaycaster _combatRaycaster = null;
         [SerializeField] private List<Encounter> _encounters = null;
-        [SerializeField] private float _enemyActionDelay = 2f;
+        [SerializeField] private float _enemyActionDelay = 0.5f;
+        [SerializeField] private float _enemyTurnDelay = 2f;
 
         [SerializeField] private EncounterEvent onEncounterTriggered = null;
         [SerializeField] private BoolEvent onSyncEncounter = null;
@@ -75,6 +76,15 @@ namespace Descending.Encounters
             _currentEncounter.Trigger();
             _playerController.SetCombatRaycastMode();
             _playerController.SetInCombat(true);
+
+            _currentEncounter.transform.LookAt(_playerController.transform);
+            
+            foreach (Enemy enemy in _currentEncounter.Enemies)
+            {
+                Utilities.PlaceOnGround(enemy.transform, 0f);
+            }
+            
+            StartCombat();
             onEncounterTriggered.Invoke(_currentEncounter);
         }
 
@@ -85,6 +95,7 @@ namespace Descending.Encounters
             _playerController.SetLookMode();
             onEndEncounter.Invoke(true);
             TreasureManager.Instance.SpawnTreasureChest(_currentEncounter.transform.position);
+            HeroManager.Instance.RefreshHeroActions();
             
             RemoveEncounter(_currentEncounter);
             _currentEncounter = null;
@@ -93,7 +104,6 @@ namespace Descending.Encounters
         public void StartCombat()
         {
             _currentEncounter.RollInitiative();
-            _currentEncounter.LookAtPlayer(_playerController.transform);
             _currentTurn = 0;
             _currentInitiativeIndex = -1;
             NextUnit(false);
@@ -139,7 +149,7 @@ namespace Descending.Encounters
             }
             else
             {
-                StartCoroutine(Skip_Coroutine());
+                StartCoroutine(Wait());
             }
         }
 
@@ -171,23 +181,24 @@ namespace Descending.Encounters
             _waitForInput = false;
             _currentEncounter.SelectEnemy(enemy);
             StartCoroutine(EnemyAction_Coroutine(enemy));
+            StartCoroutine(Wait());
         }
 
         private IEnumerator EnemyAction_Coroutine(Enemy enemy)
         {
-            yield return new WaitForSeconds(_enemyActionDelay);
-
             int heroindex = Random.Range(0, 6);
-            
-            
-            Debug.Log(enemy.GetFullName() + " attacking " + HeroManager.Instance.Heroes[heroindex]);
+
+            enemy.PerformAttack();
             ProcessAttack(enemy, HeroManager.Instance.Heroes[heroindex]);
+            
+            yield return new WaitForSeconds(_enemyTurnDelay);
+            
             NextUnit(true);
         }
 
-        private IEnumerator Skip_Coroutine()
+        private IEnumerator Wait()
         {
-            yield return new WaitForSeconds(_enemyActionDelay);
+            yield return new WaitForSeconds(_enemyTurnDelay);
         }
 
         public void ProcessAttack(Unit attacker, Unit defender)

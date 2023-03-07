@@ -12,15 +12,19 @@ namespace Descending.Gui
     {
         [SerializeField] private Button _button = null;
         [SerializeField] private TMP_Text _nameLabel = null;
+        [SerializeField] private TMP_Text _actionsLabel = null;
         [SerializeField] private RawImage _portraitImage = null;
         [SerializeField] private Image _selectionBorder = null;
         [SerializeField] private Image _deselectedImage = null;
 
+        [SerializeField] private VitalBar _armorBar = null;
         [SerializeField] private VitalBar _lifeBar = null;
         [SerializeField] private VitalBar _staminaBar = null;
         [SerializeField] private VitalBar _magicBar = null;
         [SerializeField] private VitalBar _moraleBar = null;
         [SerializeField] private VitalBar _experienceBar = null;
+        
+        [SerializeField] private Transform _unitEffectsParent = null;
 
         private PartyPanel _partyPanel = null;
         private Hero _hero = null;
@@ -43,14 +47,17 @@ namespace Descending.Gui
             _button.interactable = true;
             _hero = hero;
             _nameLabel.SetText(hero.GetFirstName());
+            _actionsLabel.SetText(hero.Attributes.GetVital("Actions").Current + "/" + hero.Attributes.GetVital("Actions").Maximum);
             _portraitImage.texture = hero.Portrait.RtClose;
             _portraitImage.color = Color.white;
 
+            _armorBar.gameObject.SetActive(true);
             _lifeBar.gameObject.SetActive(true);
             _staminaBar.gameObject.SetActive(true);
             _magicBar.gameObject.SetActive(true);
             _moraleBar.gameObject.SetActive(true);
             _experienceBar.gameObject.SetActive(true);
+            _armorBar.UpdateData(hero.Attributes.GetVital("Armor").Current, hero.Attributes.GetVital("Armor").Maximum);
             _lifeBar.UpdateData(hero.Attributes.GetVital("Life").Current, hero.Attributes.GetVital("Life").Maximum);
             _staminaBar.UpdateData(hero.Attributes.GetVital("Stamina").Current, hero.Attributes.GetVital("Stamina").Maximum);
             _magicBar.UpdateData(hero.Attributes.GetVital("Magic").Current, hero.Attributes.GetVital("Magic").Maximum);
@@ -64,6 +71,7 @@ namespace Descending.Gui
             _portraitImage.texture = null;
             _portraitImage.color = new Color(0f, 0f, 0f, 0.5f);
 
+            _armorBar.gameObject.SetActive(false);
             _lifeBar.gameObject.SetActive(false);
             _staminaBar.gameObject.SetActive(false);
             _magicBar.gameObject.SetActive(false);

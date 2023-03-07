@@ -188,5 +188,23 @@ namespace Descending.Units
             _worldPanel.Sync();
             onSyncEncounter.Invoke(true);
         }
+
+        public void PerformAttack()
+        {
+            if(_definition.PrefersRanged == false)
+                MeleeAttack();
+            else
+                RangedAttack();
+        }
+        
+        public void MeleeAttack()
+        {
+            _unitAnimator.MeleeAttack();
+        }
+
+        public void RangedAttack()
+        {
+            _unitAnimator.RangedAttack();
+        }
     }
 }

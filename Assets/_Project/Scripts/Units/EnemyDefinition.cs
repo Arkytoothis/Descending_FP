@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Equipment;
-using Descending.Treasure;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Descending.Units
 {
+    public enum EnemySpawnTypes { Melee, Ranged, Flanking, Leader, Boss, Number, None }
+    
     [CreateAssetMenu(fileName = "Enemy Definition", menuName = "Descending/Definition/Enemy Definition")]
     public class EnemyDefinition : ScriptableObject
     {
@@ -20,12 +21,14 @@ namespace Descending.Units
         public Sprite Icon = null;
         public EnemyGroups Group = EnemyGroups.None;
         public ParticleSystem HitEffect = null;
+        public EnemySpawnTypes SpawnType = EnemySpawnTypes.None;
 
         public StartingVitalDictionary StartingVitals = null;
-        [FormerlySerializedAs("StartingStatistic")] public StartingStatisticDictionary StartingStatistics = null;
+        public StartingStatisticDictionary StartingStatistics = null;
         public StartingSkillDictionary StartingSkills = null;
         public List<Resistance> Resistances = null;
 
+        public bool PrefersRanged = true;
         public ItemShort MeleeWeapon;
         public ItemShort RangedWeapon;
         

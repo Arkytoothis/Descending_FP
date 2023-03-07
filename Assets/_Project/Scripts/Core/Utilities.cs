@@ -177,5 +177,15 @@ namespace Descending.Core
             ps.Play();
             GameObject.Destroy(ps.gameObject, ps.main.duration);
         }
+        
+        public static void PlaceOnGround(Transform transform, float yOffset)
+        {
+            Ray ray = new Ray(transform.position + new Vector3(0f, 100f, 0f), Vector3.down);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000f, Database.instance.GroundMask))
+            {
+                transform.position = new Vector3(transform.position.x, hit.point.y - yOffset, transform.position.z);
+            }
+        }
     }
 }

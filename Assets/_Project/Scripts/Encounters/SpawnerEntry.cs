@@ -11,12 +11,10 @@ namespace Descending.Encounters
     {
         [SerializeField] private List<EnemySpawnData> _spawnData = null;
         [SerializeField] private Transform _parent = null;
-        [SerializeField] private List<Transform> _spawnPositions = null;
         [SerializeField] private List<Enemy> _enemies = null;
 
         public List<EnemySpawnData> SpawnData => _spawnData;
         public Transform Parent => _parent;
-        public List<Transform> SpawnPositions => _spawnPositions;
         public List<Enemy> Enemies => _enemies;
 
         public SpawnerEntry()

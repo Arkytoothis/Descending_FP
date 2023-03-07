@@ -38,26 +38,6 @@ namespace Descending.Abilities
         {
             if (_affects == AbilityEffectAffects.User)
             {
-                // if (user.GetType() == typeof(HeroUnit))
-                // {
-                //     HeroUnit hero = user as HeroUnit;
-                //
-                //     if (hero != null)
-                //     {
-                //         int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                //         hero.Damage(_attribute, _damageType, amount, false);
-                //     }
-                // }
-                // else if (user.GetType() == typeof(Enemy))
-                // {
-                //     Enemy enemy = (Enemy)user;
-                //
-                //     if (enemy != null)
-                //     {
-                //         int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                //         enemy.TakeDamage(_attribute, _damageType, amount, false);
-                //     }
-                // }
             }
             else if (_affects == AbilityEffectAffects.Target)
             {

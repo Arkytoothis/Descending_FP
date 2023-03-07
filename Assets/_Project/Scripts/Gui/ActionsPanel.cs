@@ -97,5 +97,15 @@ namespace Descending.Gui
             _staminaBar.UpdateData(hero.Attributes.GetVital("Stamina").Current, hero.Attributes.GetVital("Stamina").Maximum);
             _magicBar.UpdateData(hero.Attributes.GetVital("Magic").Current, hero.Attributes.GetVital("Magic").Maximum);
         }
+
+        public void MeleeWeaponButton_OnClick()
+        {
+            HeroManager.Instance.SetSelectHeroWeaponMode(false);
+        }
+
+        public void RangedWeaponButton_OnClick()
+        {
+            HeroManager.Instance.SetSelectHeroWeaponMode(true);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Descending.Core;
 using Descending.Equipment;
 using Descending.Interactables;
+using Descending.Player;
 using UnityEngine;
 
 namespace Descending.Treasure
@@ -11,6 +12,7 @@ namespace Descending.Treasure
     {
         public static TreasureManager Instance { get; private set; }
 
+        [SerializeField] private PlayerController _playerController = null;
         [SerializeField] private GameObject _lootContainerPrefab = null;
         [SerializeField] private Transform _lootContainers = null;
         
@@ -35,7 +37,9 @@ namespace Descending.Treasure
         {
             GameObject clone = Instantiate(_lootContainerPrefab, _lootContainers);
             clone.transform.position = position;
-
+            clone.transform.LookAt(_playerController.transform, Vector3.up);
+            Utilities.PlaceOnGround(clone.transform, -1f);
+            
             TreasureChest treasureChest = clone.GetComponent<TreasureChest>();
             treasureChest.SetTreasureData(GetTreasureData());
         }

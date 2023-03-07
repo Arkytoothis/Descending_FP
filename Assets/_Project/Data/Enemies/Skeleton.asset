@@ -19,6 +19,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Group: 1
   HitEffect: {fileID: 0}
+  SpawnType: 6
   StartingVitals:
     keyData:
     - Life
@@ -42,7 +43,7 @@ MonoBehaviour:
     - _vital: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
       _minimumValue: 0
       _maximumValue: 0
-  StartingStatistic:
+  StartingStatistics:
     keyData:
     - Movement
     - Block
@@ -77,6 +78,7 @@ MonoBehaviour:
     keyData: []
     valueData: []
   Resistances: []
+  PrefersRanged: 0
   MeleeWeapon:
     _item: {fileID: 11400000, guid: b1ad73475a1b10248808d973743f9e42, type: 2}
     _material: {fileID: 11400000, guid: f33f8fcb0f9d5be438549954e3c364ca, type: 2}
@@ -89,29 +91,3 @@ MonoBehaviour:
     _quality: {fileID: 0}
     _prefix: {fileID: 0}
     _suffix: {fileID: 0}
-  CoinData:
-  - Chance: 100
-    Minimum: 1
-    Maximum: 4
-  - Chance: 50
-    Minimum: 1
-    Maximum: 1
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  GemData:
-  - Chance: 5
-    Minimum: 1
-    Maximum: 1
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0
-  - Chance: 0
-    Minimum: 0
-    Maximum: 0

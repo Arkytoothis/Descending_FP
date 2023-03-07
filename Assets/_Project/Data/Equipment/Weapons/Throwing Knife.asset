@@ -46,10 +46,11 @@ MonoBehaviour:
     _range: 3
     _actions: 1
     _projectileDelay: 0.3
-    _hasProjectile: 0
+    _hasProjectile: 1
     _projectileEffect:
-      _affects: 4
-      _projectileDefinition: {fileID: 0}
+      _affects: 1
+      _projectileDefinition: {fileID: 11400000, guid: 80f3b11859a95cb49bb493658815acd5,
+        type: 2}
       _spawnProjectileDelay: 0.5
       _delayBetweenProjectiles: 0.25
       _numProjectiles: 1

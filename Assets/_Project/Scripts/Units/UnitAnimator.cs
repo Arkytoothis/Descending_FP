@@ -21,32 +21,21 @@ namespace Descending.Units
         public void Setup(Animator animator)
         {
             _animator = animator;
-            //_animator.runtimeAnimatorController = animatorController;
         }
         
-        public void MeleeStarted()
+        public void MeleeAttack()
         {
-            _animator.SetTrigger("Melee");
+            _animator.SetTrigger("MeleeAttack");
         }
 
-        public void MeleeCompleted()
+        public void RangedAttack()
         {
-            
-        }
-
-        public void Shoot()
-        {
-            _animator.SetTrigger("Shoot");
+            _animator.SetTrigger("RangedAttack");
         }
 
         public void Cast()
         {
             _animator.SetTrigger("Cast");
-        }
-
-        public void SetAnimatorOverride(WeaponData weaponData)
-        {
-            //_animator.runtimeAnimatorController = weaponData.AnimatorOverride;
         }
 
         public void Die()

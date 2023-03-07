@@ -16,7 +16,9 @@ namespace Descending.Units
 
         private Unit _sourceUnit;
         private Unit _targetUnit;
-        
+
+        public ProjectileDefinition Definition => _definition;
+
         public void Setup(Unit sourceUnit, Unit targetUnit, ProjectileDefinition projectileDefinition)
         {
             _sourceUnit = sourceUnit;
@@ -40,15 +42,24 @@ namespace Descending.Units
                 return;
             }
             
-            if (Vector3.Distance(transform.position, ((Enemy)_targetUnit).ProjectileTarget.position) < _hitDistance)
+            if(_targetUnit.GetType() == typeof(Enemy))
             {
-                HitTarget();
+                if (Vector3.Distance(transform.position, ((Enemy)_targetUnit).ProjectileTarget.position) < _hitDistance)
+                {
+                    HitTarget();
+                }
+            }
+            else if(_targetUnit.GetType() == typeof(Hero))
+            {
+                if (Vector3.Distance(transform.position, PlayerManager.Instance.GetProjectileSpawn((Hero)_targetUnit).position) < _hitDistance)
+                {
+                    HitTarget();
+                }
             }
         }
 
         private void HitTarget()
         {
-            //Debug.Log(_targetUnit.GetFullName() + " hit");
             foreach (DamageEffect hitEffect in _definition.DamageEffects)
             {
                 hitEffect.Process(_sourceUnit, new List<Unit>{ _targetUnit });

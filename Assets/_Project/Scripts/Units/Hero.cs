@@ -113,22 +113,23 @@ namespace Descending.Units
 
         public override Item GetEquippedWeapon()
         {
-            if (_combatMode == HeroCombatModes.Melee)
-                return GetMeleeWeapon();
-            else if (_combatMode == HeroCombatModes.Ranged)
-                return GetRangedWeapon();
-            else
-                return null;
+            // if (_combatMode == HeroCombatModes.Melee)
+            //     return GetMeleeWeapon();
+            // else if (_combatMode == HeroCombatModes.Ranged)
+            //     return GetRangedWeapon();
+            // else
+            //     return null;
+            return _inventory.GetCurrentWeapon();
         }
 
         public override Item GetMeleeWeapon()
         {
-            return _inventory.GetMeleeWeapon();
+            return _inventory.GetCurrentWeapon();
         }
 
         public override Item GetRangedWeapon()
         {
-            return _inventory.GetRangedWeapon();
+            return _inventory.GetCurrentWeapon();
         }
 
         public override void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital)
@@ -196,6 +197,20 @@ namespace Descending.Units
         public void SyncData()
         {
             onSyncHero.Invoke(this);
+        }
+
+        public void SetEquippedWeapon(bool ranged)
+        {
+            if (ranged == false)
+            {
+                _inventory.TryEquipMelee();
+                _combatMode = HeroCombatModes.Melee;
+            }
+            else
+            {
+                _inventory.TryEquipRanged();
+                _combatMode = HeroCombatModes.Ranged;
+            }
         }
     }
 }
