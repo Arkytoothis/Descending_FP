@@ -26,6 +26,8 @@ MonoBehaviour:
   _targetType: 3
   _area: 3
   _range: 1
+  _minDuration: 10
+  _maxDuration: 10
   _effects:
     rid: 5351987380576583689
   references:
@@ -34,4 +36,13 @@ MonoBehaviour:
     - rid: 5351987380576583689
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Descending}
       data:
-        _data: []
+        _data:
+        - rid: 5351987392449609728
+    - rid: 5351987392449609728
+      type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Descending}
+      data:
+        _affects: 1
+        _icon: {fileID: 21300000, guid: a99d6e1faf529184483b5f4130e77d9c, type: 3}
+        _attribute: {fileID: 11400000, guid: a31f61315b68be94aa728d2b1d6ebaee, type: 2}
+        _minimumModifier: 5
+        _maximumModifier: 5

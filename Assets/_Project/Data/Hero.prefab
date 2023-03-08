@@ -50,6 +50,26 @@ MonoBehaviour:
   _accessorySlots: 2
   _portraitBody: {fileID: 0}
   _worldBody: {fileID: 0}
+  _currentWeapon:
+    _name: 
+    _definitionKey: 
+    _description: 
+    _modelIndex: -1
+    _itemType: 31
+    _nameFormat: 4
+    _renderSlots: []
+    _materialAllowed: 14
+    _stackSize: 0
+    _itemPower: 0
+    _encumbrance: 0
+    _goldValue: 0
+    _gemValue: 0
+    _usesLeft: 0
+    _rarityKey: 
+    _materialKey: 
+    _qualityKey: 
+    _prefixEnchantKey: 
+    _suffixEnchantKey: 
 --- !u!1 &4363799267578667478
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _modelParent: {fileID: 4363799268617153322}
+  _projectileSpawn: {fileID: 0}
+  _attackEffectSpawn: {fileID: 0}
   _unitAnimator: {fileID: 0}
   _attributes: {fileID: 4363799267978824055}
   _skills: {fileID: 4363799268410543841}
@@ -412,12 +434,29 @@ MonoBehaviour:
   _damageSystem: {fileID: 1407722154770519507}
   _heroData: {fileID: 4363799268363094388}
   _portraitModel: {fileID: 0}
+  _combatMode: 4
   onSyncHero:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 2e658721d7c5e6d459f35d7304bbe997, type: 2}
         m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[Descending.Units.HeroUnit,
           Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSyncHeroUnitEffectsGui:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 365a0a2f183ac894090f5821c84f183d, type: 2}
+        m_TargetAssemblyTypeName: ScriptableObjectArchitecture.GameEventBase`1[[System.Int32,
+          mscorlib
         m_MethodName: Raise
         m_Mode: 0
         m_Arguments:
@@ -453,3 +492,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a853651767dcba5478f1f851ed1d5231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _worldPanel: {fileID: 0}

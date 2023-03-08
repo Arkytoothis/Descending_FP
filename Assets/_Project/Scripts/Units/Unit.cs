@@ -68,9 +68,8 @@ namespace Descending.Units
             return _attributes.GetVital("Life").Current;
         }
 
-        public void AddUnitEffect(AbilityEffect abilityEffect)
+        public virtual void AddUnitEffect(Ability ability)
         {
-            _unitEffects.AddEffect(abilityEffect);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Descending.Units
         {
             foreach (DamageEffect hitEffect in _definition.DamageEffects)
             {
-                hitEffect.Process(_sourceUnit, new List<Unit>{ _targetUnit });
+                hitEffect.Process(null, _sourceUnit, new List<Unit>{ _targetUnit });
             }
 
             Destroy();

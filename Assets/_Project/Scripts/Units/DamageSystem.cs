@@ -25,7 +25,7 @@ namespace Descending.Units
             _unit = enemy;
         }
         
-        public void TakeDamage(GameObject attacker, int amount, string vital)
+        public void TakeDamage(GameObject attacker, int amount)
         {
             _attacker = attacker;
             int damageLeft = amount;
@@ -35,13 +35,12 @@ namespace Descending.Units
                 int armorDamage = Math.Min(damageLeft, _unit.Attributes.GetVital("Armor").Current);
                 _unit.Attributes.GetVital("Armor").Damage(armorDamage, true);
                 damageLeft -= armorDamage;
+                
+                if (damageLeft > 0)
+                {
+                    _unit.Attributes.GetVital("Life").Damage(damageLeft, false);
+                }
             } 
-
-            if (damageLeft > 0)
-            {
-                _unit.Attributes.GetVital(vital).Damage(damageLeft, false);
-            }
-
             
             if(_worldPanel != null)
                 _worldPanel.Sync();

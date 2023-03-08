@@ -1,13 +1,12 @@
 ﻿using Descending.Core;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Descending.Attributes;
-using Descending.Units;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Descending.Abilities
 {
@@ -31,6 +30,8 @@ namespace Descending.Abilities
         [SerializeField] private TargetTypes _targetType = TargetTypes.None;
         [SerializeField] private int _area = 0;
         [SerializeField] private int _range = 0;
+        [SerializeField] private int _minDuration = 0;
+        [SerializeField] private int _maxDuration = 0;
         
         [SerializeReference] private AbilityEffects _effects = null;
         
@@ -48,6 +49,9 @@ namespace Descending.Abilities
         public TargetTypes TargetType => _targetType;
         public int Range => _range;
         public int Area => _area;
+        public int MinDuration => _minDuration;
+        public int MaxDuration => _maxDuration;
+
         public AbilityEffects Effects => _effects;
 
         public string GetTooltipText()
@@ -65,6 +69,11 @@ namespace Descending.Abilities
             sb.Append("Range ").Append(_range).Append("\n");
 
             return sb.ToString();
+        }
+
+        public int RollDuration()
+        {
+            return Random.Range(_minDuration, _maxDuration + 1);
         }
     }
 }

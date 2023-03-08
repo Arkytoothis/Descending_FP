@@ -129,6 +129,8 @@ namespace Descending.Gui
         {
             _unitEffectWidgetsParent.ClearTransform();
             
+            if (_hero == null || _hero.UnitEffects == null) return;
+            
             foreach (UnitEffect unitEffect in _hero.UnitEffects.Effects)
             {
                 GameObject clone = Instantiate(_unitEffectWidgetPrefab, _unitEffectWidgetsParent);
@@ -138,9 +140,22 @@ namespace Descending.Gui
             }
         }
 
-        public void OnSyncUnitEffects(bool b)
-        {
-            SyncUnitEffects();
-        }
+        // public void SyncUnitEffectsDuration()
+        // {
+        //     if (_hero == null || _hero.UnitEffects == null) return;
+        //     
+        //     for (int i = 0; i < _hero.UnitEffects.Effects.Count; i++)
+        //     {
+        //         _unitEffectWidgets[i].SyncDuration();
+        //     }
+        //
+        //     for (int i = _hero.UnitEffects.Effects.Count - 1; i >= 0; i--)
+        //     {
+        //         if (_hero.UnitEffects.Effects[i].Duration <= 0)
+        //         {
+        //             _hero.UnitEffects.Effects.RemoveAt(i);
+        //         }
+        //     }
+        // }
     }
 }

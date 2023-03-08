@@ -77,7 +77,7 @@ namespace Descending.Abilities
             {
                 for (int i = 0; i < definition.Effects.Data.Count; i++)
                 {
-                    definition.Effects.Data[i].Process(user, targets);
+                    definition.Effects.Data[i].Process(this, user, targets);
                 }
             }
         

@@ -23,6 +23,7 @@ namespace Descending.Scene_Overworld
         [SerializeField] private StockpileManager _stockpileManager = null;
         [SerializeField] private EncounterManager _encounterManager = null;
         [SerializeField] private TreasureManager _treasureManager = null;
+        [SerializeField] private GameTickManager _gameTickManager = null;
         
         [SerializeField] private PortraitRoom _portraitRoom = null;
         [SerializeField] private GameObject _guiPrefab = null;
@@ -50,6 +51,9 @@ namespace Descending.Scene_Overworld
             _treasureManager.Setup();
             
             HeroManager.Instance.SelectDefaultHero();
+            HeroManager.Instance.Heroes[0].Damage(null, null, 40, "Life");
+            
+            _gameTickManager.Setup();
         }
 
         private void SetupGui()
@@ -58,36 +62,5 @@ namespace Descending.Scene_Overworld
             _guiManager = clone.GetComponent<GuiManager_Overworld>();
             _guiManager.Setup();
         }
-        
-        // private void BuildWorld()
-        // {
-        //     int seed = Random.Range(1, 999999);
-        //     _mapMagicObject.graph.random = new Noise(seed, permutationCount: 32768);
-        // }
-        //
-        // public void OnEnable ()
-        // {
-        //     TerrainTile.OnTileApplied -= DoSomething;
-        //     TerrainTile.OnTileApplied += DoSomething;
-        // }
-        //
-        // public void OnDisable ()
-        // {
-        //     TerrainTile.OnTileApplied -= DoSomething;
-        // }
-        //
-        // private void DoSomething  (TerrainTile tile, TileData data, StopToken stop)
-        // {
-        //     if (data.isDraft)
-        //     {
-        //         Debug.Log("Just applied draft tile");
-        //     }
-        //     else
-        //     {
-        //         Debug.Log($"Applied main tile at {tile.coord.x}, {tile.coord.z}");
-        //         _featureManager.ProcessFeatureSpawners(_playerObject);
-        //     }
-        // }
-
     }
 }

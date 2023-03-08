@@ -12,15 +12,11 @@ namespace Descending.Abilities
     {
         [SerializeField] private Sprite _icon = null;
         [SerializeField] private AttributeDefinition _attribute = null;
-        [SerializeField] private int _minimumDuration = 0;
-        [SerializeField] private int _maximumDuration = 0;
         [SerializeField] private int _minimumModifier = 0;
         [SerializeField] private int _maximumModifier = 0;
 
         public Sprite Icon => _icon;
         public AttributeDefinition Attribute => _attribute;
-        public int MinimumDuration => _minimumDuration;
-        public int MaximumDuration => _maximumDuration;
         public int MinimumModifier => _minimumModifier;
         public int MaximumModifier => _maximumModifier;
 
@@ -34,13 +30,11 @@ namespace Descending.Abilities
                 sb.Append(" - ").Append(_maximumModifier).Append("\n");
             else
                 sb.Append("\n");
-
-            sb.Append(" for ").Append(_minimumDuration).Append("-").Append(_maximumDuration).Append(" turns");
             
             return sb.ToString();
         }
 
-        public override void Process(Unit user, List<Unit> targets)
+        public override void Process(Ability ability, Unit user, List<Unit> targets)
         {
             if (_affects == AbilityEffectAffects.User)
             {
@@ -50,7 +44,7 @@ namespace Descending.Abilities
                 foreach (Unit target in targets)
                 {
                     //Debug.Log("Buffing " + _attribute.Name + " " + target.name);
-                    target.AddUnitEffect(this);
+                    target.AddUnitEffect(ability);
                 }
             }
         }

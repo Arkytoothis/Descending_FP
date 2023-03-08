@@ -14,6 +14,6 @@ namespace Descending.Abilities
         public AbilityEffectAffects Affects { get => _affects; set => _affects = value; }
 
         public virtual string GetTooltipText() { return ""; }
-        public virtual void Process(Unit user, List<Unit> targets) { }
+        public virtual void Process(Ability abiltiy, Unit user, List<Unit> targets) { }
     }
 }

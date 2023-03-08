@@ -32,31 +32,39 @@ namespace Descending.Abilities
             return sb.ToString();
         }
 
-        public override void Process(Unit user, List<Unit> targets)
+        public override void Process(Ability ability, Unit user, List<Unit> targets)
         {
-            foreach (Unit character in targets)
+            foreach (Unit target in targets)
             {
-                // if (character.GetType() == typeof(PlayerCharacter))
-                // {
-                //     PlayerCharacter pc = (PlayerCharacter)character;
-                //
-                //     if (pc != null)
-                //     {
-                //         int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                //         pc.RestoreDamage(DerivedAttribute.Life, amount, false);
-                //     }
-                // }
-                // else if (character.GetType() == typeof(Enemy))
-                // {
-                //     Enemy enemy = (Enemy)character;
-                //
-                //     if (enemy != null)
-                //     {
-                //         int amount = Random.Range(_minimumValue, _maximumValue + 1);
-                //         enemy.RestoreDamage(DerivedAttribute.Life, amount, false);
-                //     }
-                // }
+                //Debug.Log("Buffing " + _attribute.Name + " " + target.name);
+                target.AddUnitEffect(ability);
             }
+            
+            // if (character.GetType() == typeof(PlayerCharacter))
+            // {
+            //     PlayerCharacter pc = (PlayerCharacter)character;
+            //
+            //     if (pc != null)
+            //     {
+            //         int amount = Random.Range(_minimumValue, _maximumValue + 1);
+            //         pc.RestoreDamage(DerivedAttribute.Life, amount, false);
+            //     }
+            // }
+            // else if (character.GetType() == typeof(Enemy))
+            // {
+            //     Enemy enemy = (Enemy)character;
+            //
+            //     if (enemy != null)
+            //     {
+            //         int amount = Random.Range(_minimumValue, _maximumValue + 1);
+            //         enemy.RestoreDamage(DerivedAttribute.Life, amount, false);
+            //     }
+            // }
+        }
+
+        public int RollRestoreAmount()
+        {
+            return Random.Range(_minimumValue, _maximumValue + 1);
         }
     }
 }

@@ -34,4 +34,14 @@ MonoBehaviour:
     - rid: 5351987380576583694
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Descending}
       data:
-        _data: []
+        _data:
+        - rid: 5351987392449609729
+    - rid: 5351987392449609729
+      type: {class: ProjectileEffect, ns: Descending.Abilities, asm: Descending}
+      data:
+        _affects: 1
+        _projectileDefinition: {fileID: 11400000, guid: b7d42a9158c95a24a943610c5b66e6ef,
+          type: 2}
+        _spawnProjectileDelay: 0.5
+        _delayBetweenProjectiles: 0.25
+        _numProjectiles: 2

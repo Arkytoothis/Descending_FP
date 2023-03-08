@@ -220,7 +220,7 @@ namespace Descending.Player
         {
             if (_targetingMode == TargetingModes.Ability)
             {
-                Debug.Log("Using " + _currentAbility.DisplayName() + " on " + heroTarget.GetFullName());
+                //Debug.Log("Using " + _currentAbility.DisplayName() + " on " + heroTarget.GetFullName());
                 _currentAbility.Use(HeroManager.Instance.SelectedHero, new List<Unit> { heroTarget });
             }
         }
@@ -293,7 +293,7 @@ namespace Descending.Player
 
         public void OnTargetAbility(Ability ability)
         {
-            Debug.Log("Targeting: " + ability.DisplayName());
+            //Debug.Log("Targeting: " + ability.DisplayName());
             _targetingMode = TargetingModes.Ability;
             _currentAbility = ability;
             _currentItem = null;

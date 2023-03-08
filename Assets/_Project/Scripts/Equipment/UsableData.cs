@@ -44,7 +44,7 @@ namespace Descending.Equipment
             {
                 for (int j = 0; j < _effects.Data.Count; j++)
                 {
-                    _effects.Data[i].Process(user, targets);
+                    _effects.Data[i].Process(null, user, targets);
                 }
             }
         }

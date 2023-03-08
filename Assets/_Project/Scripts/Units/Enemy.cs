@@ -123,7 +123,7 @@ namespace Descending.Units
             if (_isAlive == false) return;
             
             //CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
-            _damageSystem.TakeDamage(attacker, damage, vital);
+            _damageSystem.TakeDamage(attacker, damage);
             
             if (GetHealth() <= 0)
             {

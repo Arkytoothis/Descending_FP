@@ -22,19 +22,24 @@ namespace Descending.Gui
         {
             _unitEffect = unitEffect;
             _iconImage.sprite = unitEffect.Icon;
-            _durationLabel.SetText(unitEffect.Duration.ToString());
+            SyncDuration();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            string heading = _unitEffect.GetTooltipHeading();
-            string text = _unitEffect.GetTooltipText();
+            //string heading = _unitEffect.GetTooltipHeading();
+            //string text = _unitEffect.GetTooltipText();
             //onDisplayTooltipText.Invoke(new TooltipText(heading, text));
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             //onDisplayTooltipText.Invoke(null);
+        }
+
+        public void SyncDuration()
+        {
+            _durationLabel.SetText(_unitEffect.Duration.ToString());
         }
     }
 }

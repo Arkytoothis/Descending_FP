@@ -54,7 +54,7 @@ namespace Descending.Abilities
             return sb.ToString();
         }
         
-        public override void Process(Unit user, List<Unit> targets)
+        public override void Process(Ability ability, Unit user, List<Unit> targets)
         {
             Item weapon = null;
             if (_attackType == WeaponAttackTypes.Melee)

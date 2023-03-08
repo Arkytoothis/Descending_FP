@@ -319,14 +319,14 @@ namespace Descending.Attributes
         {
             foreach (UnitEffect unitEffect in _unitEffects.Effects)
             {
-                if (unitEffect.GetType() == typeof(ModifyAttributeUnitEffect))
-                {
-                    ModifyAttributeUnitEffect modifyAttributeEffect = (ModifyAttributeUnitEffect)unitEffect;
+                //if (unitEffect.GetType() == typeof(ModifyAttributeUnitEffect))
+                //{
+                    //ModifyAttributeUnitEffect modifyAttributeEffect = (ModifyAttributeUnitEffect)unitEffect;
                             
-                    if (modifyAttributeEffect.AttributeDefinition == null || modifyAttributeEffect.AttributeDefinition.AttributeType != type) continue;
+                    //if (modifyAttributeEffect.AttributeDefinition == null || modifyAttributeEffect.AttributeDefinition.AttributeType != type) continue;
                             
-                    attributes[modifyAttributeEffect.AttributeDefinition.Key].Modify(modifyAttributeEffect.Modifier);
-                }
+                    //attributes[modifyAttributeEffect.AttributeDefinition.Key].Modify(modifyAttributeEffect.Modifier);
+                //}
             }
         }
 
@@ -358,6 +358,11 @@ namespace Descending.Attributes
         public void ModifyVital(string key, int amount, bool resetToZero)
         {
             _vitals[key].Damage(amount, resetToZero);
+        }
+
+        public void RecoverVital(string key, int amount)
+        {
+            _vitals[key].Restore(amount);
         }
 
         public void LoadData(AttributesSaveData saveData)

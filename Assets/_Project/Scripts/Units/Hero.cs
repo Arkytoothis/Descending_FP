@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Abilities;
 using Descending.Attributes;
 using Descending.Combat;
 using Descending.Core;
@@ -18,6 +19,7 @@ namespace Descending.Units
         [SerializeField] private HeroCombatModes _combatMode = HeroCombatModes.None;
 
         [SerializeField] protected HeroUnitEvent onSyncHero = null;
+        [SerializeField] protected IntEvent onSyncHeroUnitEffectsGui = null;
 
         private BodyRenderer _portraitRenderer = null;
         private PortraitMount _portrait = null;
@@ -135,7 +137,7 @@ namespace Descending.Units
         {
             if (_isAlive == false) return;
 
-            _damageSystem.TakeDamage(attacker, damage, vital);
+            _damageSystem.TakeDamage(attacker, damage);
             //CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
 
             if (GetHealth() <= 0)
@@ -210,6 +212,48 @@ namespace Descending.Units
                 _inventory.TryEquipRanged();
                 _combatMode = HeroCombatModes.Ranged;
             }
+        }
+
+        public override void AddUnitEffect(Ability ability)
+        {
+            _unitEffects.AddEffect(ability);
+            
+            SyncData();
+        }
+
+        public void GameTick()
+        {
+            foreach (UnitEffect unitEffect in _unitEffects.Effects)
+            {
+                unitEffect.Process(this);
+                unitEffect.TickTime();
+            }
+
+            for (int i = _unitEffects.Effects.Count - 1; i >= 0; i--)
+            {
+                if (_unitEffects.Effects[i].IsActive == false)
+                {
+                    _unitEffects.Effects.RemoveAt(i);
+                }
+            }
+            
+            onSyncHeroUnitEffectsGui.Invoke(_heroData.ListIndex);
+        }
+        
+        public void RecoveryTick()
+        {
+            if (_attributes.GetVital("Actions").Current < _attributes.GetVital("Actions").Maximum)
+            {
+                RestoreVital("Actions", 1);
+            }
+            
+            if (_attributes.GetVital("Armor").Current < _attributes.GetVital("Armor").Maximum)
+            {
+                RestoreVital("Armor", 1);
+            }
+            
+            UseResource("Stamina", 1);
+            SyncData();
         }
     }
 }

@@ -86,6 +86,7 @@ namespace Descending.Encounters
             
             StartCombat();
             onEncounterTriggered.Invoke(_currentEncounter);
+            GameTickManager.Instance.SetTickMode(GameTickModes.Combat);
         }
 
         public void EndEncounter()
@@ -99,6 +100,7 @@ namespace Descending.Encounters
             
             RemoveEncounter(_currentEncounter);
             _currentEncounter = null;
+            GameTickManager.Instance.SetTickMode(GameTickModes.World);
         }
 
         public void StartCombat()
@@ -116,6 +118,8 @@ namespace Descending.Encounters
             
             HeroManager.Instance.RefreshHeroActions();
             _currentEncounter.RefreshEnemyActions();
+            GameTickManager.Instance.GameTick();
+            //GameTickManager.Instance.RecoveryTick();
         }
 
         private void NextUnit(bool checkForNewTurn)

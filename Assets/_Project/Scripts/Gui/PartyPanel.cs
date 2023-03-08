@@ -68,5 +68,13 @@ namespace Descending.Gui
                 }
             }
         }
+
+        public void OnUpdateHeroUnitEffects(int index)
+        {
+            for (int i = 0; i < _widgets.Count; i++)
+            {
+                _widgets[i].SyncUnitEffects();
+            }
+        }
     }
 }

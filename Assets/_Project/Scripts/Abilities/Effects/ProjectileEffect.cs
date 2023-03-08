@@ -30,7 +30,7 @@ namespace Descending.Abilities
             return sb.ToString();
         }
 
-        public override void Process(Unit user, List<Unit> targets)
+        public override void Process(Ability ability, Unit user, List<Unit> targets)
         {
             //_projectileSpawnPoint = user.ProjectileSpawnPoint;
             user.StartCoroutine(DelayedSpawnProjectile(user, targets[0]));
@@ -45,7 +45,6 @@ namespace Descending.Abilities
             for (int i = 0; i < _numProjectiles; i++)
             {
                 yield return new WaitForSeconds(_delayBetweenProjectiles);
-
                 GameObject clone = GameObject.Instantiate(_projectileDefinition.Prefab, projectileTransform.position, projectileTransform.rotation);
                 
                 if (target != null)
