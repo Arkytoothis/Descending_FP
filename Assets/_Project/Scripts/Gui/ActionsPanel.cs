@@ -18,6 +18,9 @@ namespace Descending.Gui
         [SerializeField] private VitalBar _staminaBar = null;
         [SerializeField] private VitalBar _magicBar = null;
         [SerializeField] private VitalBar _moraleBar = null;
+        
+        [SerializeField] private EquippedWeaponWidget _meleeWidget = null;
+        [SerializeField] private EquippedWeaponWidget _rangedWidget = null;
 
         private int _selectedHeroIndex = -1;
         
@@ -32,6 +35,9 @@ namespace Descending.Gui
             {
                 _bottomActionBar[i].Setup(i, i.ToString());
             }
+            
+            _meleeWidget.Setup();
+            _rangedWidget.Setup();
         }
 
         public void OnDisplaySelectedHero(Hero hero)
@@ -58,8 +64,11 @@ namespace Descending.Gui
             _staminaBar.gameObject.SetActive(true);
             _magicBar.gameObject.SetActive(true);
             _moraleBar.gameObject.SetActive(true);
+            _meleeWidget.gameObject.SetActive(true);
+            _rangedWidget.gameObject.SetActive(true);
             
             DisplayHeroVitals(hero);
+            DisplayEquippedItems(hero);
         }
 
         private void Clear()
@@ -80,6 +89,8 @@ namespace Descending.Gui
             _staminaBar.gameObject.SetActive(false);
             _magicBar.gameObject.SetActive(false);
             _moraleBar.gameObject.SetActive(false);
+            _meleeWidget.gameObject.SetActive(false);
+            _rangedWidget.gameObject.SetActive(false);
         }
 
         public void SetMode(UiModes mode)
@@ -96,16 +107,46 @@ namespace Descending.Gui
             _lifeBar.UpdateData(hero.Attributes.GetVital("Life").Current, hero.Attributes.GetVital("Life").Maximum);
             _staminaBar.UpdateData(hero.Attributes.GetVital("Stamina").Current, hero.Attributes.GetVital("Stamina").Maximum);
             _magicBar.UpdateData(hero.Attributes.GetVital("Magic").Current, hero.Attributes.GetVital("Magic").Maximum);
+            _moraleBar.UpdateData(100, 100);
+        }
+
+        private void DisplayEquippedItems(Hero hero)
+        {
+            _meleeWidget.SetItems(hero.Inventory.Equipment[(int)EquipmentSlots.Melee_Weapon], hero.Inventory.Equipment[(int)EquipmentSlots.Off_Weapon]);
+            _rangedWidget.SetItems(hero.Inventory.Equipment[(int)EquipmentSlots.Ranged_Weapon], hero.Inventory.Equipment[(int)EquipmentSlots.Ammo]);
+
+            if (hero.CombatMode == HeroCombatModes.Melee)
+            {
+                SelectMeleeWeapon();
+            }
+            else if (hero.CombatMode == HeroCombatModes.Ranged)
+            {
+                SelectRangedWeapon();
+            }
         }
 
         public void MeleeWeaponButton_OnClick()
         {
             HeroManager.Instance.SetSelectHeroWeaponMode(false);
+            SelectMeleeWeapon();
         }
 
         public void RangedWeaponButton_OnClick()
         {
             HeroManager.Instance.SetSelectHeroWeaponMode(true);
+            SelectRangedWeapon();
+        }
+
+        private void SelectMeleeWeapon()
+        {
+            _meleeWidget.Select();
+            _rangedWidget.Deselect();
+        }
+
+        private void SelectRangedWeapon()
+        {
+            _meleeWidget.Deselect();
+            _rangedWidget.Select();
         }
     }
 }

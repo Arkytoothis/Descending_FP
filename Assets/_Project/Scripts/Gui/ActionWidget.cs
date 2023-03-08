@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class ActionWidget : MonoBehaviour, IPointerClickHandler
+    public class ActionWidget : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Image _icon = null;
         //[SerializeField] private Image _cooldownImage = null;
@@ -20,6 +20,8 @@ namespace Descending.Gui
 
         [SerializeField] private AbilityEvent onTargetAbility = null;
         [SerializeField] private ItemEvent onTargetItem = null;
+        [SerializeField] private AbilityEvent onDisplayAbilityTooltip = null;
+        [SerializeField] private ItemEvent onDisplayItemTooltip = null;
         
         private int _index = -1;
         private Ability _ability = null;
@@ -62,6 +64,23 @@ namespace Descending.Gui
             {
                 onTargetItem.Invoke(_item);
             }
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (_ability != null)
+            {
+                onDisplayAbilityTooltip.Invoke(_ability);
+            }
+            else if (_item != null)
+            {
+                onDisplayItemTooltip.Invoke(_item);
+            }
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            onDisplayAbilityTooltip.Invoke(null);
         }
     }
 }

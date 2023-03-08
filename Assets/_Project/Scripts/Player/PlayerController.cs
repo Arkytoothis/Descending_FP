@@ -68,14 +68,14 @@ namespace Descending.Player
         
         public void SetWorldRaycastMode()
         {
-            _worldRaycaster.gameObject.SetActive(true);
-            _combatRaycaster.gameObject.SetActive(false);
+            //_worldRaycaster.gameObject.SetActive(true);
+            //_combatRaycaster.gameObject.SetActive(false);
         }
 
         public void SetCombatRaycastMode()
         {
-            _combatRaycaster.gameObject.SetActive(true);
-            _worldRaycaster.gameObject.SetActive(false);
+            //_combatRaycaster.gameObject.SetActive(true);
+            //_worldRaycaster.gameObject.SetActive(false);
         }
 
         public void OnEnabledLookMode(bool lookEnabled)

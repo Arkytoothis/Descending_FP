@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using DarkTonic.MasterAudio;
-using Descending.Core;
 using Descending.Units;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -23,8 +21,8 @@ namespace Descending.Gui
         
         [SerializeField] private ItemEvent onDisplayItemTooltip = null;
         
-        [SoundGroup, SerializeField] private string _openSound;
-        [SoundGroup, SerializeField] private string _closeSound;
+        //[SoundGroup, SerializeField] private string _openSound;
+        //[SoundGroup, SerializeField] private string _closeSound;
         
         public override void Setup(WindowManager manager)
         {

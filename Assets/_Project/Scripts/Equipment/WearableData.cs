@@ -77,16 +77,16 @@ namespace Descending.Equipment
             return sb.ToString();
         }
 
-        public string GetStepSound()
-        {
-            if (_stepSounds == null || _stepSounds.Count == 0)
-            {
-                return "";
-            }
-            else
-            {
-                return _stepSounds[Random.Range(0, _stepSounds.Count)];
-            }
+         public string GetStepSound()
+         {
+             if (_stepSounds == null || _stepSounds.Count == 0)
+             {
+                 return "";
+             }
+             else
+             {
+                 return _stepSounds[Random.Range(0, _stepSounds.Count)];
+             }
         }
     }
 }

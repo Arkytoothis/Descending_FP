@@ -5,6 +5,7 @@ using Descending.Core;
 using Descending.Encounters;
 using Descending.Equipment;
 using Descending.Gui;
+using Descending.Interactables;
 using Descending.Units;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,6 +25,7 @@ namespace Descending.Player
         [SerializeField] private Texture2D _abilityCursor = null;
         [SerializeField] private Texture2D _guiCursor = null;
         [SerializeField] private Sprite _crosshairSprite = null;
+        [SerializeField] private Texture2D _interactCursor = null;
         [SerializeField] private Sprite _interactSprite = null;
         [SerializeField] private Image _crosshair = null;
         [SerializeField] private float _interactDistance = 1f;
@@ -31,8 +33,9 @@ namespace Descending.Player
         private Camera _camera = null;
         private bool _raycastingEnabled = true;
         private bool _raycastForEnemy = false;
-        private InitiativeWidget _widgetHovering = null;
-        private Ability _currentAbility = null;
+        private InitiativeWidget _initiativeWidgetHovering = null;
+        [SerializeField] private PartyPanelWidget _partyWidgetHovering = null;
+        [SerializeField] private Ability _currentAbility = null;
         private Item _currentItem = null;
         private Item _currentWeapon = null;
         
@@ -62,31 +65,12 @@ namespace Descending.Player
             {
                 _currentAbility = null;
                 SetTargetingMode(TargetingModes.Melee);
-            }
-            
-            if (_widgetHovering != null)
-            {
-                if (_widgetHovering.GetType() == typeof(HeroInitiativeWidget))
-                {
-                    SetCursor(_guiCursor, _crosshairSprite);
-                    
-                    if (Input.GetMouseButtonUp(0))
-                    {
-                        ProcessClick(((HeroInitiativeWidget)_widgetHovering).Hero);
-                    }
-                }
-                else if (_widgetHovering.GetType() == typeof(EnemyInitiativeWidget))
-                {
-                    SetCursor(_interactSprite);
-                    
-                    if (Input.GetMouseButtonUp(0))
-                    {
-                        ProcessClick(((EnemyInitiativeWidget)_widgetHovering).Enemy);
-                    }
-                }
-                
+                SetCursor(_guiCursor, _crosshairSprite);
                 return;
             }
+            
+            if (CheckForInitiativeWidgetHover()) return;
+            if (CheckForPartyWidgetHover()) return;
             
             if (EventSystem.current.IsPointerOverGameObject())
             {
@@ -101,6 +85,57 @@ namespace Descending.Player
             }
         }
 
+        private bool CheckForInitiativeWidgetHover()
+        {
+            if (_initiativeWidgetHovering != null)
+            {
+                if (_initiativeWidgetHovering.GetType() == typeof(HeroInitiativeWidget))
+                {
+                    SetCursor(_guiCursor, _crosshairSprite);
+
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        ProcessClick(((HeroInitiativeWidget)_initiativeWidgetHovering).Hero);
+                    }
+                }
+                else if (_initiativeWidgetHovering.GetType() == typeof(EnemyInitiativeWidget))
+                {
+                    SetCursor(_interactSprite);
+
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        ProcessClick(((EnemyInitiativeWidget)_initiativeWidgetHovering).Enemy);
+                    }
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool CheckForPartyWidgetHover()
+        {
+            if (_partyWidgetHovering != null)
+            {
+                Cursor.SetCursor(_abilityCursor, Vector2.zero, CursorMode.Auto);
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    ProcessClick(_partyWidgetHovering.Hero);
+                    _partyWidgetHovering.SetCanSelect(true);
+                    
+                    _currentAbility = null;
+                    SetTargetingMode(TargetingModes.Melee);
+                    SetCursor(_guiCursor, _crosshairSprite);
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
         public void SetTargetingMode(TargetingModes mode)
         {
             _targetingMode = mode;
@@ -111,6 +146,7 @@ namespace Descending.Player
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
             if (RaycastForEnemy(ray) == true) { return; }
+            if (RaycastForInteractable(ray) == true) { return; }
 
             SetCursor(_guiCursor, _crosshairSprite);
         }
@@ -141,6 +177,30 @@ namespace Descending.Player
             return false;
         }
 
+        bool RaycastForInteractable(Ray ray)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, _interactDistance))
+            {
+                IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
+                
+                if(interactable != null)
+                {
+                    SetCursor(_interactCursor, _interactSprite);
+
+                    if (Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.F))
+                    {
+                        interactable.Interact(HeroManager.Instance.SelectedHero);
+                    }
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void ProcessClick(Enemy enemyTarget)
         {
             int actionsRequired = 0;
@@ -160,7 +220,7 @@ namespace Descending.Player
         {
             if (_targetingMode == TargetingModes.Ability)
             {
-                //Debug.Log("Using " + _currentAbility.DisplayName() + " on " + heroTarget.GetFullName());
+                Debug.Log("Using " + _currentAbility.DisplayName() + " on " + heroTarget.GetFullName());
                 _currentAbility.Use(HeroManager.Instance.SelectedHero, new List<Unit> { heroTarget });
             }
         }
@@ -201,22 +261,39 @@ namespace Descending.Player
 
         public void SetInitiativeWidgetHover(HeroInitiativeWidget widget)
         {
-            _widgetHovering = widget;
+            _initiativeWidgetHovering = widget;
         }
 
         public void SetInitiativeWidgetHover(EnemyInitiativeWidget widget)
         {
-            _widgetHovering = widget;
+            _initiativeWidgetHovering = widget;
+        }
+
+        public void SetPartyPanelHover(PartyPanelWidget widget)
+        {
+            if (_currentAbility == null || _currentAbility.IsEmpty)
+            {
+                ClearPartyPanelWidget();
+                return;
+            }
+            
+            _partyWidgetHovering = widget;
+            _partyWidgetHovering.SetCanSelect(false);
         }
 
         public void ClearInitiativeWidget()
         {
-            _widgetHovering = null;
+            _initiativeWidgetHovering = null;
+        }
+
+        public void ClearPartyPanelWidget()
+        {
+            _partyWidgetHovering = null;
         }
 
         public void OnTargetAbility(Ability ability)
         {
-            //Debug.Log("Targeting: " + ability.DisplayName());
+            Debug.Log("Targeting: " + ability.DisplayName());
             _targetingMode = TargetingModes.Ability;
             _currentAbility = ability;
             _currentItem = null;

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
+using Descending.Player;
 using Descending.Units;
 using TMPro;
 using UnityEngine;
@@ -8,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Descending.Gui
 {
-    public class PartyPanelWidget : MonoBehaviour, IPointerClickHandler
+    public class PartyPanelWidget : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Button _button = null;
         [SerializeField] private TMP_Text _nameLabel = null;
@@ -24,12 +26,16 @@ namespace Descending.Gui
         [SerializeField] private VitalBar _moraleBar = null;
         [SerializeField] private VitalBar _experienceBar = null;
         
-        [SerializeField] private Transform _unitEffectsParent = null;
+        [SerializeField] private GameObject _unitEffectWidgetPrefab = null;
+        [SerializeField] private Transform _unitEffectWidgetsParent = null;
+        [SerializeField] private List<UnitEffectWidget> _unitEffectWidgets = null;
 
         private PartyPanel _partyPanel = null;
         private Hero _hero = null;
         private int _index = -1;
         private bool _canSelect = true;
+
+        public Hero Hero => _hero;
 
         public void Setup(PartyPanel partyPanel, Hero hero, int index)
         {
@@ -37,6 +43,7 @@ namespace Descending.Gui
             _partyPanel = partyPanel;
             _hero = null;
             _index = index;
+            _canSelect = true;
             Clear();
             _button.interactable = false;
             Deselect();
@@ -63,6 +70,8 @@ namespace Descending.Gui
             _magicBar.UpdateData(hero.Attributes.GetVital("Magic").Current, hero.Attributes.GetVital("Magic").Maximum);
             _moraleBar.UpdateData(100, 100);
             _experienceBar.UpdateData(hero.HeroData.Experience, hero.HeroData.ExpToNextLevel);
+            
+            SyncUnitEffects();
         }
 
         public void Clear()
@@ -94,6 +103,7 @@ namespace Descending.Gui
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (eventData.button != PointerEventData.InputButton.Left) return;
             if (_hero == null || _canSelect == false) return;
 
             _partyPanel.SelectWidget(_index);
@@ -102,6 +112,35 @@ namespace Descending.Gui
         public void SetCanSelect(bool canSelect)
         {
             _canSelect = canSelect;
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            CombatRaycaster.Instance.SetPartyPanelHover(this);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            CombatRaycaster.Instance.ClearPartyPanelWidget();
+            _canSelect = true;
+        }
+
+        public void SyncUnitEffects()
+        {
+            _unitEffectWidgetsParent.ClearTransform();
+            
+            foreach (UnitEffect unitEffect in _hero.UnitEffects.Effects)
+            {
+                GameObject clone = Instantiate(_unitEffectWidgetPrefab, _unitEffectWidgetsParent);
+                UnitEffectWidget widget = clone.GetComponent<UnitEffectWidget>();
+                widget.Setup(unitEffect);
+                _unitEffectWidgets.Add(widget);
+            }
+        }
+
+        public void OnSyncUnitEffects(bool b)
+        {
+            SyncUnitEffects();
         }
     }
 }

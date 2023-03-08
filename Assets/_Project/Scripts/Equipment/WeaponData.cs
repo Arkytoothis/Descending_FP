@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using DarkTonic.MasterAudio;
 using Descending.Abilities;
 using Descending.Core;
 using UnityEngine;
@@ -21,8 +20,8 @@ namespace Descending.Equipment
         [SerializeField] private GameObject _attackEffectPrefab = null;
         [SerializeField] private AnimatorOverrideController _animatorOverride = null;
 
-        [SerializeField, SoundGroup] private List<string> _hitSounds;
-        [SerializeField, SoundGroup] private List<string> _attackSounds;
+        //[SerializeField, SoundGroup] private List<string> _hitSounds;
+        //[SerializeField, SoundGroup] private List<string> _attackSounds;
         
         [SerializeReference] private List<DamageEffect> damageEffects = null;
         
@@ -36,8 +35,8 @@ namespace Descending.Equipment
         public AnimatorOverrideController AnimatorOverride => _animatorOverride;
         public GameObject AttackEffectPrefab => _attackEffectPrefab;
         public List<DamageEffect> DamageEffects => damageEffects;
-        public List<string> HitSounds => _hitSounds;
-        public List<string> AttackSounds => _attackSounds;
+        //public List<string> HitSounds => _hitSounds;
+        //public List<string> AttackSounds => _attackSounds;
 
         public WeaponData(WeaponData weaponData)
         {

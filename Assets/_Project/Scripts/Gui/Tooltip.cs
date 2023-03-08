@@ -130,7 +130,7 @@ namespace Descending.Gui
 
         public void DisplayAbility(Ability ability)
         {
-            if (ability != null && ability.Empty == false)
+            if (ability != null && ability.IsEmpty == false)
             {
                 SetupFull();
                 _icon.sprite = ability.Definition.Icon;

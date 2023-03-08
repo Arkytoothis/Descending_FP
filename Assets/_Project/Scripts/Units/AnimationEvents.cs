@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using DarkTonic.MasterAudio;
 using Descending.Equipment;
 using UnityEngine;
 
@@ -21,12 +20,12 @@ namespace Descending.Units
 
         public void FootR()
         {
-            _inventory.PlayStepSound();
+            //_inventory.PlayStepSound();
         }
 
         public void FootL()
         {
-            _inventory.PlayStepSound();
+            //_inventory.PlayStepSound();
         }
 
         public void Land()

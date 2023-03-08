@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using DarkTonic.MasterAudio;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Units;
@@ -313,12 +312,12 @@ namespace Descending.Equipment
 
         public void PlayStepSound()
         {
-            string sound = _equipment[(int)EquipmentSlots.Feet].GetWearableData().GetStepSound();
+            //string sound = _equipment[(int)EquipmentSlots.Feet].GetWearableData().GetStepSound();
             
-            if (sound != "")
-            {
+            //if (sound != "")
+            //{
                 //MasterAudio.PlaySound3DAtVector3(sound, _worldBody.transform.position, 0.01f);
-            }
+            //}
         }
 
         public void TryEquipMelee()

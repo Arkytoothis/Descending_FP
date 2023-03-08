@@ -5,6 +5,7 @@ using Descending.Core;
 using Descending.Units;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Descending.Abilities
 {
@@ -13,10 +14,10 @@ namespace Descending.Abilities
     {
         [SerializeField] private AbilityType _abilityType = AbilityType.None;
         [SerializeField] private string _key = "";
-        [SerializeField] private bool _empty = true;
+        [SerializeField] private bool _isEmpty = true;
 
         public AbilityType AbilityType { get => _abilityType; }
-        public bool Empty { get => _empty; set => _empty = value; }
+        public bool IsEmpty { get => _isEmpty; set => _isEmpty = value; }
         public string Key { get => _key; set => _key = value; }
 
         public AbilityDefinition Definition => Database.instance.Abilities.GetAbility(_key);
@@ -25,27 +26,19 @@ namespace Descending.Abilities
         {
             _abilityType = AbilityType.None;
             _key = "";
-            _empty = true;
+            _isEmpty = true;
         }
 
         public Ability(Ability ability)
         {
             _abilityType = ability.AbilityType;
             _key = ability.Key;
-
-            if (ability.AbilityType == AbilityType.None)
-            {
-                _empty = true;
-            }
-            else
-            {
-                _empty = false;
-            }
+            _isEmpty = false;
         }
 
         public Ability(AbilityDefinition definition)
         {
-            _empty = false;
+            _isEmpty = false;
             _abilityType = definition.AbilityType;
             _key = definition.Key;
         }

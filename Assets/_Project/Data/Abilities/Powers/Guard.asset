@@ -27,11 +27,11 @@ MonoBehaviour:
   _area: 0
   _range: 0
   _effects:
-    rid: 7907628733475586051
+    rid: 5351987380576583700
   references:
     version: 2
     RefIds:
-    - rid: 7907628733475586051
-      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
+    - rid: 5351987380576583700
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Descending}
       data:
         _data: []

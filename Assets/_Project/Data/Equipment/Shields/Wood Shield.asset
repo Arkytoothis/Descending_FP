@@ -44,13 +44,18 @@ MonoBehaviour:
     _hasData: 1
     _weaponType: 0
     _range: 1
+    _actions: 0
     _projectileDelay: 0
-    _projectile: {fileID: 0}
+    _hasProjectile: 0
+    _projectileEffect:
+      _affects: 4
+      _projectileDefinition: {fileID: 0}
+      _spawnProjectileDelay: 0.5
+      _delayBetweenProjectiles: 0.25
+      _numProjectiles: 1
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 0}
     damageEffects: []
-    _hitSounds: []
-    _attackSounds: []
   _wearableData:
     _hasData: 1
     _armor: 5
@@ -72,14 +77,14 @@ MonoBehaviour:
     _cooldown: 0
     _projectile: {fileID: 0}
     _effects:
-      rid: 7907628733475586067
+      rid: 5351987380576583725
   _ingredientData:
     _hasData: 0
     _type: 0
   references:
     version: 2
     RefIds:
-    - rid: 7907628733475586067
-      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
+    - rid: 5351987380576583725
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Descending}
       data:
         _data: []

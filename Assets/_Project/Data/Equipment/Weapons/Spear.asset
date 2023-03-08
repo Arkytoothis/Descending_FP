@@ -57,10 +57,8 @@ MonoBehaviour:
       type: 3}
     _animatorOverride: {fileID: 22100000, guid: e1718a34bbc18fa4b9aa95091b4810e1,
       type: 2}
-    _hitSounds: []
-    _attackSounds: []
     damageEffects:
-    - rid: 7907628881969152000
+    - rid: 5351987380576583681
   _wearableData:
     _hasData: 0
     _armor: 0
@@ -82,24 +80,24 @@ MonoBehaviour:
     _cooldown: 0
     _projectile: {fileID: 0}
     _effects:
-      rid: 7907628733475586072
+      rid: 5351987380576583724
   _ingredientData:
     _hasData: 0
     _type: 0
   references:
     version: 2
     RefIds:
-    - rid: 7907628733475586072
-      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Assembly-CSharp}
-      data:
-        _data: []
-    - rid: 7907628881969152000
-      type: {class: DamageEffect, ns: Descending.Abilities, asm: Assembly-CSharp}
+    - rid: 5351987380576583681
+      type: {class: DamageEffect, ns: Descending.Abilities, asm: Descending}
       data:
         _affects: 1
         _damageType: {fileID: 11400000, guid: 925f665afc41d7842b8acfca1db57579, type: 2}
         _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
         _damageClass: 0
         _attackType: 0
-        _minimumValue: 6
+        _minimumValue: 8
         _maximumValue: 12
+    - rid: 5351987380576583724
+      type: {class: AbilityEffects, ns: Descending.Abilities, asm: Descending}
+      data:
+        _data: []

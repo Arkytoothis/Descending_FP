@@ -6,8 +6,6 @@ using Descending.Core;
 using Descending.Equipment.Enchantments;
 using Descending.Player;
 using Descending.Units;
-using NodeCanvas.Tasks.Actions;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace Descending.Equipment
