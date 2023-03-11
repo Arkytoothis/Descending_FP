@@ -14,6 +14,7 @@ namespace Descending.Scene_Overworld
 {
     public class OverworldManager : MonoBehaviour
     {
+        [SerializeField] private bool _loadState = true;
         [SerializeField] private Database _database = null;
         //[SerializeField] private MapMagicObject _mapMagicObject = null;
         //[SerializeField] private FeatureManager _featureManager = null;
@@ -41,19 +42,14 @@ namespace Descending.Scene_Overworld
         {
             SetupGui();
             
-            _playerManager.Setup();
-            _heroManager.Setup();
-            _portraitRoom.Setup(_heroManager.Heroes);
-            _heroManager.SyncHeroes();
-            _resourcesManager.Setup();
-            _stockpileManager.Setup();
-            _encounterManager.Setup();
-            _treasureManager.Setup();
-            
-            HeroManager.Instance.SelectDefaultHero();
-            HeroManager.Instance.Heroes[0].Damage(null, null, 40, "Life");
-            
-            _gameTickManager.Setup();
+            if (_loadState)
+            {
+                Load();
+            }
+            else
+            {
+                Setup();
+            }
         }
 
         private void SetupGui()
@@ -61,6 +57,40 @@ namespace Descending.Scene_Overworld
             GameObject clone = Instantiate(_guiPrefab, _guiParent);
             _guiManager = clone.GetComponent<GuiManager_Overworld>();
             _guiManager.Setup();
+        }
+        
+        private void Setup()
+        {
+            _playerManager.Setup();
+            _heroManager.Setup();
+            _portraitRoom.Setup(_heroManager.Heroes);
+            _heroManager.SyncHeroes();
+            
+            _resourcesManager.Setup();
+            _stockpileManager.Setup();
+            _encounterManager.Setup();
+            _treasureManager.Setup();
+            
+            HeroManager.Instance.SelectDefaultHero();
+            
+            _gameTickManager.Setup();
+        }
+
+        private void Load()
+        {
+            _playerManager.Setup();
+            _heroManager.LoadState();
+            _portraitRoom.Setup(_heroManager.Heroes);
+            _heroManager.SyncHeroes();
+            
+            _resourcesManager.LoadState();
+            _stockpileManager.LoadState();
+            _encounterManager.Setup();
+            _treasureManager.Setup();
+            
+            HeroManager.Instance.SelectDefaultHero();
+            
+            _gameTickManager.Setup();
         }
     }
 }

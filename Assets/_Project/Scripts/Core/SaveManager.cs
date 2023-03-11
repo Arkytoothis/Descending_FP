@@ -1,15 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using Descending.Core;
 using Descending.Units;
-using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Descending.Core
 {
-    public abstract class SaveManager : MonoBehaviour
+    public class SaveManager : MonoBehaviour
     {
         public static SaveManager Instance { get; private set; }
         
@@ -25,7 +22,18 @@ namespace Descending.Core
             Instance = this;
         }
 
-        public abstract void SaveState();
-        public abstract void LoadState();
+        public void SaveState()
+        {
+            HeroManager.Instance.SaveState();
+            ResourcesManager.Instance.SaveState();
+            StockpileManager.Instance.SaveState();
+        }
+
+        public void LoadState()
+        {
+            HeroManager.Instance.LoadState();
+            ResourcesManager.Instance.LoadState();
+            StockpileManager.Instance.LoadState();
+        }
     }
 }

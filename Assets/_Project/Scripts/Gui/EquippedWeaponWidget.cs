@@ -24,7 +24,7 @@ namespace Descending.Gui
 
         public void SetItems(Item item1, Item item2)
         {
-            if(item1 != null)
+            if(item1 != null && item1.IsEmpty() == false)
             {
                 _item1NameLabel.text = item1.ItemDefinition.Name;
                 _item1NameIcon.sprite = item1.ItemDefinition.Icon;
@@ -35,7 +35,7 @@ namespace Descending.Gui
                 _item1NameIcon.sprite = Database.instance.BlankSprite;
             }
             
-            if(item2 != null)
+            if(item2 != null && item2.IsEmpty() == false)
             {
                 _item2NameLabel.text = item2.ItemDefinition.Name;
                 _item2NameIcon.sprite = item2.ItemDefinition.Icon;

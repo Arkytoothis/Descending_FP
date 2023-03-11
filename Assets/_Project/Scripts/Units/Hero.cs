@@ -5,7 +5,6 @@ using Descending.Attributes;
 using Descending.Combat;
 using Descending.Core;
 using Descending.Equipment;
-using Descending.Gui;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -87,9 +86,6 @@ namespace Descending.Units
             
             _damageSystem.Setup(this);
             _unitEffects.Setup();
-            //_worldPanel.Setup(this);
-
-            //_unitAnimator.SetAnimatorOverride(_inventory.GetCurrentWeapon().GetWeaponData());
             
             var children = _portraitModel.GetComponentsInChildren<Transform>(includeInactive: true);
             foreach (var child in children)
@@ -115,12 +111,6 @@ namespace Descending.Units
 
         public override Item GetEquippedWeapon()
         {
-            // if (_combatMode == HeroCombatModes.Melee)
-            //     return GetMeleeWeapon();
-            // else if (_combatMode == HeroCombatModes.Ranged)
-            //     return GetRangedWeapon();
-            // else
-            //     return null;
             return _inventory.GetCurrentWeapon();
         }
 

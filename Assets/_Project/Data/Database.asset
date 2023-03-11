@@ -24,7 +24,10 @@ MonoBehaviour:
   _rarities: {fileID: 11400000, guid: cc0ff4420aa160f43b85c1b8563b62e6, type: 2}
   _features: {fileID: 11400000, guid: 596d94504aab40548a29722c84be7fef, type: 2}
   _enemies: {fileID: 11400000, guid: dc101faa644f09f42a615b702add8902, type: 2}
-  _sceneLoadFilePath: D:/Projects/Descending/Descending - Prologue 2022.1/Assets/StreamingAssets/SaveData/scene_load_data.dat
+  _sceneLoadFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/scene_load_data.dat
+  _partyDataFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/party_data.dat
+  _resourcesDataFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/resources_data.dat
+  _stockpileDataFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/stockpile_data.dat
   _blankSprite: {fileID: 21300000, guid: 672d62704098abf409b522c28d025530, type: 3}
   _groundMask:
     serializedVersion: 2

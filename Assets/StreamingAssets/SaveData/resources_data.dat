@@ -1,0 +1,10 @@
+{
+    "$id": 0,
+    "$type": "0|Descending.Core.ResourcesSaveData, Descending",
+    "_coins": 100,
+    "_gems": 0,
+    "_supplies": 20,
+    "_bronzeKeys": 0,
+    "_ironKeys": 0,
+    "_goldKeys": 0
+}

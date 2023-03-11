@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Descending.Equipment;
 using ScriptableObjectArchitecture;
 using Sirenix.Serialization;
@@ -90,12 +91,6 @@ namespace Descending.Core
         {
             onSyncStockpile.Invoke(true);
         }
-        
-        public void SaveState()
-        {
-            byte[] bytes = SerializationUtility.SerializeValue(_items, DataFormat.JSON);
-            //File.WriteAllBytes(Database.instance.StockpileFilePath, bytes);
-        }
 
         private void GenerateData()
         {
@@ -112,19 +107,20 @@ namespace Descending.Core
             }
         }
         
+        public void SaveState()
+        {
+            byte[] bytes = SerializationUtility.SerializeValue(_items, DataFormat.JSON);
+            File.WriteAllBytes(Database.instance.StockpileDataFilePath, bytes);
+        }
+        
         public void LoadState()
         {
-            // if (!File.Exists(Database.instance.StockpileFilePath)) return; // No state to load
-	           //
-            // byte[] bytes = File.ReadAllBytes(Database.instance.StockpileFilePath);
-            // _items = SerializationUtility.DeserializeValue<List<Item>>(bytes, DataFormat.JSON);
+            if (!File.Exists(Database.instance.StockpileDataFilePath)) return; // No state to load
+	           
+            byte[] bytes = File.ReadAllBytes(Database.instance.StockpileDataFilePath);
+            _items = SerializationUtility.DeserializeValue<List<Item>>(bytes, DataFormat.JSON);
             
             SyncStockpile();
-        }
-
-        public void SetLoadData(bool loadData)
-        {
-            _loadData = loadData;
         }
     }
 }

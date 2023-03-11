@@ -29,6 +29,7 @@ namespace Descending.Units
         [SerializeField] private int _tattooColorIndex = -1;
         [SerializeField] private int _hairColorIndex = -1;
         [SerializeField] private int _eyeColorIndex = -1;
+        [SerializeField] private HeroCombatModes _combatMode = HeroCombatModes.None;
         
         [SerializeField] private AttributesSaveData _attributesSaveData = null;
         [SerializeField] private SkillsSaveData _skillsSaveData = null;
@@ -52,6 +53,7 @@ namespace Descending.Units
         public int HairColorIndex => _hairColorIndex;
         public int EyeColorIndex => _eyeColorIndex;
         public int TattooColorIndex => _tattooColorIndex;
+        public HeroCombatModes CombatMode => _combatMode;
 
         public AttributesSaveData AttributesSaveData => _attributesSaveData;
         public SkillsSaveData SkillsSaveData => _skillsSaveData;
@@ -82,6 +84,7 @@ namespace Descending.Units
             _skillsSaveData = null;
             _inventorySaveData = null;
             _abilitySaveData = null;
+            _combatMode = HeroCombatModes.Melee;
         }
 
         public HeroSaveData(Hero hero)
@@ -104,6 +107,7 @@ namespace Descending.Units
             _tattooColorIndex = hero.HeroData.TattooColorIndex;
             _hairColorIndex = hero.HeroData.HairColorIndex;
             _eyeColorIndex = hero.HeroData.EyeColorIndex;
+            _combatMode = hero.CombatMode;
 
             _attributesSaveData = new AttributesSaveData(hero);
             _skillsSaveData = new SkillsSaveData(hero);

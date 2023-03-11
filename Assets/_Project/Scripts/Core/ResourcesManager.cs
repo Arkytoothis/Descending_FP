@@ -161,21 +161,24 @@ namespace Descending.Core
         {
             ResourcesSaveData saveData = new ResourcesSaveData();
             byte[] bytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
-            //File.WriteAllBytes(Database.instance.ResourceDataFilePath, bytes);
+            File.WriteAllBytes(Database.instance.ResourcesDataFilePath, bytes);
         }
         
         public void LoadState()
         {
-            // if (!File.Exists(Database.instance.ResourceDataFilePath)) return; // No state to load
-	           //
-            // byte[] bytes = File.ReadAllBytes(Database.instance.ResourceDataFilePath);
-            //ResourcesSaveData saveData = SerializationUtility.DeserializeValue<ResourcesSaveData>(bytes, DataFormat.JSON);
+             if (!File.Exists(Database.instance.ResourcesDataFilePath)) return; // No state to load
+	           
+             byte[] bytes = File.ReadAllBytes(Database.instance.ResourcesDataFilePath);
+            ResourcesSaveData saveData = SerializationUtility.DeserializeValue<ResourcesSaveData>(bytes, DataFormat.JSON);
 
-            // _coins = saveData.Coins;
-            // _gems = saveData.Gems;
-            // _materials = saveData.Materials;
-            // _supplies = saveData.Supplies;
+             _coins = saveData.Coins;
+             _gems = saveData.Gems;
+             _supplies = saveData.Supplies;
 
+             _bronzeKeys = saveData.BronzeKeys;
+             _ironKeys = saveData.IronKeys;
+             _goldKeys = saveData.GoldKeys;
+             
             SyncResources();
         }
 
@@ -227,16 +230,28 @@ namespace Descending.Core
         [SerializeField] private int _coins = 0;
         [SerializeField] private int _gems = 0;
         [SerializeField] private int _supplies = 0;
+        
+        [SerializeField] private int _bronzeKeys = 0;
+        [SerializeField] private int _ironKeys = 0;
+        [SerializeField] private int _goldKeys = 0;
 
         public int Coins => _coins;
         public int Gems => _gems;
         public int Supplies => _supplies;
+
+        public int BronzeKeys => _bronzeKeys;
+        public int IronKeys => _ironKeys;
+        public int GoldKeys => _goldKeys;
 
         public ResourcesSaveData()
         {
             _coins = ResourcesManager.Instance.Coins;
             _gems = ResourcesManager.Instance.Gems;
             _supplies = ResourcesManager.Instance.Supplies;
+            
+            _bronzeKeys = ResourcesManager.Instance.BronzeKeys;
+            _ironKeys = ResourcesManager.Instance.IronKeys;
+            _goldKeys = ResourcesManager.Instance.GoldKeys;
         }
     }
 }

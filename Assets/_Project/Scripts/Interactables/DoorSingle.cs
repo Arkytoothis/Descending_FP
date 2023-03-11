@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Core;
@@ -17,8 +18,10 @@ namespace Descending.Interactables
         [SerializeField] private bool _isOpen = false;
         [SerializeField] private bool _isRotating = false;
         [SerializeField] private Key _key = null;
+
+        private Tween _rotateTween = null;
         
-        public void Interact(Unit interacter)
+        public void Interact(Unit actor)
         {
             if (_isRotating == true) return;
             
@@ -51,16 +54,16 @@ namespace Descending.Interactables
 
         private void Open()
         {
-            _doorObject.transform.DORotate(new Vector3(0f, _rotateTo, 0f), _rotateDuration, RotateMode.LocalAxisAdd);
+            _rotateTween = _doorObject.transform.DORotate(new Vector3(0f, _rotateTo, 0f), _rotateDuration, RotateMode.LocalAxisAdd);
             _isRotating = true;
-            StartCoroutine(DelayedInteract(true));
             
+            StartCoroutine(DelayedInteract(true));
             StartCoroutine(DelayedClose(5f));
         }
 
         private void Close()
         {
-            _doorObject.transform.DORotate(new Vector3(0f, -_rotateTo, 0f), _rotateDuration, RotateMode.LocalAxisAdd);
+            _rotateTween = _doorObject.transform.DORotate(new Vector3(0f, -_rotateTo, 0f), _rotateDuration, RotateMode.LocalAxisAdd);
             _isRotating = true;
             StartCoroutine(DelayedInteract(false));
         }
@@ -82,6 +85,11 @@ namespace Descending.Interactables
         public void OnKeyAssigned(Key key, KeyManager manager)
         {
             _key = key;
+        }
+
+        private void OnDestroy()
+        {
+            _rotateTween.Kill();
         }
     }
 }

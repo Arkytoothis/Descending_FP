@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Descending.Attributes;
 using Descending.Core;
+using Descending.Party;
+using Descending.Player;
 using ScriptableObjectArchitecture;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Descending.Units
@@ -11,6 +15,7 @@ namespace Descending.Units
     {
         public static HeroManager Instance { get; private set; }
         
+        [SerializeField] private PlayerController _playerController = null;
         [SerializeField] private GameObject _heroPrefab = null;
         [SerializeField] private Transform _heroesParent = null;
         [SerializeField] private List<Hero> _heroes = null;
@@ -108,6 +113,45 @@ namespace Descending.Units
         public void SetSelectHeroWeaponMode(bool ranged)
         {
             _selectedHero.SetEquippedWeapon(ranged);
+        }
+        
+        
+        public void SaveState()
+        {
+            PartySaveData saveData = new PartySaveData(_heroes);
+            byte[] saveDataBytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
+            File.WriteAllBytes(Database.instance.PartyDataFilePath, saveDataBytes);
+        }
+
+        public void LoadState()
+        {
+            if (!File.Exists(Database.instance.PartyDataFilePath)) return; // No state to load
+	
+            byte[] bytes = File.ReadAllBytes(Database.instance.PartyDataFilePath);
+            PartySaveData saveData = SerializationUtility.DeserializeValue<PartySaveData>(bytes, DataFormat.JSON);
+
+            //_partyController.transform.position = saveData.WorldPosition;
+            _heroesParent.ClearTransform();
+            _heroes.Clear();
+
+            for (int i = 0; i < saveData.Heroes.Length; i++)
+            {
+                LoadHero(saveData.Heroes[i]);
+            }
+            
+            //_playerController.transform.position = saveData.WorldPosition;
+        }
+        
+        protected void LoadHero(HeroSaveData saveData)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_heroPrefab, _heroesParent);
+            
+            Hero hero = clone.GetComponent<Hero>();
+            hero.LoadHero(saveData);
+            clone.name = "Hero: " + hero.GetFullName();
+            
+            _heroes.Add(hero);
         }
     }
 }
