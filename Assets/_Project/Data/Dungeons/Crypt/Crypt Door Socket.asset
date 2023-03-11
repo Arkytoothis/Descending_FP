@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59296c11d75e7024ebd73d93f5babf99, type: 3}
   m_Name: Crypt Door Socket
   m_EditorClassIdentifier: 
-  size: {x: 4, y: 4}
+  size: {x: 5, y: 5}

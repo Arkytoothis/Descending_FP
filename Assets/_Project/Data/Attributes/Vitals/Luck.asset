@@ -15,7 +15,6 @@ MonoBehaviour:
   _attributeType: 1
   _name: Luck
   _key: Luck
-  _largeIcon: {fileID: 0}
-  _smallIcon: {fileID: 0}
-  _color: {r: 1, g: 1, b: 1, a: 1}
-  _darkColor: {r: 1, g: 1, b: 1, a: 1}
+  _vitalBarColor: {r: 0.0693307, g: 0.6415901, b: 0.7735849, a: 1}
+  _damageColor: {r: 0.07058824, g: 0.6431373, b: 0.7725491, a: 1}
+  _healColor: {r: 0.07058824, g: 0.6431373, b: 0.7725491, a: 1}

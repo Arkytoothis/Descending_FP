@@ -19,13 +19,16 @@ MonoBehaviour:
   _description: 
   _cooldown: 0
   _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
-  _resourceAmount: 1
+  _resourceAmount: 5
   _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
   _minimumSkill: 1
   _actionsToUse: 2
   _targetType: 3
   _area: 0
   _range: 1
+  _durationType: 2
+  _minDuration: 3
+  _maxDuration: 6
   _effects:
     rid: 5351987380576583688
   references:
@@ -34,4 +37,12 @@ MonoBehaviour:
     - rid: 5351987380576583688
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Descending}
       data:
-        _data: []
+        _data:
+        - rid: 5351987425219706880
+    - rid: 5351987425219706880
+      type: {class: RestoreEffect, ns: Descending.Abilities, asm: Descending}
+      data:
+        _affects: 1
+        _attribute: {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
+        _minimumValue: 3
+        _maximumValue: 6

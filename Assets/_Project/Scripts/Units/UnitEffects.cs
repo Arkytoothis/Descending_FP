@@ -18,7 +18,8 @@ namespace Descending.Units
 
         public void AddEffect(Ability ability)
         {
-            UnitEffect unitEffect = new UnitEffect(ability, ability.Definition.Icon, ability.Definition.RollDuration());
+            Debug.Log("Adding: " + ability.DisplayName() + " to UnitEffects");
+            UnitEffect unitEffect = new UnitEffect(ability, ability.Definition.RollDuration());
             _effects.Add(unitEffect);
             //Debug.Log(unitEffect.GetType() + " added to UnitEffects");
         }

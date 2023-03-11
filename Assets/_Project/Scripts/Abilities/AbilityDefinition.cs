@@ -30,6 +30,7 @@ namespace Descending.Abilities
         [SerializeField] private TargetTypes _targetType = TargetTypes.None;
         [SerializeField] private int _area = 0;
         [SerializeField] private int _range = 0;
+        [SerializeField] private DurationTypes _durationType = DurationTypes.None;
         [SerializeField] private int _minDuration = 0;
         [SerializeField] private int _maxDuration = 0;
         
@@ -49,6 +50,7 @@ namespace Descending.Abilities
         public TargetTypes TargetType => _targetType;
         public int Range => _range;
         public int Area => _area;
+        public DurationTypes DurationType => _durationType;
         public int MinDuration => _minDuration;
         public int MaxDuration => _maxDuration;
 

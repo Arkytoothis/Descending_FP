@@ -37,7 +37,7 @@ namespace Descending.Abilities
             foreach (Unit target in targets)
             {
                 //Debug.Log("Buffing " + _attribute.Name + " " + target.name);
-                target.AddUnitEffect(ability);
+                //target.AddUnitEffect(ability);
             }
             
             // if (character.GetType() == typeof(PlayerCharacter))

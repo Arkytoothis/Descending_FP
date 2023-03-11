@@ -5,6 +5,7 @@ using Descending.Attributes;
 using Descending.Combat;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Gui;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -49,7 +50,7 @@ namespace Descending.Units
             _animationEvents = _portraitModel.GetComponent<AnimationEvents>();
             _animationEvents.Setup(_inventory);
             
-            _attributes.CalculateAttributes();
+            _attributes.CalculateAttributes(true, true);
             _abilities.Setup(race, profession, _skills);
             _damageSystem.Setup(this);
             _unitEffects.Setup();
@@ -138,7 +139,6 @@ namespace Descending.Units
             if (_isAlive == false) return;
 
             _damageSystem.TakeDamage(attacker, damage);
-            //CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
 
             if (GetHealth() <= 0)
             {
@@ -167,8 +167,6 @@ namespace Descending.Units
         protected override void Dead()
         {
             _isAlive = false;
-            //MapManager.Instance.RemoveUnitAtGridPosition(currentMapPosition, this);
-            //HeroManager_Combat.Instance.UnitDead(this);
             Destroy(gameObject);
         }
 
@@ -186,7 +184,6 @@ namespace Descending.Units
         public override void SpendActionPoints(int actionPointCost)
         {
             _attributes.ModifyVital("Actions", actionPointCost, true);
-            //_worldPanel.UpdateActionPoints();
             SyncData();
         }
 
@@ -237,7 +234,10 @@ namespace Descending.Units
                 }
             }
             
+            _attributes.CalculateAttributes(false, false);
             onSyncHeroUnitEffectsGui.Invoke(_heroData.ListIndex);
+            
+            SyncData();
         }
         
         public void RecoveryTick()
@@ -252,8 +252,12 @@ namespace Descending.Units
                 RestoreVital("Armor", 1);
             }
             
-            UseResource("Stamina", 1);
             SyncData();
+        }
+
+        public override void RecalculateAttributes()
+        {
+            _attributes.CalculateAttributes(false, false);
         }
     }
 }

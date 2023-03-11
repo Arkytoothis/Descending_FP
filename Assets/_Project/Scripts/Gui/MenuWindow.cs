@@ -18,12 +18,16 @@ namespace Descending.Gui
         {
             gameObject.SetActive(true);
             _isOpen = true;
+            
+            GameTickManager.Instance.SetProcessTick(false);
         }
 
         public override void Close()
         {
             gameObject.SetActive(false);
             _isOpen = false;
+                
+            GameTickManager.Instance.SetProcessTick(true);
         }
 
         public void ResumeButton_OnClick()

@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49036e61e86227e4385792501bce21df, type: 3}
-  m_Name: Magic Attack
+  m_Script: {fileID: 11500000, guid: c08d933f99af4ef4984d482f40599f72, type: 3}
+  m_Name: game_DisplayHeroDamageText
   m_EditorClassIdentifier: 
-  _attributeType: 2
-  _name: Magic Attack
-  _key: Magic Attack
-  _largeIcon: {fileID: 0}
-  _smallIcon: {fileID: 0}
-  _color: {r: 1, g: 1, b: 1, a: 1}
-  _darkColor: {r: 1, g: 1, b: 1, a: 1}
+  _debugValue:
+    _listIndex: 0
+    _damage: 0
+    _color: {r: 0, g: 0, b: 0, a: 0}

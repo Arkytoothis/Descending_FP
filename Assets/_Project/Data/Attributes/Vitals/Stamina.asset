@@ -15,5 +15,6 @@ MonoBehaviour:
   _attributeType: 1
   _name: Stamina
   _key: Stamina
-  _color: {r: 1, g: 1, b: 1, a: 1}
-  _darkColor: {r: 1, g: 1, b: 1, a: 1}
+  _vitalBarColor: {r: 0.077830195, g: 0.5, b: 0.102066465, a: 1}
+  _damageColor: {r: 0.078431375, g: 0.5019608, b: 0.10196079, a: 1}
+  _healColor: {r: 0.078431375, g: 0.5019608, b: 0.10196079, a: 1}

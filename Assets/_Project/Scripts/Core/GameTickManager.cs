@@ -14,6 +14,7 @@ namespace Descending.Core
         [SerializeField] private float _gameTickDelay = 1f;
         [SerializeField] private float _recoveryDelay = 5f;
         [SerializeField] private GameTickModes _tickMode = GameTickModes.World;
+        [SerializeField] private bool _processTick = true;
 
         private void Awake()
         {
@@ -29,6 +30,7 @@ namespace Descending.Core
 
         public void Setup()
         {
+            SetProcessTick(true);
             SetTickMode(GameTickModes.World);
             
             StartCoroutine(GameTick_Coroutine());
@@ -49,7 +51,7 @@ namespace Descending.Core
             {
                 yield return new WaitForSeconds(_gameTickDelay);
 
-                if(_tickMode == GameTickModes.World)
+                if(_processTick == true && _tickMode == GameTickModes.World)
                 {
                     GameTick();
                 }
@@ -70,7 +72,7 @@ namespace Descending.Core
             {
                 yield return new WaitForSeconds(_recoveryDelay);
 
-                if (_tickMode == GameTickModes.World)
+                if (_processTick == true && _tickMode == GameTickModes.World)
                 {
                     RecoveryTick();
                 }
@@ -80,6 +82,11 @@ namespace Descending.Core
         public void SetTickMode(GameTickModes newMode)
         {
             _tickMode = newMode;
+        }
+
+        public void SetProcessTick(bool isActive)
+        {
+            _processTick = isActive;
         }
     }
 }

@@ -13,22 +13,15 @@ namespace Descending.Attributes
         [SerializeField] private AttributeTypes _attributeType = AttributeTypes.None;
         [SerializeField] private string _name = "";
         [SerializeField] private string _key = "";
-        [SerializeField] private Sprite _largeIcon = null;
-        [SerializeField] private Sprite _smallIcon = null;
-        [SerializeField] private Color _color = Color.white;
-        [SerializeField] private Color _darkColor = Color.white;
+        [SerializeField] private Color _vitalBarColor = Color.white;
+        [SerializeField] private Color _damageColor = Color.white;
+        [SerializeField] private Color _healColor = Color.white;
 
         public AttributeTypes AttributeType => _attributeType;
         public string Name => _name;
         public string Key => _key;
-        public Color Color => _color;
-        public Color DarkColor => _darkColor;
-        public Sprite LargeIcon => _largeIcon;
-        public Sprite SmallIcon => _smallIcon;
-
-        //public CharacterAttribute ConvertToAttribute()
-        //{
-        //    return new CharacterAttribute(_type, _attribute.ToString(), (int)_attribute, 0, 0, 0, 0, 0);
-        //}
+        public Color VitalBarColor => _vitalBarColor;
+        public Color DamageColor => _damageColor;
+        public Color HealColor => _healColor;
     }
 }

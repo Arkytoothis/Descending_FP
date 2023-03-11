@@ -29,6 +29,8 @@ namespace Descending.Equipment
         [SerializeField] private int _goldValue = 0;
         [SerializeField] private int _gemValue = 0;
         [SerializeField] private int _usesLeft = 0;
+        
+        [SerializeField] private int _accessorySlot = -1;
 
         [SerializeField] private string _rarityKey = "";
         [SerializeField] private string _materialKey = "";
@@ -57,6 +59,7 @@ namespace Descending.Equipment
         public int GemValue => _gemValue;
         public int UsesLeft => _usesLeft;
         public int MaxUses => ItemDefinition.UsableData.MaxUses;
+        public int AccessorySlot => _accessorySlot;
 
         public string RarityKey => _rarityKey;
 
@@ -123,7 +126,7 @@ namespace Descending.Equipment
             _suffixEnchantKey = "";
         }
 
-        public Item(Item item)
+        public Item(Item item, int accessorySlot = -1)
         {
             if (item == null) return;
 
@@ -134,7 +137,8 @@ namespace Descending.Equipment
             _renderSlots = item.RenderSlots;
             _materialAllowed = item.MaterialAllowed;
             _modelIndex = item.ModelIndex;
-
+            _accessorySlot = accessorySlot;
+            
             _stackSize = item._stackSize;
             _itemPower = item._itemPower;
             _encumbrance = item._encumbrance;
@@ -164,6 +168,11 @@ namespace Descending.Equipment
         public void AddToStack(int amountToAdd)
         {
             _stackSize += amountToAdd;
+        }
+
+        public void SetAccessorySlot(int slot)
+        {
+            _accessorySlot = slot;
         }
         
         public void SetMaterial(MaterialDefinition material)
@@ -599,13 +608,13 @@ namespace Descending.Equipment
 
         public void Use(Unit user, List<Unit> targets)
         {
+            Debug.Log("Using " + DisplayName());
             UsableData usableData = GetUsableData();
 
             if (usableData == null || _usesLeft <= 0) return;
             
             usableData.Use(user, targets);
             Use(1);
-            //Debug.Log("Used " + DisplayName());
         }
 
         public void Use(int uses)

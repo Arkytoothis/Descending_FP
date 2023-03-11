@@ -52,6 +52,8 @@ namespace Descending.Units
         public abstract void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital);
         public abstract void RestoreVital(string vital, int damage);
         public abstract void UseResource(string vital, int damage);
+        public abstract void RecalculateAttributes();
+        
         protected abstract void Dead();
         
         private void Awake()

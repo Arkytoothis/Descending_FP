@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Descending.Abilities;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Units;
 using ScriptableObjectArchitecture;
 using TMPro;
 using UnityEngine;
@@ -14,9 +15,8 @@ namespace Descending.Gui
     public class ActionWidget : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Image _icon = null;
-        //[SerializeField] private Image _cooldownImage = null;
         [SerializeField] private TMP_Text _hotKeyLabel = null;
-        //[SerializeField] private TMP_Text _cooldownLabel = null;
+        [SerializeField] private TMP_Text _usesLabel = null;
 
         [SerializeField] private AbilityEvent onTargetAbility = null;
         [SerializeField] private ItemEvent onTargetItem = null;
@@ -31,6 +31,7 @@ namespace Descending.Gui
         {
             _index = index;
             _hotKeyLabel.SetText(hotKey);
+            _usesLabel.SetText("");
             Clear();
         }
 
@@ -45,6 +46,7 @@ namespace Descending.Gui
         {
             _item = item;
             _icon.sprite = _item.ItemDefinition.Icon;
+            SetUsesLabel();
             _ability = null;
         }
         
@@ -52,6 +54,7 @@ namespace Descending.Gui
         {
             _index = -1;
             _icon.sprite = Database.instance.BlankSprite;
+            _usesLabel.SetText("");
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -62,7 +65,41 @@ namespace Descending.Gui
             }
             else if (_item != null)
             {
-                onTargetItem.Invoke(_item);
+                UsableData usableData = _item.GetUsableData();
+
+                if (usableData == null || usableData.TargetType != TargetTypes.Self)
+                {
+                    onTargetItem.Invoke(_item);
+                }
+                else
+                {
+                    _item.Use(HeroManager.Instance.SelectedHero, new List<Unit> { HeroManager.Instance.SelectedHero });
+                }
+                
+                SetUsesLabel();
+            }
+        }
+
+        private void SetUsesLabel()
+        {
+            if (_item.MaxUses > 0)
+            {
+                _usesLabel.SetText(_item.UsesLeft.ToString());
+            }
+            else
+            {
+                _usesLabel.SetText("");
+            }
+            
+            CheckIfUsed();
+        }
+
+        private void CheckIfUsed()
+        {
+            if (_item.UsesLeft <= 0)
+            {
+                Clear();
+                HeroManager.Instance.SelectedHero.Inventory.ClearAccessory(_item.AccessorySlot);
             }
         }
 

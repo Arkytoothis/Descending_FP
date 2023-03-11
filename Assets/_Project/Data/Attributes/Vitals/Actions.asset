@@ -15,5 +15,6 @@ MonoBehaviour:
   _attributeType: 1
   _name: Actions
   _key: Actions
-  _color: {r: 1, g: 1, b: 1, a: 1}
-  _darkColor: {r: 1, g: 1, b: 1, a: 1}
+  _vitalBarColor: {r: 1, g: 1, b: 0, a: 1}
+  _damageColor: {r: 1, g: 1, b: 0, a: 1}
+  _healColor: {r: 1, g: 1, b: 0, a: 1}

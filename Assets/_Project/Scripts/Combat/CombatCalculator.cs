@@ -33,7 +33,6 @@ namespace Descending.Combat
                 if (roll <= block)
                 {
                     defended = true;
-                    //CombatTextHandler.Instance.DisplayCombatText(new CombatText(defender.CombatTextTransform.position, "Block!", "default"));
                 }
             }
             else
@@ -41,7 +40,6 @@ namespace Descending.Combat
                 if (roll <= dodge)
                 {
                     defended = true;
-                    //CombatTextHandler.Instance.DisplayCombatText(new CombatText(defender.CombatTextTransform.position, "Dodge!", "default"));
                 }
             }
 
@@ -76,7 +74,6 @@ namespace Descending.Combat
                 int minDamage = weaponData.DamageEffects[i].MinimumValue;// + attacker.Attributes.GetStatistic("Might Modifier").TotalCurrent();
                 int maxDamage = weaponData.DamageEffects[i].MaximumValue;// + attacker.Attributes.GetStatistic("Might Modifier").TotalCurrent();
                 int damage = Random.Range(minDamage, maxDamage + 1);
-                Debug.Log(defender.GetShortName() + " takes " + damage + " damage");
                 defender.Damage(attacker.gameObject, weaponData.DamageEffects[i].DamageType, damage, weaponData.DamageEffects[i].Attribute.Key);
             }
         }
@@ -88,7 +85,6 @@ namespace Descending.Combat
                 int minDamage = projectile.DamageEffects[i].MinimumValue;// + attacker.Attributes.GetStatistic("Might Modifier").TotalCurrent();
                 int maxDamage = projectile.DamageEffects[i].MaximumValue;// + attacker.Attributes.GetStatistic("Might Modifier").TotalCurrent();
                 int damage = Random.Range(minDamage, maxDamage + 1);
-                Debug.Log(defender.GetShortName() + " takes " + damage + " damage");
                 defender.Damage(attacker.gameObject, projectile.DamageEffects[i].DamageType, damage, projectile.DamageEffects[i].Attribute.Key);
             }
         }

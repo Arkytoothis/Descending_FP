@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Descending.Core;
 using Descending.Units;
-using ScriptableObjectArchitecture;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Descending.Abilities
 {
@@ -67,10 +65,31 @@ namespace Descending.Abilities
         {
             AbilityDefinition definition = Database.instance.Abilities.GetAbility(_key);
 
+            if (definition == null)
+            {
+                Debug.Log("definition == null");
+                return false;
+            }
+            
             if (user.Attributes.GetVital("Actions").Current < definition.ActionsToUse)
             {
                 Debug.Log("Not Enough Actions");
                 return false;
+            }
+            
+            if (user.Attributes.GetVital(definition.ResourceAttribute.Key).Current < definition.ResourceAmount)
+            {
+                Debug.Log("Not Enough Resource: " + definition.ResourceAttribute.Key);
+                return false;
+            }
+
+            if(definition.DurationType != DurationTypes.Instant)
+            {
+                foreach (Unit target in targets)
+                {
+                    target.AddUnitEffect(this);
+                    target.RecalculateAttributes();
+                }
             }
             
             if (definition.Effects != null)

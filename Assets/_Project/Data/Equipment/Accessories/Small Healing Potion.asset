@@ -86,4 +86,12 @@ MonoBehaviour:
     - rid: 5351987380576583728
       type: {class: AbilityEffects, ns: Descending.Abilities, asm: Descending}
       data:
-        _data: []
+        _data:
+        - rid: 5351987437689372672
+    - rid: 5351987437689372672
+      type: {class: RestoreEffect, ns: Descending.Abilities, asm: Descending}
+      data:
+        _affects: 0
+        _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
+        _minimumValue: 20
+        _maximumValue: 20

@@ -29,6 +29,7 @@ namespace Descending.Player
         [SerializeField] private Sprite _interactSprite = null;
         [SerializeField] private Image _crosshair = null;
         [SerializeField] private float _interactDistance = 1f;
+        [SerializeField] private float _enemyRaycastDistance = 1f;
 
         private Camera _camera = null;
         private bool _raycastingEnabled = true;
@@ -157,7 +158,7 @@ namespace Descending.Player
             
             RaycastHit hit;
             
-            if (Physics.Raycast(ray, out hit, _interactDistance))
+            if (Physics.Raycast(ray, out hit, _enemyRaycastDistance))
             {
                 Enemy enemy = hit.collider.gameObject.GetComponent<Enemy>();
                 
@@ -302,7 +303,7 @@ namespace Descending.Player
 
         public void OnTargetItem(Item item)
         {
-            //Debug.Log("Targeting: " + item.DisplayName());
+            Debug.Log("Targeting: " + item.DisplayName());
             _targetingMode = TargetingModes.Item;
             _currentItem = item;
             _currentAbility = null;

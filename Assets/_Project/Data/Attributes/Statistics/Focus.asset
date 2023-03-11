@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49036e61e86227e4385792501bce21df, type: 3}
-  m_Name: Might Attack
+  m_Name: Focus
   m_EditorClassIdentifier: 
   _attributeType: 2
-  _name: Might Attack
-  _key: Might Attack
+  _name: Focus
+  _key: Focus
   _largeIcon: {fileID: 0}
   _smallIcon: {fileID: 0}
   _color: {r: 1, g: 1, b: 1, a: 1}

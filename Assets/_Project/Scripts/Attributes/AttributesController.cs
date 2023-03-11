@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Descending.Abilities;
 using Descending.Core;
 using Descending.Equipment;
 using Descending.Equipment.Enchantments;
@@ -108,21 +109,24 @@ namespace Descending.Attributes
             }
         }
         
-        public void CalculateAttributes()
+        public void CalculateAttributes(bool setupVitals, bool refreshArmor)
         {
             ResetModifiers();
             CalculateCharacteristicModifiers();
             
-            _vitals["Life"].Setup(Random.Range(_raceDefinition.StartingVitals["Life"].MinimumValue, _raceDefinition.StartingVitals["Life"].MinimumValue + 1) + 
-                                  (_characteristics["Endurance"].Maximum + _characteristics["Might"].Maximum) / 2);
-            _vitals["Stamina"].Setup(Random.Range(_raceDefinition.StartingVitals["Stamina"].MinimumValue, _raceDefinition.StartingVitals["Stamina"].MinimumValue + 1) + 
-                                  (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
-            _vitals["Magic"].Setup(Random.Range(_raceDefinition.StartingVitals["Magic"].MinimumValue, _raceDefinition.StartingVitals["Magic"].MinimumValue + 1) + 
-                                  (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
-            
-            _vitals["Actions"].Setup(Random.Range(_raceDefinition.StartingVitals["Actions"].MinimumValue, _raceDefinition.StartingVitals["Actions"].MinimumValue + 1));
-            _vitals["Armor"].Setup(Random.Range(_raceDefinition.StartingVitals["Armor"].MinimumValue, _raceDefinition.StartingVitals["Armor"].MinimumValue + 1));
-            _vitals["Luck"].Setup(Random.Range(_raceDefinition.StartingVitals["Luck"].MinimumValue, _raceDefinition.StartingVitals["Luck"].MinimumValue + 1));
+            if(setupVitals == true)
+            {
+                _vitals["Life"].Setup(Random.Range(_raceDefinition.StartingVitals["Life"].MinimumValue, _raceDefinition.StartingVitals["Life"].MinimumValue + 1) +
+                                      (_characteristics["Endurance"].Maximum + _characteristics["Might"].Maximum) / 2);
+                _vitals["Stamina"].Setup(Random.Range(_raceDefinition.StartingVitals["Stamina"].MinimumValue, _raceDefinition.StartingVitals["Stamina"].MinimumValue + 1) +
+                                         (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+                _vitals["Magic"].Setup(Random.Range(_raceDefinition.StartingVitals["Magic"].MinimumValue, _raceDefinition.StartingVitals["Magic"].MinimumValue + 1) +
+                                       (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+
+                _vitals["Actions"].Setup(Random.Range(_raceDefinition.StartingVitals["Actions"].MinimumValue, _raceDefinition.StartingVitals["Actions"].MinimumValue + 1));
+                _vitals["Armor"].Setup(Random.Range(_raceDefinition.StartingVitals["Armor"].MinimumValue, _raceDefinition.StartingVitals["Armor"].MinimumValue + 1));
+                _vitals["Luck"].Setup(Random.Range(_raceDefinition.StartingVitals["Luck"].MinimumValue, _raceDefinition.StartingVitals["Luck"].MinimumValue + 1));
+            }
 
             CalculateVitalModifiers();
             
@@ -130,9 +134,9 @@ namespace Descending.Attributes
             int finesseAttack = _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum;
             int magicAttack = _characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum;
             
-            _statistics["Might Attack"].Setup(mightAttack + Random.Range(_raceDefinition.StartingStatistics["Might Attack"].MinimumValue, _raceDefinition.StartingStatistics["Might Attack"].MaximumValue + 1));
-            _statistics["Finesse Attack"].Setup(finesseAttack + Random.Range(_raceDefinition.StartingStatistics["Finesse Attack"].MinimumValue, _raceDefinition.StartingStatistics["Finesse Attack"].MaximumValue + 1));
-            _statistics["Magic Attack"].Setup(magicAttack + Random.Range(_raceDefinition.StartingStatistics["Magic Attack"].MinimumValue, _raceDefinition.StartingStatistics["Magic Attack"].MaximumValue + 1));
+            _statistics["Attack"].Setup(mightAttack + Random.Range(_raceDefinition.StartingStatistics["Attack"].MinimumValue, _raceDefinition.StartingStatistics["Attack"].MaximumValue + 1));
+            _statistics["Accuracy"].Setup(finesseAttack + Random.Range(_raceDefinition.StartingStatistics["Accuracy"].MinimumValue, _raceDefinition.StartingStatistics["Accuracy"].MaximumValue + 1));
+            _statistics["Focus"].Setup(magicAttack + Random.Range(_raceDefinition.StartingStatistics["Focus"].MinimumValue, _raceDefinition.StartingStatistics["Focus"].MaximumValue + 1));
             
             int mightDamage = (_characteristics["Might"].Maximum - 10) / 10;
             int finesseDamage = (_characteristics["Finesse"].Maximum - 10) / 10;
@@ -151,14 +155,18 @@ namespace Descending.Attributes
             
             _statistics["Perception"].Setup(Random.Range(_raceDefinition.StartingStatistics["Perception"].MinimumValue, _raceDefinition.StartingStatistics["Perception"].MaximumValue + 1) + 
                                             _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
-            _statistics["Movement"].Setup(_raceDefinition.StartingStatistics["Movement"].MinimumValue);
+            _statistics["Initiative"].Setup(_raceDefinition.StartingStatistics["Initiative"].MinimumValue);
             _statistics["Critical Damage"].Setup(_raceDefinition.StartingStatistics["Critical Damage"].MinimumValue);
             _statistics["Critical Hit"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Critical Hit"].MinimumValue, _raceDefinition.StartingStatistics["Critical Hit"].MaximumValue + 1));
             _statistics["Fumble"].Setup(magicDamage + Random.Range(_raceDefinition.StartingStatistics["Fumble"].MinimumValue, _raceDefinition.StartingStatistics["Fumble"].MaximumValue + 1));
             
             CalculateStatisticModifiers();
+            CalculateUnitEffectModifiers();
 
-            _vitals["Armor"].Refresh();
+            if(refreshArmor == true)
+            {
+                _vitals["Armor"].Refresh();
+            }
         }
         
         public void CalculateAttributes(EnemyDefinition enemyDefinition)
@@ -210,6 +218,7 @@ namespace Descending.Attributes
             _statistics["Fumble"].Setup(magicDamage + Random.Range(enemyDefinition.StartingStatistics["Fumble"].MinimumValue, enemyDefinition.StartingStatistics["Fumble"].MaximumValue + 1));
             
             CalculateStatisticModifiers();
+            CalculateUnitEffectModifiers();
 
             _vitals["Armor"].Refresh();
         }
@@ -239,7 +248,6 @@ namespace Descending.Attributes
                 }
             }
             
-            CalculateUnitEffectModifiers(_characteristics, AttributeTypes.Characteristic);
         }
 
         public void CalculateVitalModifiers()
@@ -267,8 +275,6 @@ namespace Descending.Attributes
                     _vitals["Armor"].AddToMaximum(wearableData.Armor);
                 }
             }
-            
-            CalculateUnitEffectModifiers(_vitals, AttributeTypes.Vital);
         }
         
         public void CalculateStatisticModifiers()
@@ -296,8 +302,6 @@ namespace Descending.Attributes
                     _statistics["Perception"].Modify(wearableData.PerceptionModifier);
                 }
             }
-            
-            CalculateUnitEffectModifiers(_statistics, AttributeTypes.Statistic);
         }
         
         private void CalculateEnchantModifiers(EnchantmentDefinition enchant, AttributeDictionary attributes, AttributeTypes type)
@@ -315,18 +319,31 @@ namespace Descending.Attributes
             }
         }
 
-        private void CalculateUnitEffectModifiers(AttributeDictionary attributes, AttributeTypes type)
+        private void CalculateUnitEffectModifiers()
         {
             foreach (UnitEffect unitEffect in _unitEffects.Effects)
             {
-                //if (unitEffect.GetType() == typeof(ModifyAttributeUnitEffect))
-                //{
-                    //ModifyAttributeUnitEffect modifyAttributeEffect = (ModifyAttributeUnitEffect)unitEffect;
-                            
-                    //if (modifyAttributeEffect.AttributeDefinition == null || modifyAttributeEffect.AttributeDefinition.AttributeType != type) continue;
-                            
-                    //attributes[modifyAttributeEffect.AttributeDefinition.Key].Modify(modifyAttributeEffect.Modifier);
-                //}
+                foreach (AbilityEffect abilityEffect in unitEffect.Ability.Definition.Effects.Data)
+                {
+                    if (abilityEffect.GetType() == typeof(ModifyAttributeAbilityEffect))
+                    {
+                        ModifyAttributeAbilityEffect modifyAttributeAbilityEffect = (ModifyAttributeAbilityEffect)abilityEffect;
+                        if(modifyAttributeAbilityEffect.Attribute.AttributeType == AttributeTypes.Characteristic)
+                            _characteristics[modifyAttributeAbilityEffect.Attribute.Key].Modify(modifyAttributeAbilityEffect.RollAmount());
+                        else if(modifyAttributeAbilityEffect.Attribute.AttributeType == AttributeTypes.Vital)
+                            _vitals[modifyAttributeAbilityEffect.Attribute.Key].Modify(modifyAttributeAbilityEffect.RollAmount());
+                        else if(modifyAttributeAbilityEffect.Attribute.AttributeType == AttributeTypes.Statistic)
+                            _statistics[modifyAttributeAbilityEffect.Attribute.Key].Modify(modifyAttributeAbilityEffect.RollAmount());
+                    }
+                }
+                // if (unitEffect.GetType() == typeof(ModifyAttributeUnitEffect))
+                // {
+                //     ModifyAttributeUnitEffect modifyAttributeEffect = (ModifyAttributeUnitEffect)unitEffect;
+                //             
+                //     if (modifyAttributeEffect.AttributeDefinition == null || modifyAttributeEffect.AttributeDefinition.AttributeType != type) continue;
+                //             
+                //     attributes[modifyAttributeEffect.AttributeDefinition.Key].Modify(modifyAttributeEffect.Modifier);
+                // }
             }
         }
 

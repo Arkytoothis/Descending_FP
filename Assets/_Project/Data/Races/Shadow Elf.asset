@@ -115,12 +115,12 @@ MonoBehaviour:
     - Magic Modifier
     - Willpower
     - Critical Damage
-    - Movement
+    - Initiative
     - Perception
-    - Finesse Attack
-    - Might Attack
+    - Accuracy
+    - Attack
     - Critical Hit
-    - Magic Attack
+    - Focus
     - Fumble
     valueData:
     - _derived: {fileID: 11400000, guid: 50ae211d7fe97bc47a969361f6164b6e, type: 2}
@@ -181,15 +181,3 @@ MonoBehaviour:
       _minimumValue: 1
       _maximumValue: 1
   _resistances: []
-  SelectSoundsFemale:
-  - Female 1 - Thinking 01
-  - Female 1 - Thinking 02
-  - Female 1 - Thinking 03
-  - Female 1 - Thinking 04
-  SelectSoundsMale:
-  - Male 1 - Sigh 05
-  - Male 1 - Thinking 01
-  - Male 1 - Thinking 02
-  - Male 1 - Thinking 03
-  - Male 1 - Thinking 04
-  - Male 1 - Thinking 05

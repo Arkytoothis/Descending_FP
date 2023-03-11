@@ -50,12 +50,12 @@ MonoBehaviour:
     - Dodge
     - Magic Modifier
     - Willpower
-    - Movement
+    - Initiative
     - Critical Damage
     - Perception
-    - Finesse Attack
-    - Might Attack
-    - Magic Attack
+    - Accuracy
+    - Attack
+    - Focus
     - Critical Hit
     - Fumble
     valueData:

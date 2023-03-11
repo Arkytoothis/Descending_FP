@@ -143,7 +143,7 @@ namespace Descending.Core
         Fire, Air, Water, Earth, Life, Death, Order, Chaos, Number, None
     }
 
-    public enum DurationType
+    public enum DurationTypes
     { 
         Instant, Permanent, Seconds, Number, None 
     }
@@ -207,5 +207,10 @@ namespace Descending.Core
     public enum AttackTypes
     {
         Melee, Ranged, Ability, Number, None
+    }
+
+    public enum KeyTypes
+    {
+        Bronze, Iron, Gold, Number, None
     }
 }

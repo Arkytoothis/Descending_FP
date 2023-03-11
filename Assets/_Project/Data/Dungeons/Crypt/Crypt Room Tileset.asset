@@ -16,7 +16,7 @@ MonoBehaviour:
     Weights:
     - Value: {fileID: 6465828998826672736, guid: 7eab2dedcd2aa634199d5d632db0b05d,
         type: 3}
-      MainPathWeight: 1
+      MainPathWeight: 0.5
       BranchPathWeight: 1
       DepthWeightScale:
         serializedVersion: 2
@@ -43,4 +43,36 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       TileSet: {fileID: 11400000}
-  LockPrefabs: []
+  LockPrefabs:
+  - Socket: {fileID: 11400000, guid: 87cda59ad5db80b44b0a71d209ee1d79, type: 2}
+    LockPrefabs:
+      Weights:
+      - Value: {fileID: 3699491710093542900, guid: 8e73d51e4dce9ae4e86189fe7503a81e,
+          type: 3}
+        MainPathWeight: 1
+        BranchPathWeight: 1
+        DepthWeightScale:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        TileSet: {fileID: 0}

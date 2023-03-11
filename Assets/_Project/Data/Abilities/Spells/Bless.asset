@@ -19,13 +19,14 @@ MonoBehaviour:
   _description: 
   _cooldown: 0
   _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
-  _resourceAmount: 1
+  _resourceAmount: 5
   _skill: {fileID: 11400000, guid: dccfbb7e2f018e448a78c1e8d29de49d, type: 2}
   _minimumSkill: 1
   _actionsToUse: 2
   _targetType: 3
   _area: 3
   _range: 1
+  _durationType: 2
   _minDuration: 10
   _maxDuration: 10
   _effects:
@@ -38,11 +39,26 @@ MonoBehaviour:
       data:
         _data:
         - rid: 5351987392449609728
+        - rid: 5351987425219706881
+        - rid: 5351987425219706882
     - rid: 5351987392449609728
       type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Descending}
       data:
         _affects: 1
-        _icon: {fileID: 21300000, guid: a99d6e1faf529184483b5f4130e77d9c, type: 3}
         _attribute: {fileID: 11400000, guid: a31f61315b68be94aa728d2b1d6ebaee, type: 2}
+        _minimumModifier: 5
+        _maximumModifier: 5
+    - rid: 5351987425219706881
+      type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Descending}
+      data:
+        _affects: 1
+        _attribute: {fileID: 11400000, guid: 87a10bd272f6ce34a926fbdd2deaad03, type: 2}
+        _minimumModifier: 5
+        _maximumModifier: 5
+    - rid: 5351987425219706882
+      type: {class: ModifyAttributeAbilityEffect, ns: Descending.Abilities, asm: Descending}
+      data:
+        _affects: 1
+        _attribute: {fileID: 11400000, guid: 45429c19ba0d2cf46a652eb0bdd22c14, type: 2}
         _minimumModifier: 5
         _maximumModifier: 5

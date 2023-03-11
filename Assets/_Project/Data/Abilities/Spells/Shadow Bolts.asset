@@ -19,13 +19,16 @@ MonoBehaviour:
   _description: 
   _cooldown: 0
   _resourceAttribute: {fileID: 11400000, guid: 9fa349d9418adc04ab224349214b8932, type: 2}
-  _resourceAmount: 1
+  _resourceAmount: 5
   _skill: {fileID: 11400000, guid: 79d394fb165caa04ca40a01af963d762, type: 2}
   _minimumSkill: 1
   _actionsToUse: 2
   _targetType: 4
   _area: 0
   _range: 10
+  _durationType: 0
+  _minDuration: 0
+  _maxDuration: 0
   _effects:
     rid: 5351987380576583695
   references:

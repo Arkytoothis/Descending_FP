@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Units;
 using ScriptableObjectArchitecture;
 using UnityEngine;
@@ -49,6 +50,7 @@ namespace Descending.Gui
             SelectHero(HeroManager.Instance.Heroes[0]);
             _stockpilePanel.UpdateStockpile();
             //MasterAudio.PlaySound(_openSound);
+            GameTickManager.Instance.SetProcessTick(false);
         }
 
         public override void Close()
@@ -57,6 +59,7 @@ namespace Descending.Gui
             //MasterAudio.PlaySound(_closeSound);
             _isOpen = false;
             onDisplayItemTooltip.Invoke(null);
+            GameTickManager.Instance.SetProcessTick(true);
         }
 
         public void SelectHero(Hero hero)

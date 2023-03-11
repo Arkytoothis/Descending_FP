@@ -18,10 +18,10 @@ namespace Descending.Units
         public Ability Ability => _ability;
         public bool IsActive => _isActive;
 
-        public UnitEffect(Ability ability, Sprite icon, int duration)
+        public UnitEffect(Ability ability, int duration)
         {
             _ability = ability;
-            _icon = icon;
+            _icon = ability.Definition.Icon;
             _duration = duration;
             _isActive = true;
         }

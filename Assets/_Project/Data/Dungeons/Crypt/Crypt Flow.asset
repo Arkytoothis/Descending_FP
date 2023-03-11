@@ -15,14 +15,14 @@ MonoBehaviour:
   globalPropGroupID_obsolete: 
   globalPropRanges_obsolete: []
   Length:
-    Min: 5
-    Max: 10
+    Min: 6
+    Max: 6
   BranchMode: 0
   BranchCount:
     Min: 1
     Max: 5
   GlobalProps: []
-  KeyManager: {fileID: 0}
+  KeyManager: {fileID: 11400000, guid: af97d807a1686db41a58ae5efc603d23, type: 2}
   DoorwayConnectionChance: 0
   RestrictConnectionToSameSection: 0
   TileInjectionRules: []
@@ -51,14 +51,30 @@ MonoBehaviour:
     Position: 1
     Label: Goal
     Keys: []
-    Locks: []
-    LockPlacement: 0
+    Locks:
+    - ID: 1
+      Range:
+        Min: 0
+        Max: 1
+    LockPlacement: 1
   Lines:
   - Graph: {fileID: 11400000}
     DungeonArchetypes:
     - {fileID: 11400000, guid: 9f16546098e297d42ba8a3169d33972c, type: 2}
     Position: 0
     Length: 1
-    Keys: []
-    Locks: []
+    Keys:
+    - ID: 0
+      Range:
+        Min: 0
+        Max: 1
+    - ID: 1
+      Range:
+        Min: 0
+        Max: 1
+    Locks:
+    - ID: 0
+      Range:
+        Min: 1
+        Max: 1
   currentFileVersion: 1

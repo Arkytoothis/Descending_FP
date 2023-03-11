@@ -15,5 +15,6 @@ MonoBehaviour:
   _attributeType: 1
   _name: Magic
   _key: Magic
-  _color: {r: 1, g: 1, b: 1, a: 1}
-  _darkColor: {r: 1, g: 1, b: 1, a: 1}
+  _vitalBarColor: {r: 0.3729002, g: 0.15566038, b: 0.6226415, a: 1}
+  _damageColor: {r: 0.37254903, g: 0.15686275, b: 0.62352943, a: 1}
+  _healColor: {r: 0.37254903, g: 0.15686275, b: 0.62352943, a: 1}

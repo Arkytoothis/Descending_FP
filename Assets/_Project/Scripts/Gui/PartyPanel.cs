@@ -76,5 +76,10 @@ namespace Descending.Gui
                 _widgets[i].SyncUnitEffects();
             }
         }
+
+        public void OnDisplayDamageText(HeroDamageText damageText)
+        {
+            _widgets[damageText.ListIndex].ShowDamage(damageText);
+        }
     }
 }

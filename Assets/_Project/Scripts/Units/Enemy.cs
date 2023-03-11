@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Descending.Combat;
@@ -124,6 +125,7 @@ namespace Descending.Units
             
             //CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
             _damageSystem.TakeDamage(attacker, damage);
+            //_attributes.GetVital("Life").Damage(damage, false);
             
             if (GetHealth() <= 0)
             {
@@ -205,6 +207,10 @@ namespace Descending.Units
         public void RangedAttack()
         {
             _unitAnimator.RangedAttack();
+        }
+
+        public override void RecalculateAttributes()
+        {
         }
     }
 }

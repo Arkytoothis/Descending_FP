@@ -204,7 +204,7 @@ namespace Descending.Equipment
                 }
             }
             
-            _attributes.CalculateAttributes();
+            _attributes.CalculateAttributes(false, false);
         }
 
         public void EquipItem(Item item, int slot)
@@ -223,7 +223,7 @@ namespace Descending.Equipment
                 _worldBody.EquipItem(item, false);
             }
             
-            _attributes.CalculateAttributes();
+            _attributes.CalculateAttributes(false, false);
         }
 
         public void EquipAccessory(Item item)
@@ -240,13 +240,13 @@ namespace Descending.Equipment
                 }
             }
 
-            _accessories[index] = new Item(item);
+            _accessories[index] = new Item(item, index);
         }
         
         public void EquipAccessory(Item item, int slot)
         {
             //MasterAudio.PlaySound(item.ItemDefinition.EquipSound);
-            _accessories[slot] = new Item(item);
+            _accessories[slot] = new Item(item, slot);
         }
 
         public void UnequipItem(int slot, bool addToStockpile)
@@ -270,7 +270,7 @@ namespace Descending.Equipment
             
             _equipment[slot] = null;
             
-            _attributes.CalculateAttributes();
+            _attributes.CalculateAttributes(false, false);
         }
         
         public void UnequipAccessory(int slot)

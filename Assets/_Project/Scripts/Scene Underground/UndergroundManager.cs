@@ -5,6 +5,7 @@ using Descending.Core;
 using Descending.Encounters;
 using Descending.Equipment;
 using Descending.Gui;
+using Descending.Player;
 using Descending.Treasure;
 using Descending.Units;
 using UnityEngine;
@@ -19,6 +20,8 @@ namespace Descending.Scene_Overworld
         [SerializeField] private StockpileManager _stockpileManager = null;
         [SerializeField] private EncounterManager _encounterManager = null;
         [SerializeField] private TreasureManager _treasureManager = null;
+        [SerializeField] private PlayerManager _playerManager = null;
+        [SerializeField] private GameTickManager _gameTickManager = null;
         
         [SerializeField] private PortraitRoom _portraitRoom = null;
         [SerializeField] private GameObject _guiPrefab = null;
@@ -36,6 +39,7 @@ namespace Descending.Scene_Overworld
         {
             SetupGui();
             
+            _playerManager.Setup();
             _heroManager.Setup();
             _portraitRoom.Setup(_heroManager.Heroes);
             _heroManager.SyncHeroes();
@@ -45,6 +49,8 @@ namespace Descending.Scene_Overworld
             _treasureManager.Setup();
             
             HeroManager.Instance.SelectDefaultHero();
+            
+            _gameTickManager.Setup();
         }
 
         private void SetupGui()

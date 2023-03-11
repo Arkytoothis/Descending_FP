@@ -13,11 +13,11 @@ namespace Descending.Gui
         [SerializeField] private List<ActionWidget> _topActionBar = null;
         [SerializeField] private List<ActionWidget> _bottomActionBar = null;
         [SerializeField] private TMP_Text _actionsLabel = null;
+        [SerializeField] private TMP_Text _luckLabel = null;
         [SerializeField] private VitalBar _armorBar = null;
         [SerializeField] private VitalBar _lifeBar = null;
         [SerializeField] private VitalBar _staminaBar = null;
         [SerializeField] private VitalBar _magicBar = null;
-        [SerializeField] private VitalBar _moraleBar = null;
         
         [SerializeField] private EquippedWeaponWidget _meleeWidget = null;
         [SerializeField] private EquippedWeaponWidget _rangedWidget = null;
@@ -57,13 +57,16 @@ namespace Descending.Gui
             {
                 _bottomActionBar[i].SetAbility(hero.Abilities.MemorizedSpells[i]);
             }
+
+            LoadAccessory(hero, 0, 8);
+            LoadAccessory(hero, 1, 9);
             
             _actionsLabel.enabled = true;
+            _luckLabel.enabled = true;
             _armorBar.gameObject.SetActive(true);
             _lifeBar.gameObject.SetActive(true);
             _staminaBar.gameObject.SetActive(true);
             _magicBar.gameObject.SetActive(true);
-            _moraleBar.gameObject.SetActive(true);
             _meleeWidget.gameObject.SetActive(true);
             _rangedWidget.gameObject.SetActive(true);
             
@@ -71,6 +74,14 @@ namespace Descending.Gui
             DisplayEquippedItems(hero);
         }
 
+        private void LoadAccessory(Hero hero, int accessoryIndex, int actionBarIndex)
+        {
+            if (hero.Inventory.Accessories[accessoryIndex] != null && hero.Inventory.Accessories[accessoryIndex].IsEmpty() == false)
+            {
+                _topActionBar[actionBarIndex].SetItem(hero.Inventory.Accessories[accessoryIndex]);
+            }
+        }
+        
         private void Clear()
         {
             foreach (ActionWidget widget in _topActionBar)
@@ -84,11 +95,11 @@ namespace Descending.Gui
             }
             
             _actionsLabel.enabled = false;
+            _luckLabel.enabled = false;
             _armorBar.gameObject.SetActive(false);
             _lifeBar.gameObject.SetActive(false);
             _staminaBar.gameObject.SetActive(false);
             _magicBar.gameObject.SetActive(false);
-            _moraleBar.gameObject.SetActive(false);
             _meleeWidget.gameObject.SetActive(false);
             _rangedWidget.gameObject.SetActive(false);
         }
@@ -103,11 +114,12 @@ namespace Descending.Gui
             if (hero != HeroManager.Instance.SelectedHero) return;
             
             _actionsLabel.SetText("Actions: " + hero.Attributes.GetVital("Actions").Current + "/" + hero.Attributes.GetVital("Actions").Maximum);
+            _luckLabel.SetText("Luck: " + hero.Attributes.GetVital("Luck").Current);
+            
             _armorBar.UpdateData(hero.Attributes.GetVital("Armor").Current, hero.Attributes.GetVital("Armor").Maximum);
             _lifeBar.UpdateData(hero.Attributes.GetVital("Life").Current, hero.Attributes.GetVital("Life").Maximum);
             _staminaBar.UpdateData(hero.Attributes.GetVital("Stamina").Current, hero.Attributes.GetVital("Stamina").Maximum);
             _magicBar.UpdateData(hero.Attributes.GetVital("Magic").Current, hero.Attributes.GetVital("Magic").Maximum);
-            _moraleBar.UpdateData(100, 100);
         }
 
         private void DisplayEquippedItems(Hero hero)

@@ -8,11 +8,11 @@ namespace Descending.Gui
     public class HeroVitalsPanel : MonoBehaviour
     {
         [SerializeField] private VitalWidget _actionsWidget = null;
-        [SerializeField] private VitalWidget _armorWidget = null;
-        [SerializeField] private VitalWidget _lifeWidget = null;
-        [SerializeField] private VitalWidget _staminaWidget = null;
-        [SerializeField] private VitalWidget _magicWidget = null;
         [SerializeField] private VitalWidget _luckWidget = null;
+        [SerializeField] private VitalBar _armorBar = null;
+        [SerializeField] private VitalBar _lifeBar = null;
+        [SerializeField] private VitalBar _staminaBar = null;
+        [SerializeField] private VitalBar _magicBar = null;
 
         public void Setup()
         {
@@ -22,11 +22,12 @@ namespace Descending.Gui
         public void DisplayHero(Hero hero)
         {
             _actionsWidget.SetAttribute(hero.Attributes.GetVital("Actions"));
-            _armorWidget.SetAttribute(hero.Attributes.GetVital("Armor"));
-            _lifeWidget.SetAttribute(hero.Attributes.GetVital("Life"));
-            _staminaWidget.SetAttribute(hero.Attributes.GetVital("Stamina"));
-            _magicWidget.SetAttribute(hero.Attributes.GetVital("Magic"));
             _luckWidget.SetAttribute(hero.Attributes.GetVital("Luck"));
+            
+            _armorBar.UpdateData(hero.Attributes.GetVital("Armor").Current, hero.Attributes.GetVital("Armor").Maximum);
+            _lifeBar.UpdateData(hero.Attributes.GetVital("Life").Current, hero.Attributes.GetVital("Life").Maximum);
+            _staminaBar.UpdateData(hero.Attributes.GetVital("Stamina").Current, hero.Attributes.GetVital("Stamina").Maximum);
+            _magicBar.UpdateData(hero.Attributes.GetVital("Magic").Current, hero.Attributes.GetVital("Magic").Maximum);
         }
     }
 }

@@ -10,12 +10,10 @@ namespace Descending.Abilities
     [System.Serializable]
     public class ModifyAttributeAbilityEffect : AbilityEffect
     {
-        [SerializeField] private Sprite _icon = null;
         [SerializeField] private AttributeDefinition _attribute = null;
         [SerializeField] private int _minimumModifier = 0;
         [SerializeField] private int _maximumModifier = 0;
 
-        public Sprite Icon => _icon;
         public AttributeDefinition Attribute => _attribute;
         public int MinimumModifier => _minimumModifier;
         public int MaximumModifier => _maximumModifier;
@@ -44,9 +42,14 @@ namespace Descending.Abilities
                 foreach (Unit target in targets)
                 {
                     //Debug.Log("Buffing " + _attribute.Name + " " + target.name);
-                    target.AddUnitEffect(ability);
+                    //target.AddUnitEffect(ability);
                 }
             }
+        }
+
+        public int RollAmount()
+        {
+            return Random.Range(_minimumModifier, _maximumModifier + 1);
         }
     }
 }
