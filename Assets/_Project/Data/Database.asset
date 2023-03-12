@@ -28,6 +28,8 @@ MonoBehaviour:
   _partyDataFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/party_data.dat
   _resourcesDataFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/resources_data.dat
   _stockpileDataFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/stockpile_data.dat
+  _overworldEncounterDataFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/overworld_encounter_data.dat
+  _undergroundEncounterDataFilePath: D:/Projects/Descending/Descending - FP - 2021.3/Assets/StreamingAssets/SaveData/underground_encounter_data.dat
   _blankSprite: {fileID: 21300000, guid: 672d62704098abf409b522c28d025530, type: 3}
   _groundMask:
     serializedVersion: 2

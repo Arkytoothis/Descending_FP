@@ -1,0 +1,11 @@
+{
+    "$id": 0,
+    "$type": "0|Descending.Party.EncounterManagerSaveData, Descending",
+    "_encounterData": {
+        "$id": 1,
+        "$type": "1|System.Collections.Generic.List`1[[Descending.Units.EncounterSaveData, Descending]], mscorlib",
+        "$rlength": 0,
+        "$rcontent": [
+        ]
+    }
+}

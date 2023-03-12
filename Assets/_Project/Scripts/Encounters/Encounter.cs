@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
+using Descending.Player;
 using Descending.Units;
 using DG.Tweening;
 using UnityEngine;
@@ -20,12 +22,15 @@ namespace Descending.Encounters
         [SerializeField] private List<Transform> _leaderSpawnPositions = null;
         [SerializeField] private List<Transform> _bossSpawnPositions = null;
         [SerializeField] private int _threatLevel = 0;
-
+        [SerializeField] private bool _isActive = false;
+        [SerializeField] private GameScenes _scene = GameScenes.None;
+        
         private List<Enemy> _enemies = null;
         private List<InitiativeData> _initiativeDataList = null;
         
         public List<InitiativeData> InitiativeDataList => _initiativeDataList;
         public List<Enemy> Enemies => _enemies;
+        public bool IsActive => _isActive;
 
         private void Start()
         {
@@ -40,6 +45,9 @@ namespace Descending.Encounters
 
         public void SpawnEnemies()
         {
+            if (_isActive == false) return;
+            
+            _scene = PlayerManager.Instance.CurrentScene;
             _enemies = new List<Enemy>();
             
             ProcessSpawnEntry(_minionsEntry);
@@ -135,7 +143,11 @@ namespace Descending.Encounters
 
         public void Trigger()
         {
-            
+        }
+
+        public void End()
+        {
+            _isActive = false;
         }
 
         public void RollInitiative()
@@ -201,6 +213,13 @@ namespace Descending.Encounters
             {
                 enemy.Attributes.RefreshActions();
             }
+        }
+
+        public void Load(EncounterSaveData saveData)
+        {
+            _isActive = saveData.IsActive;
+            transform.position = saveData.WorldPosition;
+            _scene = PlayerManager.Instance.CurrentScene;
         }
     }
 }

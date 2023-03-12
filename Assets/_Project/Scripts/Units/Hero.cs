@@ -249,5 +249,10 @@ namespace Descending.Units
         {
             _attributes.CalculateAttributes(false, false);
         }
+
+        public void MountPortraitModel()
+        {
+            _portraitModel.transform.SetParent(_modelParent, false);
+        }
     }
 }

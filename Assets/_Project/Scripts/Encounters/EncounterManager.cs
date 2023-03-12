@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Descending.Combat;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Party;
 using Descending.Player;
 using Descending.Treasure;
 using Descending.Units;
 using ScriptableObjectArchitecture;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Descending.Encounters
@@ -15,6 +18,8 @@ namespace Descending.Encounters
     {
         public static EncounterManager Instance { get; private set; }
         
+        [SerializeField] private GameObject _encounterPrefab = null;
+        [SerializeField] private Transform _encountersParent = null;
         [SerializeField] private PlayerController _playerController = null;
         [SerializeField] private CombatRaycaster _combatRaycaster = null;
         [SerializeField] private List<Encounter> _encounters = null;
@@ -26,6 +31,7 @@ namespace Descending.Encounters
         [SerializeField] private BoolEvent onEndEncounter = null;
         [SerializeField] private IntEvent onSelectInitiative = null;
         [SerializeField] private IntEvent onSelectPartyWidget = null;
+        
 
         private Encounter _currentEncounter = null;
         private bool _waitForInput = false;
@@ -67,6 +73,7 @@ namespace Descending.Encounters
         public void RegisterEncounter(Encounter encounter)
         {
             _encounters.Add(encounter);
+            encounter.transform.SetParent(_encountersParent);
             encounter.Setup(_playerController.transform);
         }
 
@@ -98,6 +105,7 @@ namespace Descending.Encounters
             TreasureManager.Instance.SpawnTreasureChest(_currentEncounter.transform.position);
             HeroManager.Instance.RefreshHeroActions();
             
+            _currentEncounter.End();
             RemoveEncounter(_currentEncounter);
             _currentEncounter = null;
             GameTickManager.Instance.SetTickMode(GameTickModes.World);
@@ -229,6 +237,43 @@ namespace Descending.Encounters
             {
                 StartCoroutine(weapon.DelayedSpawnProjectile(attacker, defender));
             }
+        }
+        public void SaveState(string filePath)
+        {
+            EncounterManagerSaveData saveData = new EncounterManagerSaveData(_encounters);
+            byte[] saveDataBytes = SerializationUtility.SerializeValue(saveData, DataFormat.JSON);
+            File.WriteAllBytes(filePath, saveDataBytes);
+        }
+
+        public void LoadState(string filePath)
+        {
+            if (!File.Exists(filePath)) return; // No state to load
+	
+            byte[] bytes = File.ReadAllBytes(filePath);
+            EncounterManagerSaveData saveData = SerializationUtility.DeserializeValue<EncounterManagerSaveData>(bytes, DataFormat.JSON);
+
+            //_partyController.transform.position = saveData.WorldPosition;
+
+            if (saveData.EncounterData == null) return;
+            
+            _encounters = new List<Encounter>(saveData.EncounterData.Count);
+            _encountersParent.ClearTransform();
+            
+            for (int i = 0; i < saveData.EncounterData.Count; i++)
+            {
+                LoadEncounter(saveData.EncounterData[i]);
+            }
+        }
+        
+        private void LoadEncounter(EncounterSaveData saveData)
+        {
+            //Debug.Log("Spawning Hero at " + mapPosition.ToString());
+            GameObject clone = Instantiate(_encounterPrefab, _encountersParent);
+            
+            Encounter encounter = clone.GetComponent<Encounter>();
+            encounter.Load(saveData);
+            
+            _encounters.Add(encounter);
         }
     }
 }

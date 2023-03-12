@@ -59,7 +59,7 @@ namespace Descending.Scene_Overworld
 
         private void Setup()
         {
-            _playerManager.Setup();
+            _playerManager.Setup(GameScenes.Underground);
             _heroManager.Setup();
             _portraitRoom.Setup(_heroManager.Heroes);
             _heroManager.SyncHeroes();
@@ -75,14 +75,14 @@ namespace Descending.Scene_Overworld
 
         private void Load()
         {
-            _playerManager.Setup();
+            _playerManager.Setup(GameScenes.Underground);
             _heroManager.LoadState();
             _portraitRoom.Setup(_heroManager.Heroes);
             _heroManager.SyncHeroes();
             
             _resourcesManager.LoadState();
             _stockpileManager.LoadState();
-            _encounterManager.Setup();
+            _encounterManager.LoadState(Database.instance.UndergroundEncounterDataFilePath);
             _treasureManager.Setup();
             
             HeroManager.Instance.SelectDefaultHero();

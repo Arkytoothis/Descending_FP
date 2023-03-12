@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Units;
 using UnityEngine;
 
@@ -9,13 +10,16 @@ namespace Descending.Player
     {
         public static PlayerManager Instance { get; private set; }
         
+        [SerializeField] private GameScenes _currentScene = GameScenes.None;
         [SerializeField] private Transform _projectileSpawnLeft = null;
         [SerializeField] private Transform _projectileSpawnCenter = null;
         [SerializeField] private Transform _projectileSpawnRight = null;
         [SerializeField] private Transform _attackEffectSpawnLeft = null;
         [SerializeField] private Transform _attackEffectSpawnCenter = null;
         [SerializeField] private Transform _attackEffectSpawnRight = null;
-        
+
+        public GameScenes CurrentScene => _currentScene;
+
         private void Awake()
         {
             if (Instance != null)
@@ -28,9 +32,9 @@ namespace Descending.Player
             Instance = this;
         }
 
-        public void Setup()
+        public void Setup(GameScenes currentScene)
         {
-            
+            _currentScene = currentScene;
         }
 
         public Transform GetProjectileSpawn(Hero hero)

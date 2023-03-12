@@ -31,6 +31,8 @@ namespace Descending.Core
         [SerializeField] private string _partyDataFilePath = "";
         [SerializeField] private string _resourcesDataFilePath = "";
         [SerializeField] private string _stockpileDataFilePath = "";
+        [SerializeField] private string _overworldEncounterDataFilePath = "";
+        [SerializeField] private string _undergroundEncounterDataFilePath = "";
         [SerializeField] private Sprite _blankSprite = null;
         
         [SerializeField] private LayerMask _groundMask = new LayerMask();
@@ -55,6 +57,8 @@ namespace Descending.Core
         public string PartyDataFilePath => _partyDataFilePath;
         public string ResourcesDataFilePath => _resourcesDataFilePath;
         public string StockpileDataFilePath => _stockpileDataFilePath;
+        public string OverworldEncounterDataFilePath => _overworldEncounterDataFilePath;
+        public string UndergroundEncounterDataFilePath => _undergroundEncounterDataFilePath;
 
         public LayerMask GroundMask => _groundMask;
 
@@ -73,9 +77,21 @@ namespace Descending.Core
             _partyDataFilePath = Application.streamingAssetsPath + "/SaveData/party_data.dat";
             _resourcesDataFilePath = Application.streamingAssetsPath + "/SaveData/resources_data.dat";
             _stockpileDataFilePath = Application.streamingAssetsPath + "/SaveData/stockpile_data.dat";
+            _overworldEncounterDataFilePath = Application.streamingAssetsPath + "/SaveData/overworld_encounter_data.dat";
+            _undergroundEncounterDataFilePath = Application.streamingAssetsPath + "/SaveData/underground_encounter_data.dat";
             // _timeDataFilePath = Application.streamingAssetsPath + "/SaveData/time_data.dat";
             // _overworldSpawnFilePath = Application.streamingAssetsPath + "/SaveData/overworld_spawn.dat";
             // _worldDataFilePath = Application.streamingAssetsPath + "/SaveData/world_data.dat";
+        }
+
+        public string GetEncounterDataFilePath(GameScenes currentScene)
+        {
+            if (currentScene == GameScenes.Overworld)
+                return _overworldEncounterDataFilePath;
+            else if (currentScene == GameScenes.Underground)
+                return _undergroundEncounterDataFilePath;
+            else
+                return "";
         }
     }
 }

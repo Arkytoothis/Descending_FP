@@ -1,0 +1,33 @@
+{
+    "$id": 0,
+    "$type": "0|Descending.Party.EncounterManagerSaveData, Descending",
+    "_encounterData": {
+        "$id": 1,
+        "$type": "1|System.Collections.Generic.List`1[[Descending.Units.EncounterSaveData, Descending]], mscorlib",
+        "$rlength": 2,
+        "$rcontent": [
+            {
+                "$id": 2,
+                "$type": "2|Descending.Units.EncounterSaveData, Descending",
+                "_isActive": true,
+                "_worldPosition": {
+                    "$type": "3|UnityEngine.Vector3, UnityEngine.CoreModule",
+                    213.79,
+                    45.24,
+                    391.5
+                }
+            },
+            {
+                "$id": 3,
+                "$type": 2,
+                "_isActive": true,
+                "_worldPosition": {
+                    "$type": 3,
+                    181.35,
+                    42.3,
+                    414.53
+                }
+            }
+        ]
+    }
+}
