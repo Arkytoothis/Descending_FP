@@ -49,7 +49,7 @@ namespace Descending.Units
         public abstract Item GetEquippedWeapon();
         public abstract Item GetMeleeWeapon();
         public abstract Item GetRangedWeapon();
-        public abstract void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital);
+        public abstract void Damage(Unit attacker, DamageTypeDefinition damageType, int damage, string vital);
         public abstract void RestoreVital(string vital, int damage);
         public abstract void UseResource(string vital, int damage);
         public abstract void RecalculateAttributes();
@@ -73,5 +73,9 @@ namespace Descending.Units
         public virtual void AddUnitEffect(Ability ability)
         {
         }
+
+        public abstract void DisplayDefaultText(string text);
+        public abstract void DisplayDamageText(int damage, AttributeDefinition attributeDefinition);
+        public abstract void DisplayHealText(int damage, AttributeDefinition attributeDefinition);
     }
 }

@@ -20,6 +20,33 @@ MonoBehaviour:
   Group: 0
   HitEffect: {fileID: 0}
   SpawnType: 0
+  StartingCharacteristics:
+    keyData:
+    - Endurance
+    - Finesse
+    - Intellect
+    - Might
+    - Spirit
+    - Senses
+    valueData:
+    - _attribute: {fileID: 11400000, guid: 96489337614cb714b9d8b0ac17964abc, type: 2}
+      _minimumValue: 10
+      _maximumValue: 10
+    - _attribute: {fileID: 11400000, guid: 926deb2d4020fcf41a51d95d5743d485, type: 2}
+      _minimumValue: 10
+      _maximumValue: 10
+    - _attribute: {fileID: 11400000, guid: c7702ba46626ec14fb9c3febb486d391, type: 2}
+      _minimumValue: 5
+      _maximumValue: 5
+    - _attribute: {fileID: 11400000, guid: 47f340717fc369b418e69affd97fa097, type: 2}
+      _minimumValue: 10
+      _maximumValue: 10
+    - _attribute: {fileID: 11400000, guid: 406159c5c2f575b4bb9bebdc400800ac, type: 2}
+      _minimumValue: 5
+      _maximumValue: 5
+    - _attribute: {fileID: 11400000, guid: 8d5628aeed8e08d41b9e426b938b559b, type: 2}
+      _minimumValue: 10
+      _maximumValue: 10
   StartingVitals:
     keyData:
     - Life
@@ -32,8 +59,8 @@ MonoBehaviour:
       _minimumValue: 8
       _maximumValue: 12
     - _vital: {fileID: 11400000, guid: 8c1538e43236dbc4daa5bcf57e73ad8d, type: 2}
-      _minimumValue: 2
-      _maximumValue: 2
+      _minimumValue: 1
+      _maximumValue: 1
     - _vital: {fileID: 11400000, guid: 18bfe6f4bec976d459ba326b0cd6405e, type: 2}
       _minimumValue: 0
       _maximumValue: 0
@@ -45,23 +72,30 @@ MonoBehaviour:
       _maximumValue: 0
   StartingStatistics:
     keyData:
-    - Movement
+    - Initiative
     - Block
     - Dodge
     - Willpower
-    - Finesse Damage
-    - Might Damage
-    - Magic Damage
+    - Finesse Modifier
+    - Might Modifier
+    - Magic Modifier
+    - Attack
+    - Accuracy
+    - Focus
+    - Perception
+    - Critical Damage
+    - Critical Hit
+    - Fumble
     valueData:
     - _derived: {fileID: 11400000, guid: feca693404bd16c46b1f6a54a3fc9403, type: 2}
-      _minimumValue: 2
-      _maximumValue: 2
+      _minimumValue: 0
+      _maximumValue: 0
     - _derived: {fileID: 11400000, guid: 235729449429a4f40b1fdcb4dfa945a4, type: 2}
-      _minimumValue: 20
-      _maximumValue: 20
+      _minimumValue: 0
+      _maximumValue: 0
     - _derived: {fileID: 11400000, guid: 7f21356662ce25240bab1d615b9dc4f4, type: 2}
-      _minimumValue: 10
-      _maximumValue: 10
+      _minimumValue: 0
+      _maximumValue: 0
     - _derived: {fileID: 11400000, guid: 0872c6be42520db4dac4330e29a5bfd3, type: 2}
       _minimumValue: 10
       _maximumValue: 10
@@ -72,6 +106,27 @@ MonoBehaviour:
       _minimumValue: 0
       _maximumValue: 0
     - _derived: {fileID: 11400000, guid: a0392a137b0b75b44a63e80cd2ebc836, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: a31f61315b68be94aa728d2b1d6ebaee, type: 2}
+      _minimumValue: 20
+      _maximumValue: 20
+    - _derived: {fileID: 11400000, guid: 87a10bd272f6ce34a926fbdd2deaad03, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 45429c19ba0d2cf46a652eb0bdd22c14, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 3e9dba08f088e9a41997418e0fb93458, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 0cd740360ef66834aa82570a681c9014, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: f65dc07989b8ce64d8d4f271352aad0a, type: 2}
+      _minimumValue: 0
+      _maximumValue: 0
+    - _derived: {fileID: 11400000, guid: 3cb8cc87716487b449b07b2f723a26c6, type: 2}
       _minimumValue: 0
       _maximumValue: 0
   StartingSkills:

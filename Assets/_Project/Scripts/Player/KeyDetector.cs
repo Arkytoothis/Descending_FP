@@ -9,7 +9,7 @@ namespace Descending.Player
 {
     public class KeyDetector : MonoBehaviour
     {
-        [SerializeField] private PlayerController _playerController = null;
+        //[SerializeField] private PlayerController _playerController = null;
         
         private void OnTriggerEnter(Collider other)
         {

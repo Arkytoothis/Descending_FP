@@ -189,14 +189,7 @@ namespace Descending.Gui
             _damageLabel.GetComponent<RectTransform>().DOScale(new Vector3(1f, 1f, 1f), _scaleUpDamageSpeed);
             _damageLabel.color = damageText.Color;
 
-            if (damageText.Damage < 0)
-            {
-                _damageLabel.SetText(damageText.Damage.ToString());
-            }
-            else if (damageText.Damage > 0)
-            {
-                _damageLabel.SetText("+" + damageText.Damage);
-            }
+            _damageLabel.SetText(damageText.Text);
             
             StartCoroutine(HideDamage_Coroutine());
         }

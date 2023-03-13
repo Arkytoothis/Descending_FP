@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3147550236648504269
 Transform:
   m_ObjectHideFlags: 0
@@ -396,6 +396,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _armorImage: {fileID: 1911653269919848218}
   _lifeImage: {fileID: 8298570214342746502}
+--- !u!1 &2680048682258247197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6778319415611366613}
+  m_Layer: 11
+  m_Name: Combat Text Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6778319415611366613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2680048682258247197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.84, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7240723023843722456}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4750582313301657875
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +828,7 @@ Transform:
   - {fileID: 7240723024216398830}
   - {fileID: 3147550236648504269}
   - {fileID: 4719144120299044497}
+  - {fileID: 6778319415611366613}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -831,6 +863,7 @@ MonoBehaviour:
   _selectionIndicator: {fileID: 758663952751483591}
   _worldPanel: {fileID: 743982965155372095}
   _collider: {fileID: 7609248339029428552}
+  _combatTextTransform: {fileID: 6778319415611366613}
   onSyncEncounter:
     m_PersistentCalls:
       m_Calls:
@@ -860,6 +893,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _worldPanel: {fileID: 743982965155372095}
+  onDisplayDamageText:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9068480795638862770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,7 +1064,7 @@ MonoBehaviour:
   seeThroughBorderOnly: 0
   seeThroughBorderWidth: 0.45
   seeThroughOrdered: 0
-  rmsCount: 1
+  rmsCount: 0
   hitFxInitialIntensity: 0
   hitFxMode: 0
   hitFxFadeOutDuration: 0.25
@@ -1179,6 +1215,27 @@ MonoBehaviour:
   _accessorySlots: 2
   _portraitBody: {fileID: 0}
   _worldBody: {fileID: 0}
+  _currentWeapon:
+    _name: 
+    _definitionKey: 
+    _description: 
+    _modelIndex: -1
+    _itemType: 31
+    _nameFormat: 4
+    _renderSlots: []
+    _materialAllowed: 14
+    _stackSize: 0
+    _itemPower: 0
+    _encumbrance: 0
+    _goldValue: 0
+    _gemValue: 0
+    _usesLeft: 0
+    _accessorySlot: -1
+    _rarityKey: 
+    _materialKey: 
+    _qualityKey: 
+    _prefixEnchantKey: 
+    _suffixEnchantKey: 
 --- !u!1 &7901320926579218052
 GameObject:
   m_ObjectHideFlags: 0

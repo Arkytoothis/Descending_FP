@@ -15,7 +15,7 @@ namespace Descending.Units
     {
         public static HeroManager Instance { get; private set; }
         
-        [SerializeField] private PlayerController _playerController = null;
+        //[SerializeField] private PlayerController _playerController = null;
         [SerializeField] private GameObject _heroPrefab = null;
         [SerializeField] private Transform _heroesParent = null;
         [SerializeField] private List<Hero> _heroes = null;

@@ -57,6 +57,8 @@ MonoBehaviour:
       type: 3}
     _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
       type: 2}
+    _damageClass: 1
+    _attackType: 0
     damageEffects:
     - rid: 5351987380576583682
   _wearableData:
@@ -93,8 +95,6 @@ MonoBehaviour:
         _affects: 1
         _damageType: {fileID: 11400000, guid: cb9aedaee7f52074ea462916a20afe1a, type: 2}
         _attribute: {fileID: 11400000, guid: 830a4ee13042db94685c95be9ea29b88, type: 2}
-        _damageClass: 1
-        _attackType: 0
         _minimumValue: 4
         _maximumValue: 8
     - rid: 5351987380576583712

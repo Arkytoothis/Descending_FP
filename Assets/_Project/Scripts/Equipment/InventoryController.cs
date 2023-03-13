@@ -19,6 +19,7 @@ namespace Descending.Equipment
         [SerializeField] private BodyRenderer _portraitBody = null;
         [SerializeField] private BodyRenderer _worldBody = null;
 
+        private EnemyDefinition _enemyDefinition = null;
         private Genders _gender = Genders.None;
         [SerializeField] private Item _currentWeapon = null;
         
@@ -28,6 +29,7 @@ namespace Descending.Equipment
 
         public void Setup(BodyRenderer portraitBody, BodyRenderer worldBody, Genders gender, RaceDefinition race, ProfessionDefinition profession)
         {
+            _enemyDefinition = null;
             _portraitBody = portraitBody;
             _worldBody = worldBody;
             _gender = gender;
@@ -93,6 +95,7 @@ namespace Descending.Equipment
 
         public void Setup(EnemyDefinition enemyDefinition)
         {
+            _enemyDefinition = enemyDefinition;
             _portraitBody = null;
             _worldBody = null;
             _gender = Genders.Male;
@@ -108,11 +111,16 @@ namespace Descending.Equipment
             {
                 _accessories[i] = null;
             }
-            
-            if(enemyDefinition.MeleeWeapon != null)
+
+            if (enemyDefinition.MeleeWeapon.Item != null)
+            {
                 EquipItem(ItemGenerator.GenerateItem(enemyDefinition.MeleeWeapon));
-            if(enemyDefinition.RangedWeapon != null)
+            }
+
+            if (enemyDefinition.RangedWeapon.Item != null)
+            {
                 EquipItem(ItemGenerator.GenerateItem(enemyDefinition.RangedWeapon));
+            }
         }
 
         public void LoadData(BodyRenderer worldBody, BodyRenderer portraitBody, HeroSaveData saveData)
@@ -203,8 +211,15 @@ namespace Descending.Equipment
                     _worldBody.EquipItem(item, false);
                 }
             }
-            
-            _attributes.CalculateAttributes(false, false);
+
+            if (_enemyDefinition == null)
+            {
+                _attributes.CalculateAttributes(false, false);
+            }
+            else
+            {
+                _attributes.CalculateAttributes(_enemyDefinition, false, false);
+            }
         }
 
         public void EquipItem(Item item, int slot)

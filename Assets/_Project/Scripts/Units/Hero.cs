@@ -5,6 +5,7 @@ using Descending.Attributes;
 using Descending.Combat;
 using Descending.Core;
 using Descending.Equipment;
+using Descending.Gui;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Descending.Units
 
         [SerializeField] protected HeroUnitEvent onSyncHero = null;
         [SerializeField] protected IntEvent onSyncHeroUnitEffectsGui = null;
+        [SerializeField] protected HeroDamageTextEvent onDisplayDamageText = null;
 
         private BodyRenderer _portraitRenderer = null;
         private PortraitMount _portrait = null;
@@ -124,7 +126,7 @@ namespace Descending.Units
             return _inventory.GetCurrentWeapon();
         }
 
-        public override void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital)
+        public override void Damage(Unit attacker, DamageTypeDefinition damageType, int damage, string vital)
         {
             if (_isAlive == false) return;
 
@@ -253,6 +255,21 @@ namespace Descending.Units
         public void MountPortraitModel()
         {
             _portraitModel.transform.SetParent(_modelParent, false);
+        }
+
+        public override void DisplayDefaultText(string text)
+        {
+            onDisplayDamageText.Invoke(new HeroDamageText(_heroData.ListIndex, text, Color.white));
+        }
+        
+        public override void DisplayDamageText(int damage, AttributeDefinition attributeDefinition)
+        {
+            onDisplayDamageText.Invoke(new HeroDamageText(_heroData.ListIndex, -damage, attributeDefinition.DamageColor));
+        }
+
+        public override void DisplayHealText(int damage, AttributeDefinition attributeDefinition)
+        {
+            onDisplayDamageText.Invoke(new HeroDamageText(_heroData.ListIndex, damage, attributeDefinition.HealColor));
         }
     }
 }

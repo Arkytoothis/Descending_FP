@@ -76,6 +76,13 @@ namespace Descending.Attributes
             _vitals.Clear();
             _statistics.Clear();
             
+            foreach (var startingCharacteristic in definition.StartingCharacteristics)
+            {
+                int value = Random.Range(startingCharacteristic.Value.MinimumValue, startingCharacteristic.Value.MaximumValue + 1);
+                _characteristics.Add(startingCharacteristic.Key, new Attribute(startingCharacteristic.Key));
+                _characteristics[startingCharacteristic.Key].Setup(value);
+            }
+            
             foreach (var startingVital in definition.StartingVitals)
             {
                 int value = Random.Range(startingVital.Value.MinimumValue, startingVital.Value.MaximumValue + 1);
@@ -169,21 +176,24 @@ namespace Descending.Attributes
             }
         }
         
-        public void CalculateAttributes(EnemyDefinition enemyDefinition)
+        public void CalculateAttributes(EnemyDefinition enemyDefinition, bool setupVitals, bool refreshArmor)
         {
             ResetModifiers();
             CalculateCharacteristicModifiers();
             
-            _vitals["Life"].Setup(Random.Range(enemyDefinition.StartingVitals["Life"].MinimumValue, enemyDefinition.StartingVitals["Life"].MinimumValue + 1) + 
-                                  (_characteristics["Endurance"].Maximum + _characteristics["Might"].Maximum) / 2);
-            _vitals["Stamina"].Setup(Random.Range(enemyDefinition.StartingVitals["Stamina"].MinimumValue, enemyDefinition.StartingVitals["Stamina"].MinimumValue + 1) + 
-                                  (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
-            _vitals["Magic"].Setup(Random.Range(enemyDefinition.StartingVitals["Magic"].MinimumValue, enemyDefinition.StartingVitals["Magic"].MinimumValue + 1) + 
-                                  (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
-            
-            _vitals["Actions"].Setup(Random.Range(enemyDefinition.StartingVitals["Actions"].MinimumValue, enemyDefinition.StartingVitals["Actions"].MinimumValue + 1));
-            _vitals["Armor"].Setup(Random.Range(enemyDefinition.StartingVitals["Armor"].MinimumValue, enemyDefinition.StartingVitals["Armor"].MinimumValue + 1));
-            _vitals["Luck"].Setup(Random.Range(enemyDefinition.StartingVitals["Luck"].MinimumValue, enemyDefinition.StartingVitals["Luck"].MinimumValue + 1));
+            if(setupVitals == true)
+            {
+                _vitals["Life"].Setup(Random.Range(enemyDefinition.StartingVitals["Life"].MinimumValue, enemyDefinition.StartingVitals["Life"].MinimumValue + 1) +
+                                      (_characteristics["Endurance"].Maximum + _characteristics["Might"].Maximum) / 2);
+                _vitals["Stamina"].Setup(Random.Range(enemyDefinition.StartingVitals["Stamina"].MinimumValue, enemyDefinition.StartingVitals["Stamina"].MinimumValue + 1) +
+                                         (_characteristics["Endurance"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+                _vitals["Magic"].Setup(Random.Range(enemyDefinition.StartingVitals["Magic"].MinimumValue, enemyDefinition.StartingVitals["Magic"].MinimumValue + 1) +
+                                       (_characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum) / 2);
+
+                _vitals["Actions"].Setup(Random.Range(enemyDefinition.StartingVitals["Actions"].MinimumValue, enemyDefinition.StartingVitals["Actions"].MinimumValue + 1));
+                _vitals["Armor"].Setup(Random.Range(enemyDefinition.StartingVitals["Armor"].MinimumValue, enemyDefinition.StartingVitals["Armor"].MinimumValue + 1));
+                _vitals["Luck"].Setup(Random.Range(enemyDefinition.StartingVitals["Luck"].MinimumValue, enemyDefinition.StartingVitals["Luck"].MinimumValue + 1));
+            }
 
             CalculateVitalModifiers();
             
@@ -191,9 +201,9 @@ namespace Descending.Attributes
             int finesseAttack = _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum;
             int magicAttack = _characteristics["Intellect"].Maximum + _characteristics["Spirit"].Maximum;
             
-            _statistics["Might Attack"].Setup(mightAttack + Random.Range(enemyDefinition.StartingStatistics["Might Attack"].MinimumValue, enemyDefinition.StartingStatistics["Might Attack"].MaximumValue + 1));
-            _statistics["Finesse Attack"].Setup(finesseAttack + Random.Range(enemyDefinition.StartingStatistics["Finesse Attack"].MinimumValue, enemyDefinition.StartingStatistics["Finesse Attack"].MaximumValue + 1));
-            _statistics["Magic Attack"].Setup(magicAttack + Random.Range(enemyDefinition.StartingStatistics["Magic Attack"].MinimumValue, enemyDefinition.StartingStatistics["Magic Attack"].MaximumValue + 1));
+            _statistics["Attack"].Setup(mightAttack + Random.Range(enemyDefinition.StartingStatistics["Attack"].MinimumValue, enemyDefinition.StartingStatistics["Attack"].MaximumValue + 1));
+            _statistics["Accuracy"].Setup(finesseAttack + Random.Range(enemyDefinition.StartingStatistics["Accuracy"].MinimumValue, enemyDefinition.StartingStatistics["Accuracy"].MaximumValue + 1));
+            _statistics["Focus"].Setup(magicAttack + Random.Range(enemyDefinition.StartingStatistics["Focus"].MinimumValue, enemyDefinition.StartingStatistics["Focus"].MaximumValue + 1));
             
             int mightDamage = (_characteristics["Might"].Maximum - 10) / 10;
             int finesseDamage = (_characteristics["Finesse"].Maximum - 10) / 10;
@@ -212,7 +222,7 @@ namespace Descending.Attributes
             
             _statistics["Perception"].Setup(Random.Range(enemyDefinition.StartingStatistics["Perception"].MinimumValue, enemyDefinition.StartingStatistics["Perception"].MaximumValue + 1) + 
                                             _characteristics["Finesse"].Maximum + _characteristics["Senses"].Maximum);
-            _statistics["Movement"].Setup(enemyDefinition.StartingStatistics["Movement"].MinimumValue);
+            _statistics["Initiative"].Setup(enemyDefinition.StartingStatistics["Initiative"].MinimumValue);
             _statistics["Critical Damage"].Setup(enemyDefinition.StartingStatistics["Critical Damage"].MinimumValue);
             _statistics["Critical Hit"].Setup(magicDamage + Random.Range(enemyDefinition.StartingStatistics["Critical Hit"].MinimumValue, enemyDefinition.StartingStatistics["Critical Hit"].MaximumValue + 1));
             _statistics["Fumble"].Setup(magicDamage + Random.Range(enemyDefinition.StartingStatistics["Fumble"].MinimumValue, enemyDefinition.StartingStatistics["Fumble"].MaximumValue + 1));
@@ -220,7 +230,10 @@ namespace Descending.Attributes
             CalculateStatisticModifiers();
             CalculateUnitEffectModifiers();
 
-            _vitals["Armor"].Refresh();
+            if(refreshArmor == true)
+            {
+                _vitals["Armor"].Refresh();
+            }
         }
         
         public void CalculateModifiers()

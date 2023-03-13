@@ -11,7 +11,7 @@ namespace Descending.Scene_MainMenu
     public class PartyBuilder : MonoBehaviour
     {
         [SerializeField] private GameObject _heroPrefab = null;
-        [SerializeField] private CinemachineVirtualCamera _heroCamera = null;
+        //[SerializeField] private CinemachineVirtualCamera _heroCamera = null;
         [SerializeField] private List<Hero> _heroes = null;
         [SerializeField] private List<Transform> _heroMounts = null;
 

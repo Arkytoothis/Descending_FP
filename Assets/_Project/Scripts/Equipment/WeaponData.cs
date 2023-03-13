@@ -19,6 +19,8 @@ namespace Descending.Equipment
         [SerializeField] private ProjectileEffect _projectileEffect = null;
         [SerializeField] private GameObject _attackEffectPrefab = null;
         [SerializeField] private AnimatorOverrideController _animatorOverride = null;
+        [SerializeField] private DamageClasses _damageClass = DamageClasses.None;
+        [SerializeField] private AttackTypes _attackType = AttackTypes.None;
 
         //[SerializeField, SoundGroup] private List<string> _hitSounds;
         //[SerializeField, SoundGroup] private List<string> _attackSounds;
@@ -35,6 +37,8 @@ namespace Descending.Equipment
         public AnimatorOverrideController AnimatorOverride => _animatorOverride;
         public GameObject AttackEffectPrefab => _attackEffectPrefab;
         public List<DamageEffect> DamageEffects => damageEffects;
+        public DamageClasses DamageClass => _damageClass;
+        public AttackTypes AttackType => _attackType;
         //public List<string> HitSounds => _hitSounds;
         //public List<string> AttackSounds => _attackSounds;
 
@@ -59,7 +63,7 @@ namespace Descending.Equipment
             foreach (DamageEffect attack in damageEffects)
             {
                 sb.Append(attack.MinimumValue).Append("-").Append(attack.MaximumValue).Append(" ");
-                sb.Append(attack.DamageType.Name).Append(" damage (").Append(attack.DamageClass).Append(")").AppendLine();
+                sb.Append(attack.DamageType.Name).Append(" damage (");
             }
 
             return sb.ToString();
@@ -76,7 +80,7 @@ namespace Descending.Equipment
             foreach (DamageEffect attack in damageEffects)
             {
                 sb.Append(attack.MinimumValue).Append("-").Append(attack.MaximumValue).Append(" ");
-                sb.Append(attack.DamageType.Name).Append(" damage (").Append(attack.DamageClass).Append(")").AppendLine();
+                sb.Append(attack.DamageType.Name).Append(" damage (");
             }
 
             return sb.ToString();

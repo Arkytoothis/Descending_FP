@@ -23,7 +23,7 @@ namespace Descending.Encounters
         [SerializeField] private PlayerController _playerController = null;
         [SerializeField] private CombatRaycaster _combatRaycaster = null;
         [SerializeField] private List<Encounter> _encounters = null;
-        [SerializeField] private float _enemyActionDelay = 0.5f;
+        //[SerializeField] private float _enemyActionDelay = 0.5f;
         [SerializeField] private float _enemyTurnDelay = 2f;
 
         [SerializeField] private EncounterEvent onEncounterTriggered = null;

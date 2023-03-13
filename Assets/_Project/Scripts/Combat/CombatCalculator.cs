@@ -1,23 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Core;
 using Descending.Equipment;
 using Descending.Units;
 using UnityEngine;
 
 namespace Descending.Combat
 {
-    
     public static class CombatCalculator
     {
         public static void ProcessAttack(Unit attacker, Unit defender)
         {
-            if (TryDefense(defender))
+            int attackRoll = Random.Range(0, 100);
+            bool hit = false;
+            
+            if (attacker.GetEquippedWeapon().GetWeaponData().DamageClass == DamageClasses.Might)
             {
-                Miss(attacker, defender);
+                if (attackRoll <= attacker.Attributes.GetStatistic("Attack").Current)
+                {
+                    Debug.Log("Attack Roll: " + attackRoll + " vs " + attacker.Attributes.GetStatistic("Attack").Current);
+                    hit = true;
+                }
+            }
+            else if (attacker.GetEquippedWeapon().GetWeaponData().DamageClass == DamageClasses.Finesse)
+            {
+                if (attackRoll <= attacker.Attributes.GetStatistic("Accuracy").Current)
+                {
+                    Debug.Log("Attack Roll: " + attackRoll + " vs " + attacker.Attributes.GetStatistic("Accuracy").Current);
+                    hit = true;
+                }
+            }
+            else if (attacker.GetEquippedWeapon().GetWeaponData().DamageClass == DamageClasses.Magic)
+            {
+                if (attackRoll <= attacker.Attributes.GetStatistic("Focus").Current)
+                {
+                    Debug.Log("Attack Roll: " + attackRoll + " vs " + attacker.Attributes.GetStatistic("Focus").Current);
+                    hit = true;
+                }
+            }
+
+            if (hit == true)
+            {
+                if (TryDefense(defender))
+                {
+                    Miss(attacker, defender);
+                }
+                else
+                {
+                    Hit(attacker, defender);
+                }
             }
             else
             {
-                Hit(attacker, defender);
+                Miss(attacker, defender);
             }
         }
 
@@ -62,7 +97,7 @@ namespace Descending.Combat
 
         private static void Miss(Unit attacker, Unit defender)
         {
-            Debug.Log("Miss!");
+            defender.DisplayDefaultText("Miss!");
         }
 
         private static void RollDamage(Item weapon, Unit attacker, Unit defender)
@@ -74,7 +109,7 @@ namespace Descending.Combat
                 int minDamage = weaponData.DamageEffects[i].MinimumValue;// + attacker.Attributes.GetStatistic("Might Modifier").TotalCurrent();
                 int maxDamage = weaponData.DamageEffects[i].MaximumValue;// + attacker.Attributes.GetStatistic("Might Modifier").TotalCurrent();
                 int damage = Random.Range(minDamage, maxDamage + 1);
-                defender.Damage(attacker.gameObject, weaponData.DamageEffects[i].DamageType, damage, weaponData.DamageEffects[i].Attribute.Key);
+                defender.Damage(attacker, weaponData.DamageEffects[i].DamageType, damage, weaponData.DamageEffects[i].Attribute.Key);
             }
         }
 
@@ -85,7 +120,7 @@ namespace Descending.Combat
                 int minDamage = projectile.DamageEffects[i].MinimumValue;// + attacker.Attributes.GetStatistic("Might Modifier").TotalCurrent();
                 int maxDamage = projectile.DamageEffects[i].MaximumValue;// + attacker.Attributes.GetStatistic("Might Modifier").TotalCurrent();
                 int damage = Random.Range(minDamage, maxDamage + 1);
-                defender.Damage(attacker.gameObject, projectile.DamageEffects[i].DamageType, damage, projectile.DamageEffects[i].Attribute.Key);
+                defender.Damage(attacker, projectile.DamageEffects[i].DamageType, damage, projectile.DamageEffects[i].Attribute.Key);
             }
         }
     }

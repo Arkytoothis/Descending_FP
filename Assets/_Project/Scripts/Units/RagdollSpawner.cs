@@ -20,7 +20,7 @@ namespace Descending.Units
         {
             GameObject clone = Instantiate(_ragdollPrefab, transform.position, transform.rotation);
             UnitRagdoll ragdoll = clone.GetComponent<UnitRagdoll>();
-            ragdoll.Setup(damageSystem.Attacker, _unitRootBone);
+            ragdoll.Setup(damageSystem.Attacker.gameObject, _unitRootBone);
         }
     }
 }

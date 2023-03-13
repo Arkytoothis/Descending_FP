@@ -7,7 +7,7 @@ namespace Descending.Units
 {
     public class UnitRagdoll : MonoBehaviour
     {
-        [SerializeField] private Transform _ragdollRootBone = null;
+        //[SerializeField] private Transform _ragdollRootBone = null;
 
         public void Setup(GameObject source, Transform unitRootBone)
         {

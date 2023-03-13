@@ -57,6 +57,8 @@ MonoBehaviour:
     _attackEffectPrefab: {fileID: 0}
     _animatorOverride: {fileID: 22100000, guid: f54a66132b96abe4e8982744563dbc94,
       type: 2}
+    _damageClass: 1
+    _attackType: 1
     damageEffects: []
   _wearableData:
     _hasData: 0

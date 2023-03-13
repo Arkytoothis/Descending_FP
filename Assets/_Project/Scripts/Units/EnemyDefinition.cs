@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Descending.Attributes;
 using Descending.Core;
 using Descending.Equipment;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -23,6 +24,7 @@ namespace Descending.Units
         public ParticleSystem HitEffect = null;
         public EnemySpawnTypes SpawnType = EnemySpawnTypes.None;
 
+        public StartingCharacteristicDictionary StartingCharacteristics = null;
         public StartingVitalDictionary StartingVitals = null;
         public StartingStatisticDictionary StartingStatistics = null;
         public StartingSkillDictionary StartingSkills = null;
@@ -31,26 +33,14 @@ namespace Descending.Units
         public bool PrefersRanged = true;
         public ItemShort MeleeWeapon;
         public ItemShort RangedWeapon;
-        
-        // [SoundGroup] public List<string> AttackSounds;
-        // [SoundGroup] public List<string> HitSounds;
-        // [SoundGroup] public List<string> WoundSounds;
 
-        //public List<ItemShort> Equipment = null;
-
-        // public string GetAttackSound()
-        // {
-        //     return AttackSounds[Random.Range(0, AttackSounds.Count)];
-        // }
-        //
-        // public string GetHitSound()
-        // {
-        //     return HitSounds[Random.Range(0, HitSounds.Count)];
-        // }
-        //
-        // public string GetWoundSound()
-        // {
-        //     return WoundSounds[Random.Range(0, WoundSounds.Count)];
-        // }
+        [Button("Generate Characteristics")]
+        private void GenerateCharacteristics()
+        {
+            foreach (var attributeKvp in Database.instance.Attributes.Attributes)
+            {
+                StartingCharacteristics.Add(attributeKvp.Key, new StartingCharacteristic(attributeKvp.Value, 10, 10));
+            }
+        }
     }
 }

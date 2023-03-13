@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Descending.Attributes;
 using Descending.Combat;
 using Descending.Core;
 using Descending.Equipment;
@@ -20,37 +21,22 @@ namespace Descending.Units
         [SerializeField] private GameObject _selectionIndicator = null;
         [SerializeField] private EnemyWorldPanel _worldPanel = null;
         [SerializeField] private CapsuleCollider _collider = null;
+        [SerializeField] private Transform _combatTextTransform = null;
         
         [SerializeField] private BoolEvent onSyncEncounter = null;
-
-        private bool _treasureDropped = false;
-        private Item _meleeWeapon = null;
-        private Item _rangedWeapon = null;
 
         public Transform ProjectileTarget => _projectileTarget;
         public UnitData UnitData => _unitData;
         public EnemyDefinition Definition => _definition;
+        public Transform CombatTextTransform => _combatTextTransform;
 
         public void SetupEnemy(EnemyDefinition definition)
         {
             _definition = definition;
-            _treasureDropped = false;
             _isAlive = true;
             
             _attributes.Setup(_definition);
-            
-            if(_definition.MeleeWeapon.Item != null)
-            {
-                _meleeWeapon = ItemGenerator.GenerateItem(_definition.MeleeWeapon);
-                EquipWeapon(_meleeWeapon);
-            }
-
-            if (_definition.RangedWeapon.Item != null)
-            {
-                _rangedWeapon = ItemGenerator.GenerateItem(_definition.RangedWeapon);
-                EquipWeapon(_rangedWeapon);
-            }
-
+            _inventory.Setup(definition);
             _damageSystem.Setup(this);
             _unitEffects.Setup();
             _worldPanel.Setup(this);
@@ -84,48 +70,29 @@ namespace Descending.Units
 
         public override Item GetEquippedWeapon()
         {
-            if (_meleeWeapon != null) return GetMeleeWeapon();
-            else return GetRangedWeapon();
+            if(_definition.PrefersRanged)
+                return GetRangedWeapon();
+            else
+            {
+                return GetMeleeWeapon();
+            }
         }
 
         public override Item GetMeleeWeapon()
         {
-            return _meleeWeapon;
+            return _inventory.GetMeleeWeapon();
         }
 
         public override Item GetRangedWeapon()
         {
-            return _rangedWeapon;
-        }
-
-        private void EquipWeapon(Item item)
-        {
-            if (item == null || item.Key == "" || item.GetWeaponData() == null) return;
-
-            if (item.ItemDefinition.Hands == Hands.Right)
-            {
-                _rightHandMount.ClearTransform();
-                GameObject clone = item.SpawnItemModel(_rightHandMount, 0);
-                //_animationController.SetOverride(item.GetWeaponData().AnimatorOverride);
-                
-            }
-            else if (item.ItemDefinition.Hands == Hands.Left)
-            {
-                _leftHandMount.ClearTransform();
-                GameObject clone = item.SpawnItemModel(_leftHandMount, 0);
-                //_animationController.SetOverride(item.GetWeaponData().AnimatorOverride);
-            }
-            
-            SyncData();
+            return _inventory.GetRangedWeapon();
         }
         
-        public override void Damage(GameObject attacker, DamageTypeDefinition damageType, int damage, string vital)
+        public override void Damage(Unit attacker, DamageTypeDefinition damageType, int damage, string vital)
         {
             if (_isAlive == false) return;
             
-            //CombatTextHandler.Instance.DisplayCombatText(new CombatText(_combatTextTransform.position, damage.ToString(), "default"));
             _damageSystem.TakeDamage(attacker, damage);
-            //_attributes.GetVital("Life").Damage(damage, false);
             
             if (GetHealth() <= 0)
             {
@@ -211,6 +178,21 @@ namespace Descending.Units
 
         public override void RecalculateAttributes()
         {
+        }
+
+        public override void DisplayDefaultText(string text)
+        {
+            TextManager.Instance.SpawnWorldText(_combatTextTransform, text, "default");
+        }
+
+        public override void DisplayDamageText(int damage, AttributeDefinition attributeDefinition)
+        {
+            TextManager.Instance.SpawnWorldText(_combatTextTransform, "-" + damage, "life_damage");
+        }
+
+        public override void DisplayHealText(int damage, AttributeDefinition attributeDefinition)
+        {
+            TextManager.Instance.SpawnWorldText(_combatTextTransform, damage.ToString(), "life_heal");
         }
     }
 }

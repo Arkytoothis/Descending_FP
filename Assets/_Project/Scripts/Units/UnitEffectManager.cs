@@ -9,9 +9,9 @@ namespace Descending.Units
     {
         public static UnitEffectManager Instance { get; private set; }
 
-        [SerializeField] private List<Unit> _registeredUnits = null;
+        //[SerializeField] private List<Unit> _registeredUnits = null;
         
-        [SerializeField] private BoolEvent onSyncUnitEffectsGui = null;
+        //[SerializeField] private BoolEvent onSyncUnitEffectsGui = null;
         
         private void Awake()
         {
@@ -23,7 +23,7 @@ namespace Descending.Units
             }
             
             Instance = this;
-            _registeredUnits = new List<Unit>();
+            //_registeredUnits = new List<Unit>();
         }
 
         public void Setup()

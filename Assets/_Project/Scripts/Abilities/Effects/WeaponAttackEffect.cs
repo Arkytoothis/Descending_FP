@@ -90,7 +90,7 @@ namespace Descending.Abilities
                     for (int j = 0; j < weaponData.DamageEffects.Count; j++)
                     {
                         int damage = (int)(Random.Range(weaponData.DamageEffects[j].MinimumValue + _minDamageModifier, weaponData.DamageEffects[j].MaximumValue + _maxDamageModifier + 1) * _damageMultiplier);
-                        unit.Damage(user.gameObject, weaponData.DamageEffects[j].DamageType, damage, weaponData.DamageEffects[j].Attribute.Key);
+                        unit.Damage(user, weaponData.DamageEffects[j].DamageType, damage, weaponData.DamageEffects[j].Attribute.Key);
                     }
                 }
                 

@@ -15,8 +15,8 @@ namespace Descending.Player
         [SerializeField] private FirstPersonController _firstPersonController = null;
         [SerializeField] private PlayerControllerModes _mode = PlayerControllerModes.Look;
         [SerializeField] private GameObject _crossHair = null;
-        [SerializeField] private WorldRaycaster _worldRaycaster = null;
-        [SerializeField] private CombatRaycaster _combatRaycaster = null;
+        //[SerializeField] private WorldRaycaster _worldRaycaster = null;
+        //[SerializeField] private CombatRaycaster _combatRaycaster = null;
         //[SerializeField] private PlayerRaycastModes _raycastMode = PlayerRaycastModes.World;
 
         private bool _inCombat = false;

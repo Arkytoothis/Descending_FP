@@ -66,7 +66,7 @@ namespace Descending.Units
                     if (collidersHit.TryGetComponent<Unit>(out Unit targetUnit))
                     {
                         int damage = Random.Range(_minimumDamage, _maximumDamage + 1);
-                        targetUnit.Damage(gameObject, _damageType, damage, _attribute.Key);
+                        //targetUnit.Damage(gameObject, _damageType, damage, _attribute.Key);
                     }
                     
                     // if (collidersHit.TryGetComponent<Crate>(out Crate crate))

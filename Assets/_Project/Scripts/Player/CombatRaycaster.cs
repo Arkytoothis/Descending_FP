@@ -204,7 +204,7 @@ namespace Descending.Player
 
         private void ProcessClick(Enemy enemyTarget)
         {
-            int actionsRequired = 0;
+            //int actionsRequired = 0;
             
             if (_targetingMode == TargetingModes.Melee || _targetingMode == TargetingModes.Ranged)
             {

@@ -11,9 +11,16 @@ namespace Descending.Attributes
         [SerializeField] private AttributeDefinition _attribute = null;
         [SerializeField] private int _minimumValue = 0;
         [SerializeField] private int _maximumValue = 0;
-
+        
         public AttributeDefinition Attribute => _attribute;
         public int MinimumValue => _minimumValue;
         public int MaximumValue => _maximumValue;
+
+        public StartingCharacteristic(AttributeDefinition attribute, int minimumValue, int maximumValue)
+        {
+            _attribute = attribute;
+            _minimumValue = minimumValue;
+            _maximumValue = maximumValue;
+        }
     }
 }
